@@ -1,0 +1,106 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+}
+
+p {
+	margin: 10px 0px;
+}
+
+ul {
+	list-style-type:disc;
+}
+
+li {
+	margin-left: 1em;
+}
+
+body {
+	background: #FFFFFF;
+}
+
+.container {
+	margin: 20px auto;
+	width: 1000px;
+	display: flex;
+	flex-flow: row wrap;
+	background: #fff;
+}
+
+header {
+	width: inherit;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	background: #BBFF09;
+	padding: 1em;	
+}
+
+header div {
+	margin: 1em;
+}
+
+.content {
+	width: inherit;
+	height: inherit;
+	display: flex;
+	flex-flow: row wrap;
+	background: #BBE0F8;
+}
+
+.sidebar {
+	width: 20%;
+	float: left;
+	background: #565656;
+	padding: 1em 0em;
+}
+
+.sidebar table {
+	width: 100%;
+	background: #919191;
+}
+
+.sidebar table a {
+    display:block;
+	line-height: 30px;
+	padding: 0em 1em;
+    text-decoration:none;
+	color: #F7F7F7;
+}
+
+.sidebar table a:hover {
+	color: #000000;
+}
+
+.sidebar table td {
+	width: 100%;
+}
+
+.sidebar table tr td:hover {
+	background: #FFFFFF;
+	
+}
+
+.sidebar p {
+	color: #FFFFFF;
+}
+
+
+
+.main {
+	width: 80%;
+	float: right;
+	padding: 1em;
+}
+
+.footer {
+	clear: both;
+	width: inherit;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #21FF15;
+}
