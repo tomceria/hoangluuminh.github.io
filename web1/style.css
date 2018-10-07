@@ -13,7 +13,8 @@ li {
 }
 
 body {
-	background: #1E1E1E;
+	background: #FFFFFF;
+	
 }
 
 .container {
@@ -22,12 +23,13 @@ body {
 	display: flex;
 	flex-flow: row wrap;
 	background: #fff;
+	border: medium solid #368BB9;
 }
 
 .memberbar {
 	width: inherit;
-	background: #3C3C3C;
-	border-bottom: thin solid #565656;
+	background: #7ED2FF;
+	border-bottom: thin solid #368BB9;
 	padding: 0.5em;
 }
 .memberbar p {
@@ -41,7 +43,7 @@ header {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	background: #3C3C3C;
+	background: #7ED2FF;
 	padding: 0em 2em;	
 }
 
@@ -52,11 +54,11 @@ header div p {
 
 nav {
 	width: inherit;
-	background: #CA931A;
+	background: #FF9700;
 }
 
 nav table {
-	width: inherit;
+	width: 994px;
 }
 
 nav table a {
@@ -77,7 +79,7 @@ nav table td {
 }
 
 nav table td:hover {
-	background: #FFD982;
+	background: #FFC46E;
 	color: #000000;
 }
 
@@ -92,13 +94,13 @@ nav table td:hover {
 .sidebar {
 	width: 20%;
 	float: left;
-	background: #565656;
+	background: #368BB9;
 	padding: 1em 0em;
 }
 
 .sidebar table {
 	width: 100%;
-	background: #919191;
+	background: #FFEA00;
 }
 
 .sidebar table a {
@@ -106,7 +108,7 @@ nav table td:hover {
 	line-height: 30px;
 	padding: 0em 1em;
     text-decoration:none;
-	color: #F7F7F7;
+	color: #2F2F2F;
 }
 
 .sidebar table a:hover {
