@@ -23,17 +23,31 @@ body {
 	width: inherit;
 	background: #7ED2FF;
 	border-bottom: thin solid #368BB9;
-	padding: 0.5em;
+	padding: 0;
 }
+
+.memberbar div {
+	float: right;
+	position: relative;
+}
+
 .memberbar p {
+	display: block;
 	color: #FFFFFF;
-	text-align: right;
+	line-height: 30px;
 	margin: 0;
+	padding: 0 0.5em;
+}
+
+.memberbar p:hover {
+	background: #CFEEFF;
+	color: #000000;
 }
 
 header {
 	width: inherit;
 	height: 150px;
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
