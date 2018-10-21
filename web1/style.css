@@ -41,9 +41,15 @@ header {
 	padding: 0em 2em;
 }
 
-header div p {
+header div {
 	color: #FFFFFF;
-	margin: 0 2em;
+	margin-right: auto;
+}
+
+header div p {
+	margin: 0;
+	padding-top: 0.25em;
+	text-align: center;
 }
 
 nav {
