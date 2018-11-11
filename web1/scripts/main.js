@@ -1,15 +1,15 @@
 function getMenu () {
 	var s = "";
 	var menu = new Array ();
-	var menuLabel = new Array ("Áo", "Quần", "Nón", "Giày", "Dép", "Túi xách");
-	var menuUrl = new Array ("ao", "quan", "non", "giay", "dep", "tuixach");
+	var menuLabel = new Array ("Áo", "Quần", "Nón", "Giày", "Dép", "Balo");
+	var menuUrl = new Array ("ao", "quan", "non", "giay", "dep", "balo");
 	menu[0] = new Array ("0", "Áo thun", "Áo sơ mi");
 	menu[1] = new Array ("0", "Quần thun", "Quần jean");
 	menu[2] = new Array ("0", "Nón kết", "Nón snapback");
 	menu[3] = new Array ();
 	menu[4] = new Array ();
-	menu[5] = new Array ();
-	var page = 0;		//Default page
+	menu[5] = new Array ("0", "Balo", "Túi đeo chéo");
+	var page = 1;		//Default page
 
 	s += "<table cellspacing=\"0\">";
 
@@ -37,20 +37,67 @@ function getProductWindow () {
 	var splitted = "";
 	if (url != splitter)					// url == splitter => index.html
 		splitted = splitter[1];				// [ao&1&0]
-	var params = splitted.split('&');		// [ao]&[1]&[0] ; ao: Category; 1: Subcategory; 0: Page
+	var params = splitted.split('&');		// [ao]&[1]&[0] ; 0: Category; 1: Subcategory; 2: Page
 
 	var item = new Array();	//0: id; 1: price; 2: name; 3: brand; 4: color; 5: image
 	var tag = new Array();
-	item[1] = new Array ("AT-001", 300000, "Áo dài tay thể thao", "Adidas", "Đen", "images/AT/AT-001.jpg");
-	tag[1] = new Array ("ao", "dai", "tay", "the", "thao", "adidas", "den");
+
+	item[1] = new Array ("AT-001", 300000, "Áo dài tay thể thao", "Adidas", "Xanh", "images/AT/AT-001.jpg");
+	tag[1] = new Array ("ao", "dai", "tay", "the", "thao", "adidas", "xanh");
+
 	item[2] = new Array ("QJ-001", 250000, "Quần jean rách", "Châu Âu", "Đen", "images/QJ/QJ-001.jpg");
 	tag[2] = new Array ("quan", "jean", "rach", "chau", "au", "den");
+
 	item[3] = new Array ("AT-002", 315000, "Áo thể thao tay ngắn", "Under Armour", "Xanh tím", "images/AT/AT-002.jpg");
 	tag[3] = new Array ("ao", "the", "thao", "tay", "ngan", "under", "armour", "xanh", "tim");
 
+	item[4] = new Array ("AT-003", 70000, "Áo thun trơn", "Kirkland", "Trắng", "images/AT/AT-003.jpg");
+	tag[4] = new Array ("ao", "thun", "tron", "kirkland", "trang");
+
+	item[5] = new Array ("AT-004", 260000, "Áo bóng rỗ đội OKC", "Nike", "Xanh", "images/AT/AT-004.jpg");
+	tag[5] = new Array ("ao", "bong", "ro", "doi", "okc", "nike", "xanh");
+
+	item[6] = new Array ("AT-005", 80000, "Áo thun mùa hè", "Adidas", "Trắng / Đen", "images/AT/AT-005.jpg");
+	tag[6] = new Array ("ao", "thun", "mua", "he", "adidas", "trang", "den");
+
+	item[7] = new Array ("AS-001", 150000, "Áo sơ mi trơn", "Pull & Bear", "Đen xám", "images/AS/AS-001.jpg");
+	tag[7] = new Array ("ao", "so", "mi", "tron", "pull", "bear", "den", "xam");
+
+	item[8] = new Array ("AS-002", 150000, "Áo sơ mi caro", "Pull & Bear", "Cam", "images/AS/AS-002.jpg");
+	tag[8] = new Array ("ao", "so", "mi", "caro", "pull", "bear", "cam");
+
+	item[9] = new Array ("AS-003", 200000, "Áo sơ mi công sở", "VIETTIEN", "Trắng", "images/AS/AS-003.jpg");
+	tag[9] = new Array ("ao", "so", "mi", "cong", "so", "viettien", "trang");
+
+	item[10] = new Array ("AS-004", 400000, "Áo sơ mi sọc", "Burberry", "Xanh", "images/AS/AS-004.jpg");
+	tag[10] = new Array ("ao", "so", "mi", "soc", "burberry", "xanh");
+
+	item[11] = new Array ("QT-001", 220000, "Quần jogger", "Adidas", "Đen", "images/QT/QT-001.jpg");
+	tag[11] = new Array ("quan", "jogger", "adidas", "den");
+
+	item[12] = new Array ("QT-002", 200000, "Quần thun dài", "Aristino", "Xám", "images/QT/QT-002.jpg");
+	tag[12] = new Array ("quan", "thun", "dai", "aristino", "xam");
+
+	item[13] = new Array ("QT-003", 390000, "Quần bóng rỗ", "Air Jordan", "Đỏ", "images/QT/QT-003.jpg");
+	tag[13] = new Array ("quan", "bong", "ro", "air", "jordan", "do");
+
+	item[14] = new Array ("QT-004", 280000, "Quần đùi thể thao", "Adidas", "Xám", "images/QT/QT-004.jpg");
+	tag[14] = new Array ("quan", "the", "thao", "adidas", "xam");
+
+	item[15] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	tag[15] = new Array ("quan", "thun", "sooc", "bst", "xanh");
+
+	// EXPERIMENTAL
+	items = new Array ();			// filtered array
+	var itemOnPage = 12;
+	var itemStart = itemOnPage*(params[2]-1)+1;
+	var itemEnd = itemOnPage*(params[2]-1)+itemOnPage;
+	//
+
+	// Filter products
 	if (splitter[1]==null) {		// Home page
 		for (var i=1; i<item.length; i++) {		//PLACEHOLDER
-			s += getProduct (i, item);
+			items.push (item[i]);
 		}
 	}
 	else {
@@ -61,7 +108,7 @@ function getProductWindow () {
 						for (var i=1; i<item.length; i++) {
 							var kind = item[i][0].split('-');
 							if (kind[0]=="AT" || kind[0]=="AS")
-								s += getProduct (i, item);
+								items.push (item[i]);
 						}
 						break;
 					}
@@ -69,7 +116,7 @@ function getProductWindow () {
 						for (var i=1; i<item.length; i++) {
 							var kind = item[i][0].split('-');
 							if (kind[0]=="AT")
-								s += getProduct (i, item);
+								items.push (item[i]);
 						}
 						break;
 					}
@@ -77,7 +124,7 @@ function getProductWindow () {
 						for (var i=1; i<item.length; i++) {
 							var kind = item[i][0].split('-');
 							if (kind[0]=="AS")
-								s += getProduct (i, item);
+								items.push (item[i]);
 						}
 						break;
 					}
@@ -90,7 +137,7 @@ function getProductWindow () {
 						for (var i=1; i<item.length; i++) {
 							var kind = item[i][0].split('-');
 							if (kind[0]=="QT" || kind[0]=="QJ")
-								s += getProduct (i, item);
+								items.push (item[i]);
 						}
 						break;
 					}
@@ -98,7 +145,7 @@ function getProductWindow () {
 						for (var i=1; i<item.length; i++) {
 							var kind = item[i][0].split('-');
 							if (kind[0]=="QT")
-								s += getProduct (i, item);
+								items.push (item[i]);
 						}
 						break;
 					}
@@ -106,15 +153,136 @@ function getProductWindow () {
 						for (var i=1; i<item.length; i++) {
 							var kind = item[i][0].split('-');
 							if (kind[0]=="QJ")
-								s += getProduct (i, item);
+								items.push (item[i]);
 						}
 						break;
 					}
 				}
 				break;
 			}
+			case 'non': {
+				switch (params[1]) {
+					case '0': {
+						for (var i=1; i<item.length; i++) {
+							var kind = item[i][0].split('-');
+							if (kind[0]=="NK" || kind[0]=="NS")
+								items.push (item[i]);
+						}
+						break;
+					}
+					case '1': {
+						for (var i=1; i<item.length; i++) {
+							var kind = item[i][0].split('-');
+							if (kind[0]=="NK")
+								items.push (item[i]);
+						}
+						break;
+					}
+					case '2': {
+						for (var i=1; i<item.length; i++) {
+							var kind = item[i][0].split('-');
+							if (kind[0]=="NS")
+								items.push (item[i]);
+						}
+						break;
+					}
+				}
+				break;
+			}
+			case 'giay': {
+				for (var i=1; i<item.length; i++) {
+					var kind = item[i][0].split('-');
+					if (kind[0]=="GI")
+						items.push (item[i]);
+				}
+				break;
+			}
+			case 'dep': {
+				for (var i=1; i<item.length; i++) {
+					var kind = item[i][0].split('-');
+					if (kind[0]=="DE")
+						items.push (item[i]);
+				}
+				break;
+			}
+			case 'balo': {
+				switch (params[1]) {
+					case '0': {
+						for (var i=1; i<item.length; i++) {
+							var kind = item[i][0].split('-');
+							if (kind[0]=="BL" || kind[0]=="BW")
+								items.push (item[i]);
+						}
+						break;
+					}
+					case '1': {
+						for (var i=1; i<item.length; i++) {
+							var kind = item[i][0].split('-');
+							if (kind[0]=="BL")
+								items.push (item[i]);
+						}
+						break;
+					}
+					case '2': {
+						for (var i=1; i<item.length; i++) {
+							var kind = item[i][0].split('-');
+							if (kind[0]=="WB")
+								items.push (item[i]);
+						}
+						break;
+					}
+				}
+				break;
+			}
+
+			case 'all': {			//TEST
+				for (var i=1; i<item.length; i++) {
+					var kind = item[i][0].split('-');
+					items.push (item[i]);
+				}
+				break;
+			}
 		}
 	}
+
+	if (itemEnd > items.length)			// stop showing item
+		itemEnd = items.length-1;
+
+	//Show products
+	for (var i=itemStart; i<=itemEnd; i++) {
+		s += getProduct (i, items);
+	}
+
+	//Show pages buttons
+	var noPages = Math.ceil((items.length-1)/12);
+	if (params[2]>0) {
+		s += "<br>";
+		s += "<div style=\"margin: 1em 10px; float: right; clear: both; width: initial; height: initial\">";
+
+		if (params[2]>3 && noPages>5)
+			s += getPageBtn ("<<", params);
+		if (params[2]>1)
+			s += getPageBtn ("<", params);
+
+		if (noPages <= 5)
+			for (var i=1; i<=noPages; i++)
+				s += getPageBtn (i, params);
+		else if (params[2] <= 3)							// 1 2 3 4 5
+			for (var i=1; i<=5; i++)
+				s += getPageBtn (i, params);
+		else if (params[2] >= noPages-2)					// 2 3 4 5 6
+			for (var i=noPages-4; i<=noPages; i++)
+				s += getPageBtn (i, params);
+		else
+			for (var i=params[2]-2; i<=params[2]+2; i++)	// 16 17 18 19 20
+				s += getPageBtn (i, params);
+
+		if (params[2]<noPages && noPages>1)
+			s += getPageBtn (">", params);
+		
+		s += "</div>";
+	}
+	
 	
 	//alert (s);
 	document.getElementById("main").innerHTML = s;
@@ -123,7 +291,7 @@ function getProductWindow () {
 function getProduct (id, item) {
 	var s = "";
 
-	s += "<div>";
+	s += "<div id=\"productDiv\">";
 	s += "<img src=\"" + item[id][5] + "\" width=\"178px\" height=\"178px\"><br>";
 	s += "<div>";
 	s += "<p><span class=\"brand\">" + item[id][3] + "</span></p>";
@@ -131,6 +299,32 @@ function getProduct (id, item) {
 	s += "<p>" + item[id][4] + "</p>";
 	s += "<p><span class=\"price\">" + item[id][1] + "đ</span></p>";
 	s += "</div>";
+	s += "</div>";
+
+	return s;
+}
+
+function getPageBtn (page, params) {
+	//console.debug (page + " " + params[2] + params);
+
+	var s = "";
+	var pageAltered = page;
+	var kind = "pageBtn";
+
+	if (page == params[2])
+		kind = "pageBtnActive";
+	if (page == "<")
+		pageAltered = parseInt(params[2])-1;
+	else if (page == ">")
+		pageAltered = parseInt(params[2])+1;
+	else if (page == "<<")
+		pageAltered = 1;
+
+	s += "<div id=\"" + kind + "\">";
+	if (kind == "pageBtn")
+		s += "<a href=\"index.html?" + params[0] + "&" + params[1] + "&" + pageAltered + "\">" + page + "</a>";
+	else
+		s += "<p>" + page + "</p>";
 	s += "</div>";
 
 	return s;

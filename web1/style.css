@@ -215,12 +215,16 @@ nav table td:hover {
 
 /* ITEM DISPLAY */
 
-#main > div {
+#main > #productDiv {
 	float: left;
 	margin: 5px 5px;
 	width: 180px;
 	height: 300px;
 	border: thin solid #368bb9;
+}
+
+#main > #productDiv:hover {
+	background: #a5dfff;
 }
 
 #main p {
@@ -244,6 +248,52 @@ nav table td:hover {
 }
 
 /* end ITEM DISPLAY */
+
+/* PAGE BUTTONS DISPLAY */
+
+main > div > #pageBtn {
+	float: left; 
+	width: initial;
+	height: initial;
+	margin: initial;
+	border: thin solid #368bb9;
+}
+
+
+main > div > #pageBtn:hover {
+	background: #a5dfff;
+}
+
+
+main > div > #pageBtn > a {
+	display: block; 
+	color: #000000;
+	line-height: 30px;
+	padding: 0 0.5em;
+}
+
+main > div > #pageBtnActive {
+	float: left;
+	width: initial;
+	height: initial;
+	margin: initial;
+	border: thin solid #368bb9;
+	background: #368bb9;
+}
+
+main > div > #pageBtnActive:hover {
+	background: #368bb9;
+}
+
+main > div > #pageBtnActive > p {
+	display: block; 
+	color: #FFFFFF;
+	margin: 0;
+	line-height: 30px;
+	padding: 0 0.5em;
+}
+
+/* end PAGE BUTTONS DISPLAY */
 
 #footer {
 	clear: both;
