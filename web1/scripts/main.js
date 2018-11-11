@@ -87,6 +87,83 @@ function getProductWindow () {
 	item[15] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
 	tag[15] = new Array ("quan", "thun", "sooc", "bst", "xanh");
 
+	item[16] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[17] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[18] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[19] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[20] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[20] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[21] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[22] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[23] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[24] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[25] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[26] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[27] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[28] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[29] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[30] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[31] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[32] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[33] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[34] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[35] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[36] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[37] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[38] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[39] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[40] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[41] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[42] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[43] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[44] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[45] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[46] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[47] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[48] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[49] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[50] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[51] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[52] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[53] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[54] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[55] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[56] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[57] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[58] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[59] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[60] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[61] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[62] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[63] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[64] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[65] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[66] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[67] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[68] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[69] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[70] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[71] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[72] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[73] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[74] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[75] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[76] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[77] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[78] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[79] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[80] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[81] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[82] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[83] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[84] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[85] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[86] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[87] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[88] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[89] = new Array ("QT-004", 165000, "Quần thun sooc", "BSTFUCKYOU", "Xanh", "images/QT/QT-005.jpg");
+	
+
 	// EXPERIMENTAL
 	items = new Array ();			// filtered array
 	var itemOnPage = 12;
@@ -95,6 +172,7 @@ function getProductWindow () {
 	//
 
 	// Filter products
+	items.push (items[0]);	// empty item
 	if (splitter[1]==null) {		// Home page
 		for (var i=1; i<item.length; i++) {		//PLACEHOLDER
 			items.push (item[i]);
@@ -245,11 +323,16 @@ function getProductWindow () {
 		}
 	}
 
-	if (itemEnd > items.length)			// stop showing item
+	console.debug ("before: " + itemStart + " " + itemEnd);
+
+	if (itemEnd >= items.length)			// stop showing item
 		itemEnd = items.length-1;
+
+	console.debug ("after: " + itemStart + " " + itemEnd);
 
 	//Show products
 	for (var i=itemStart; i<=itemEnd; i++) {
+		console.debug (i + " " + items[i][2]);
 		s += getProduct (i, items);
 	}
 
@@ -265,21 +348,29 @@ function getProductWindow () {
 			s += getPageBtn ("<", params);
 
 		if (noPages <= 5)
-			for (var i=1; i<=noPages; i++)
+			for (var i=1; i<=noPages; i++) {
 				s += getPageBtn (i, params);
-		else if (params[2] <= 3)							// 1 2 3 4 5
-			for (var i=1; i<=5; i++)
+				console.debug (1);
+			}
+		else if (parseInt(params[2]) <= 3)							// 1 2 3 4 5
+			for (var i=1; i<=5; i++) {
 				s += getPageBtn (i, params);
-		else if (params[2] >= noPages-2)					// 2 3 4 5 6
-			for (var i=noPages-4; i<=noPages; i++)
+				console.debug (2);
+			}
+		else if (parseInt(params[2]) >= noPages-2)					// 16 17 18 19 20
+			for (var i=noPages-4; i<=noPages; i++) {
 				s += getPageBtn (i, params);
-		else
-			for (var i=params[2]-2; i<=params[2]+2; i++)	// 16 17 18 19 20
+				console.debug (3);
+			}
+		else												// 2 3 4 5 6 
+			for (var i=parseInt(params[2])-2; i<=parseInt(params[2])+2; i++) {
 				s += getPageBtn (i, params);
+				console.debug (4);
+			}
 
-		if (params[2]<noPages && noPages>1)
+		if (parseInt(params[2])<noPages && noPages>1)
 			s += getPageBtn (">", params);
-		
+
 		s += "</div>";
 	}
 	
