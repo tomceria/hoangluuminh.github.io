@@ -11,18 +11,23 @@ function getMenu () {
 	menu[5] = new Array ("0", "Balo", "Túi đeo chéo");
 	var page = 1;		//Default page
 
-	s += "<table cellspacing=\"0\">";
+	s += `<table cellspacing="0">`;
 
 	for (var i=0; i<menu.length; i++) {
-		s += "<tr><td><a href=\"index.html?" + menuUrl[i] + "&0&" + page + "\" target=\"_self\" title=\"" + menuLabel[i] + "\">" + menuLabel[i] + "</a>";
-		s += "<div><ul>";
+		s += `<tr>
+				<td>
+					<a href="index.html?` + menuUrl[i] + `&0&` + page + `\" target=\"_self\" title=\"` + menuLabel[i] + `\">` + menuLabel[i] + `</a>
+					<div>
+						<ul>`;
 
-		for (var j=1; j<menu[i].length; j++) {
-			s += "<li><a href=\"index.html?" + menuUrl[i] + "&" + j + "&" + page +"\" target=\"_self\" title=\"" + menu[i][j] + "\">" + menu[i][j] + "</a></li>";
-		}
+							for (var j=1; j<menu[i].length; j++) {
+								s += "<li><a href=\"index.html?" + menuUrl[i] + "&" + j + "&" + page +"\" target=\"_self\" title=\"" + menu[i][j] + "\">" + menu[i][j] + "</a></li>";
+							}
 
-		s += "</ul></div>";
-		s += "</td></tr>";
+		s += `			</ul>
+					</div>
+				</td>
+			</tr>`;
 	}
 
 	s += "</table>";
@@ -161,7 +166,7 @@ function getProductWindow () {
 	item[86] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
 	item[87] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
 	item[88] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[89] = new Array ("QT-004", 165000, "Quần thun sooc", "BSTFUCKYOU", "Xanh", "images/QT/QT-005.jpg");
+	item[89] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
 	
 
 	// EXPERIMENTAL

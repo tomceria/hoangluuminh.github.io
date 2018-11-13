@@ -8,28 +8,36 @@
 	</head>
 
 	<body>
-		<div class = "container">
-			<div class="memberbar">
-				<div>
-					<p>Đăng nhập</p>
+		<div class="memberbar">
+			<div>
+				<div class="signinBtn">
+					<p><a href="">Đăng nhập</a></p>
 					<div id="memberpop">
-						<p>Tài khoản:</p>
-						<input type="text" name="username"><br>
-						<p>Mật khẩu:</p>
-						<input type="password" name="password"><br>
-						<input type="button" name="signin" value ="Đăng nhập" style="margin-left: 1em; margin-top: 1em; margin-right: 0">
-						<input type="button" name="signup" value ="Đăng ký" style="margin-left: 0; margin-top: 1em; margin-bottom: 1em" onClick="window.location.href='./register.html'">
+						<br>
+						<form name="signinCheck" onsubmit="signinCheck()">
+							<p>Tài khoản:</p>
+							<input type="text" name="username" size="20"><br>
+							<p>Mật khẩu:</p>
+							<input type="password" name="password" size="20"><br>
+							<div id="signinError">
+							</div>
+							<input type="submit" name="signin" value ="Đăng nhập" style="margin: 1em 0 1em 1em">
+							<input type="button" name="signup" value ="Đăng ký" style="margin: 1em 0" onClick="window.location.href='./register.html'">
+						</form>
 					</div>
 				</div>
 			</div>
-			<header>
-				<div>
-					<div style="margin: auto; width: 150px"><img src="images/prada-logo-500px.png" width="150px" alt="lol" title="Prada - Thời trang teen"/></div>
-					<p>Designed for fit - Loved for style</p>
-				</div>
-				<img src="images/banner-1-700px.png" width="350px" height="150px" alt="banner" title="HYPEBEAST banner" style="position: absolute; right: 0px" />
-			</header>
 			
+		</div>
+		<header>
+			<div>
+				<div style="margin: auto; width: 150px"><img src="images/prada-logo-500px.png" width="150px" alt="lol" title="Prada - Thời trang teen"/></div>
+				<p>Designed for fit - Loved for style</p>
+			</div>
+			<!--<img src="images/banner-1-700px.png" width="350px" height="150px" alt="banner" title="HYPEBEAST banner" style="position: absolute; right: 0px" />-->
+		</header>
+
+		<div class = "container">
 			<nav>
 				<table cellspacing="0">
 					<tbody>
@@ -59,9 +67,11 @@
 				</main>
 				
 			</div>
-			<footer id = "footer">
-				<p align="center">2018 Sinh viên Đại học Sài Gòn</p>
-			</footer>
+			
 		</div>
+
+		<footer id = "footer">
+			<p align="center">2018 Sinh viên Đại học Sài Gòn</p>
+		</footer>
 	</body>
 </html>
