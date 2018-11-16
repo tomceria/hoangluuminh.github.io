@@ -10,13 +10,22 @@ class SanPham {
 	}
 }
 
+function IsSafari() {
+  var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
+  return is_safari;
+}
+
 function getSearchBar () {
 	var s = "";
 
-	s += `<script type="text/javascript" src="main.js"></script>`;
+	var barSize=24;
+	if (IsSafari())
+		barSize=22;
 
-	s += `<input id="searchBar" type="text" name="search" size="24" placeholder="Tìm kiếm">
-		<input id="searchBtn" type="button" name="goSearch" value="🔎" size="10" onclick="goSearch(document.getElementById('searchBar').value)"/>`;
+	s += `<div style="width: 200px; min-height: 30px; float: left">
+			<input id="searchBar" type="text" name="search" size=` + barSize + ` placeholder="Tìm kiếm">
+			<input id="searchBtn" type="button" name="goSearch" value="🔎" size="10" onclick="goSearch(document.getElementById('searchBar').value)"/>
+		</div>`;
 
 	/* s += `</script>`;	*/
 	document.getElementById("sidebar").innerHTML += s;
@@ -364,7 +373,7 @@ function getPageBtn (page, params) {
 }
 
 function goSearch (keyword) {
-	var s = window.location.hostname + `index.html?search=`;
+	var s = `index.html?search=`;
 	keyword = keyword.replace (" ", "%20");						//OPTIONAL
 	s += keyword;
 	s += `&0&1`;
