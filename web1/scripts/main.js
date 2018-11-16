@@ -10,6 +10,27 @@ class SanPham {
 	}
 }
 
+var item = new Array();	//0: id; 1: price; 2: name; 3: brand; 4: color; 5: image; 6: sale
+
+item[0] = new SanPham ();
+item[1] = new SanPham ("AT-001", "300.000", "Áo dài tay thể thao", "Adidas", "Xanh", "images/AT/AT-001.jpg", "350.000");
+item[2] = new SanPham ("QJ-001", "250.000", "Quần jean rách", "Châu Âu", "Đen", "images/QJ/QJ-001.jpg", 0);
+item[3] = new SanPham ("AT-002", "315.000", "Áo thể thao tay ngắn", "Under Armour", "Xanh tím", "images/AT/AT-002.jpg", 0);
+item[4] = new SanPham ("AT-003", "70.000", "Áo thun trơn", "Kirkland", "Trắng", "images/AT/AT-003.jpg", 0);
+item[5] = new SanPham ("AT-004", "260.000", "Áo bóng rỗ đội OKC", "Nike", "Xanh", "images/AT/AT-004.jpg", 0);
+item[6] = new SanPham ("AT-005", "80.000", "Áo thun mùa hè", "Adidas", "Trắng / Đen", "images/AT/AT-005.jpg", 0);
+item[7] = new SanPham ("AS-001", "150.000", "Áo sơ mi trơn", "Pull & Bear", "Đen xám", "images/AS/AS-001.jpg", 0);
+item[8] = new SanPham ("AS-002", "150.000", "Áo sơ mi caro", "Pull & Bear", "Cam", "images/AS/AS-002.jpg", 0);
+item[9] = new SanPham ("AS-003", "200.000", "Áo sơ mi công sở", "VIETTIEN", "Trắng", "images/AS/AS-003.jpg", 0);
+item[10] = new SanPham ("AS-004", "400.000", "Áo sơ mi sọc", "Burberry", "Xanh", "images/AS/AS-004.jpg", 0);
+item[11] = new SanPham ("QT-001", "220.000", "Quần jogger", "Adidas", "Đen", "images/QT/QT-001.jpg", 0);
+item[12] = new SanPham ("QT-002", "200.000", "Quần thun dài", "Aristino", "Xám", "images/QT/QT-002.jpg", 0);
+item[13] = new SanPham ("QT-003", "390.000", "Quần bóng rỗ", "Air Jordan", "Đỏ", "images/QT/QT-003.jpg", 0);
+item[14] = new SanPham ("QT-004", "280.000", "Quần đùi thể thao", "Adidas", "Xám", "images/QT/QT-004.jpg", 0);
+item[15] = new SanPham ("QT-005", "165.000", "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg", 0);
+
+/* ------------------------ */
+
 function IsSafari() {
   var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
   return is_safari;
@@ -77,23 +98,7 @@ function getProductWindow () {
 		splitted = splitter[1];				// [ao&1&0]
 	var params = splitted.split('&');		// [ao]&[1]&[0] ; 0: Category; 1: Subcategory; 2: Page
 
-	var item = new Array();	//0: id; 1: price; 2: name; 3: brand; 4: color; 5: image; 6: sale
-
-	item[1] = new SanPham ("AT-001", "300.000", "Áo dài tay thể thao", "Adidas", "Xanh", "images/AT/AT-001.jpg", "350.000");
-	item[2] = new SanPham ("QJ-001", "250.000", "Quần jean rách", "Châu Âu", "Đen", "images/QJ/QJ-001.jpg", 0);
-	item[3] = new SanPham ("AT-002", "315.000", "Áo thể thao tay ngắn", "Under Armour", "Xanh tím", "images/AT/AT-002.jpg", 0);
-	item[4] = new SanPham ("AT-003", "70.000", "Áo thun trơn", "Kirkland", "Trắng", "images/AT/AT-003.jpg", 0);
-	item[5] = new SanPham ("AT-004", "260.000", "Áo bóng rỗ đội OKC", "Nike", "Xanh", "images/AT/AT-004.jpg", 0);
-	item[6] = new SanPham ("AT-005", "80.000", "Áo thun mùa hè", "Adidas", "Trắng / Đen", "images/AT/AT-005.jpg", 0);
-	item[7] = new SanPham ("AS-001", "150.000", "Áo sơ mi trơn", "Pull & Bear", "Đen xám", "images/AS/AS-001.jpg", 0);
-	item[8] = new SanPham ("AS-002", "150.000", "Áo sơ mi caro", "Pull & Bear", "Cam", "images/AS/AS-002.jpg", 0);
-	item[9] = new SanPham ("AS-003", "200.000", "Áo sơ mi công sở", "VIETTIEN", "Trắng", "images/AS/AS-003.jpg", 0);
-	item[10] = new SanPham ("AS-004", "400.000", "Áo sơ mi sọc", "Burberry", "Xanh", "images/AS/AS-004.jpg", 0);
-	item[11] = new SanPham ("QT-001", "220.000", "Quần jogger", "Adidas", "Đen", "images/QT/QT-001.jpg", 0);
-	item[12] = new SanPham ("QT-002", "200.000", "Quần thun dài", "Aristino", "Xám", "images/QT/QT-002.jpg", 0);
-	item[13] = new SanPham ("QT-003", "390.000", "Quần bóng rỗ", "Air Jordan", "Đỏ", "images/QT/QT-003.jpg", 0);
-	item[14] = new SanPham ("QT-004", "280.000", "Quần đùi thể thao", "Adidas", "Xám", "images/QT/QT-004.jpg", 0);
-	item[15] = new SanPham ("QT-004", "165.000", "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg", 0);
+	
 	
 	// EXPERIMENTAL
 	items = new Array ();			// filtered array
@@ -246,8 +251,22 @@ function getProductWindow () {
 
 			case 'all': {			//TEST
 				for (var i=1; i<item.length; i++) {
-					var kind = item[i].id.split('-');
 					items.push (item[i]);
+				}
+				break;
+			}
+
+			case 'new': {
+				for (var i=item.length-1; i>=1; i--) {
+					items.push (item[i]);
+				}
+				break;
+			}
+
+			case 'deals': {
+				for (var i=1; i<item.length; i++) {
+					if (item[i].sale != 0)
+						items.push (item[i]);
 				}
 				break;
 			}
@@ -256,9 +275,10 @@ function getProductWindow () {
 		if (params[0].split("=")[0]=="search") {
 			var searchKeyword = params[0].split("=")[1];
 			searchKeyword = searchKeyword.toLowerCase();
+			console.debug (searchKeyword);
 			for (var i=1; i<item.length; i++) {
 				var comparator = getComparator (item[i]);
-				var keywordSplitted = searchKeyword.split("%20");
+				var keywordSplitted = searchKeyword.split("+");
 				var count=0;
 				for (var j=0; j<keywordSplitted.length; j++)
 					if (comparator.indexOf(keywordSplitted[j])!=-1)
@@ -327,18 +347,28 @@ function getProductWindow () {
 	document.getElementById("main").innerHTML = s;
 }
 
-function getProduct (id, item) {
-	var s = "";
+function getProductID (spID) {
+	for (var i=1; i<item.length; i++)
+		/*console.debug (spID + " " + item[i].id);*/
+		if (spID == item[i].id)
+			return i;
+	return -1;
+}
 
-	s += `<div id="productDiv">
-			<img src="` + item[id].image + `" width="178px" height="178px"><br>
+function getProduct (i, item) {
+	/*item[] trong day la` items[] da~ dc filter*/
+	var s = "";
+	var prodID = getProductID(item[i].id);
+
+	s += `<div id="productDiv" onclick="window.location.href='index.html?detail=` + prodID + `'">
+			<img src="` + item[i].image + `" width="178px" height="178px"><br>
 			<div>
-				<p><span class="brand\">` + item[id].brand + `</span></p>
-				<p>` + item[id].name + `</p>
-				<p>` + item[id].color + `</p>
-				<p><span class="price">` + item[id].price + `đ</span>`;
-	if (item[id].sale!=0) {
-		s +=	`<span class="sale">` + item[id].sale + `đ</span></p>`;
+				<p><span class="brand\">` + item[i].brand + `</span></p>
+				<p>` + item[i].name + `</p>
+				<p>` + item[i].color + `</p>
+				<p><span class="price">` + item[i].price + `đ</span>`;
+	if (item[i].sale!=0) {
+		s +=	`<span class="sale">` + item[i].sale + `đ</span></p>`;
 	}
 	s +=	`</div>
 		</div>`;
@@ -374,7 +404,8 @@ function getPageBtn (page, params) {
 
 function goSearch (keyword) {
 	var s = `index.html?search=`;
-	keyword = keyword.replace (" ", "%20");						//OPTIONAL
+	keyword = removeTone (keyword);
+	keyword = keyword.replace (" ", "+");						//OPTIONAL
 	s += keyword;
 	s += `&0&1`;
 	window.location.href = s;
@@ -400,10 +431,12 @@ function removeTone(str) {
 
 function getComparator (item) {
 	var comparator = "";
-	var cID = item.id;
+	var cID = item.id.toLowerCase();
 	var cName = removeTone(item.name.toLowerCase()).split(" ");
 	var cBrand = removeTone(item.brand.toLowerCase()).split(" ");
 	var cColor = removeTone(item.color.toLowerCase()).split(" ");
+
+	comparator += cID + " ";
 	for (var i=0; i<cName.length; i++) {
 		comparator += cName[i] + " ";	
 	}

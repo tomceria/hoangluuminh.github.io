@@ -299,6 +299,7 @@ nav table td:hover {
 
 #main > #productDiv {
 	float: left;
+	display: block;
 	margin: 5px 5px;
 	width: 180px;
 	height: 300px;
