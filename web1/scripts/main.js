@@ -1,3 +1,27 @@
+class SanPham {
+	constructor (id, price, name, brand, color, image, sale) {
+		this.id = id;
+		this.price = price;
+		this.name = name;
+		this.brand = brand;
+		this.color = color;
+		this.image = image;
+		this.sale = sale;
+	}
+}
+
+function getSearchBar () {
+	var s = "";
+
+	s += `<script type="text/javascript" src="main.js"></script>`;
+
+	s += `<input id="searchBar" type="text" name="search" size="24" placeholder="Tìm kiếm">
+		<input id="searchBtn" type="button" name="goSearch" value="🔎" size="10" onclick="goSearch(document.getElementById('searchBar').value)"/>`;
+
+	/* s += `</script>`;	*/
+	document.getElementById("sidebar").innerHTML += s;
+}
+
 function getMenu () {
 	var s = "";
 	var menu = new Array ();
@@ -32,7 +56,7 @@ function getMenu () {
 
 	s += "</table>";
 
-	document.getElementById("sidebar").innerHTML = s;
+	document.getElementById("sidebar").innerHTML += s;
 }
 
 function getProductWindow () {
@@ -44,131 +68,24 @@ function getProductWindow () {
 		splitted = splitter[1];				// [ao&1&0]
 	var params = splitted.split('&');		// [ao]&[1]&[0] ; 0: Category; 1: Subcategory; 2: Page
 
-	var item = new Array();	//0: id; 1: price; 2: name; 3: brand; 4: color; 5: image
-	var tag = new Array();
+	var item = new Array();	//0: id; 1: price; 2: name; 3: brand; 4: color; 5: image; 6: sale
 
-	item[1] = new Array ("AT-001", 300000, "Áo dài tay thể thao", "Adidas", "Xanh", "images/AT/AT-001.jpg");
-	tag[1] = new Array ("ao", "dai", "tay", "the", "thao", "adidas", "xanh");
-
-	item[2] = new Array ("QJ-001", 250000, "Quần jean rách", "Châu Âu", "Đen", "images/QJ/QJ-001.jpg");
-	tag[2] = new Array ("quan", "jean", "rach", "chau", "au", "den");
-
-	item[3] = new Array ("AT-002", 315000, "Áo thể thao tay ngắn", "Under Armour", "Xanh tím", "images/AT/AT-002.jpg");
-	tag[3] = new Array ("ao", "the", "thao", "tay", "ngan", "under", "armour", "xanh", "tim");
-
-	item[4] = new Array ("AT-003", 70000, "Áo thun trơn", "Kirkland", "Trắng", "images/AT/AT-003.jpg");
-	tag[4] = new Array ("ao", "thun", "tron", "kirkland", "trang");
-
-	item[5] = new Array ("AT-004", 260000, "Áo bóng rỗ đội OKC", "Nike", "Xanh", "images/AT/AT-004.jpg");
-	tag[5] = new Array ("ao", "bong", "ro", "doi", "okc", "nike", "xanh");
-
-	item[6] = new Array ("AT-005", 80000, "Áo thun mùa hè", "Adidas", "Trắng / Đen", "images/AT/AT-005.jpg");
-	tag[6] = new Array ("ao", "thun", "mua", "he", "adidas", "trang", "den");
-
-	item[7] = new Array ("AS-001", 150000, "Áo sơ mi trơn", "Pull & Bear", "Đen xám", "images/AS/AS-001.jpg");
-	tag[7] = new Array ("ao", "so", "mi", "tron", "pull", "bear", "den", "xam");
-
-	item[8] = new Array ("AS-002", 150000, "Áo sơ mi caro", "Pull & Bear", "Cam", "images/AS/AS-002.jpg");
-	tag[8] = new Array ("ao", "so", "mi", "caro", "pull", "bear", "cam");
-
-	item[9] = new Array ("AS-003", 200000, "Áo sơ mi công sở", "VIETTIEN", "Trắng", "images/AS/AS-003.jpg");
-	tag[9] = new Array ("ao", "so", "mi", "cong", "so", "viettien", "trang");
-
-	item[10] = new Array ("AS-004", 400000, "Áo sơ mi sọc", "Burberry", "Xanh", "images/AS/AS-004.jpg");
-	tag[10] = new Array ("ao", "so", "mi", "soc", "burberry", "xanh");
-
-	item[11] = new Array ("QT-001", 220000, "Quần jogger", "Adidas", "Đen", "images/QT/QT-001.jpg");
-	tag[11] = new Array ("quan", "jogger", "adidas", "den");
-
-	item[12] = new Array ("QT-002", 200000, "Quần thun dài", "Aristino", "Xám", "images/QT/QT-002.jpg");
-	tag[12] = new Array ("quan", "thun", "dai", "aristino", "xam");
-
-	item[13] = new Array ("QT-003", 390000, "Quần bóng rỗ", "Air Jordan", "Đỏ", "images/QT/QT-003.jpg");
-	tag[13] = new Array ("quan", "bong", "ro", "air", "jordan", "do");
-
-	item[14] = new Array ("QT-004", 280000, "Quần đùi thể thao", "Adidas", "Xám", "images/QT/QT-004.jpg");
-	tag[14] = new Array ("quan", "the", "thao", "adidas", "xam");
-
-	item[15] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	tag[15] = new Array ("quan", "thun", "sooc", "bst", "xanh");
-
-	item[16] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[17] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[18] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[19] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[20] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[20] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[21] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[22] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[23] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[24] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[25] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[26] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[27] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[28] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[29] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[30] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[31] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[32] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[33] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[34] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[35] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[36] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[37] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[38] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[39] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[40] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[41] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[42] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[43] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[44] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[45] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[46] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[47] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[48] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[49] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[50] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[51] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[52] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[53] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[54] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[55] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[56] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[57] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[58] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[59] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[60] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[61] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[62] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[63] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[64] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[65] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[66] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[67] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[68] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[69] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[70] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[71] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[72] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[73] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[74] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[75] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[76] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[77] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[78] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[79] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[80] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[81] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[82] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[83] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[84] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[85] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[86] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[87] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[88] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
-	item[89] = new Array ("QT-004", 165000, "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg");
+	item[1] = new SanPham ("AT-001", "300.000", "Áo dài tay thể thao", "Adidas", "Xanh", "images/AT/AT-001.jpg", "350.000");
+	item[2] = new SanPham ("QJ-001", "250.000", "Quần jean rách", "Châu Âu", "Đen", "images/QJ/QJ-001.jpg", 0);
+	item[3] = new SanPham ("AT-002", "315.000", "Áo thể thao tay ngắn", "Under Armour", "Xanh tím", "images/AT/AT-002.jpg", 0);
+	item[4] = new SanPham ("AT-003", "70.000", "Áo thun trơn", "Kirkland", "Trắng", "images/AT/AT-003.jpg", 0);
+	item[5] = new SanPham ("AT-004", "260.000", "Áo bóng rỗ đội OKC", "Nike", "Xanh", "images/AT/AT-004.jpg", 0);
+	item[6] = new SanPham ("AT-005", "80.000", "Áo thun mùa hè", "Adidas", "Trắng / Đen", "images/AT/AT-005.jpg", 0);
+	item[7] = new SanPham ("AS-001", "150.000", "Áo sơ mi trơn", "Pull & Bear", "Đen xám", "images/AS/AS-001.jpg", 0);
+	item[8] = new SanPham ("AS-002", "150.000", "Áo sơ mi caro", "Pull & Bear", "Cam", "images/AS/AS-002.jpg", 0);
+	item[9] = new SanPham ("AS-003", "200.000", "Áo sơ mi công sở", "VIETTIEN", "Trắng", "images/AS/AS-003.jpg", 0);
+	item[10] = new SanPham ("AS-004", "400.000", "Áo sơ mi sọc", "Burberry", "Xanh", "images/AS/AS-004.jpg", 0);
+	item[11] = new SanPham ("QT-001", "220.000", "Quần jogger", "Adidas", "Đen", "images/QT/QT-001.jpg", 0);
+	item[12] = new SanPham ("QT-002", "200.000", "Quần thun dài", "Aristino", "Xám", "images/QT/QT-002.jpg", 0);
+	item[13] = new SanPham ("QT-003", "390.000", "Quần bóng rỗ", "Air Jordan", "Đỏ", "images/QT/QT-003.jpg", 0);
+	item[14] = new SanPham ("QT-004", "280.000", "Quần đùi thể thao", "Adidas", "Xám", "images/QT/QT-004.jpg", 0);
+	item[15] = new SanPham ("QT-004", "165.000", "Quần thun sooc", "BST", "Xanh", "images/QT/QT-005.jpg", 0);
 	
-
 	// EXPERIMENTAL
 	items = new Array ();			// filtered array
 	var itemOnPage = 12;
@@ -179,7 +96,7 @@ function getProductWindow () {
 	// Filter products
 	items.push (items[0]);	// empty item
 	if (splitter[1]==null) {		// Home page
-		for (var i=1; i<item.length; i++) {		//PLACEHOLDER
+		for (var i=1; i<item.length; i++) {
 			items.push (item[i]);
 		}
 	}
@@ -189,7 +106,7 @@ function getProductWindow () {
 				switch (params[1]) {
 					case '0': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="AT" || kind[0]=="AS")
 								items.push (item[i]);
 						}
@@ -197,7 +114,7 @@ function getProductWindow () {
 					}
 					case '1': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="AT")
 								items.push (item[i]);
 						}
@@ -205,7 +122,7 @@ function getProductWindow () {
 					}
 					case '2': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="AS")
 								items.push (item[i]);
 						}
@@ -218,7 +135,7 @@ function getProductWindow () {
 				switch (params[1]) {
 					case '0': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="QT" || kind[0]=="QJ")
 								items.push (item[i]);
 						}
@@ -226,7 +143,7 @@ function getProductWindow () {
 					}
 					case '1': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="QT")
 								items.push (item[i]);
 						}
@@ -234,7 +151,7 @@ function getProductWindow () {
 					}
 					case '2': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="QJ")
 								items.push (item[i]);
 						}
@@ -247,7 +164,7 @@ function getProductWindow () {
 				switch (params[1]) {
 					case '0': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="NK" || kind[0]=="NS")
 								items.push (item[i]);
 						}
@@ -255,7 +172,7 @@ function getProductWindow () {
 					}
 					case '1': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="NK")
 								items.push (item[i]);
 						}
@@ -263,7 +180,7 @@ function getProductWindow () {
 					}
 					case '2': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="NS")
 								items.push (item[i]);
 						}
@@ -274,7 +191,7 @@ function getProductWindow () {
 			}
 			case 'giay': {
 				for (var i=1; i<item.length; i++) {
-					var kind = item[i][0].split('-');
+					var kind = item[i].id.split('-');
 					if (kind[0]=="GI")
 						items.push (item[i]);
 				}
@@ -282,7 +199,7 @@ function getProductWindow () {
 			}
 			case 'dep': {
 				for (var i=1; i<item.length; i++) {
-					var kind = item[i][0].split('-');
+					var kind = item[i].id.split('-');
 					if (kind[0]=="DE")
 						items.push (item[i]);
 				}
@@ -292,7 +209,7 @@ function getProductWindow () {
 				switch (params[1]) {
 					case '0': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="BL" || kind[0]=="BW")
 								items.push (item[i]);
 						}
@@ -300,7 +217,7 @@ function getProductWindow () {
 					}
 					case '1': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="BL")
 								items.push (item[i]);
 						}
@@ -308,7 +225,7 @@ function getProductWindow () {
 					}
 					case '2': {
 						for (var i=1; i<item.length; i++) {
-							var kind = item[i][0].split('-');
+							var kind = item[i].id.split('-');
 							if (kind[0]=="WB")
 								items.push (item[i]);
 						}
@@ -320,12 +237,29 @@ function getProductWindow () {
 
 			case 'all': {			//TEST
 				for (var i=1; i<item.length; i++) {
-					var kind = item[i][0].split('-');
+					var kind = item[i].id.split('-');
 					items.push (item[i]);
 				}
 				break;
 			}
 		}
+		// Filter products (SEARCH)
+		if (params[0].split("=")[0]=="search") {
+			var searchKeyword = params[0].split("=")[1];
+			searchKeyword = searchKeyword.toLowerCase();
+			for (var i=1; i<item.length; i++) {
+				var comparator = getComparator (item[i]);
+				var keywordSplitted = searchKeyword.split("%20");
+				var count=0;
+				for (var j=0; j<keywordSplitted.length; j++)
+					if (comparator.indexOf(keywordSplitted[j])!=-1)
+						count++;
+				if (count == keywordSplitted.length)
+					items.push (item[i]);
+			}
+		}
+		
+
 	}
 
 	console.debug ("before: " + itemStart + " " + itemEnd);
@@ -337,7 +271,7 @@ function getProductWindow () {
 
 	//Show products
 	for (var i=itemStart; i<=itemEnd; i++) {
-		console.debug (i + " " + items[i][2]);
+		console.debug (i + " " + items[i].name);
 		s += getProduct (i, items);
 	}
 
@@ -387,15 +321,18 @@ function getProductWindow () {
 function getProduct (id, item) {
 	var s = "";
 
-	s += "<div id=\"productDiv\">";
-	s += "<img src=\"" + item[id][5] + "\" width=\"178px\" height=\"178px\"><br>";
-	s += "<div>";
-	s += "<p><span class=\"brand\">" + item[id][3] + "</span></p>";
-	s += "<p>" + item[id][2] + "</p>";
-	s += "<p>" + item[id][4] + "</p>";
-	s += "<p><span class=\"price\">" + item[id][1] + "đ</span></p>";
-	s += "</div>";
-	s += "</div>";
+	s += `<div id="productDiv">
+			<img src="` + item[id].image + `" width="178px" height="178px"><br>
+			<div>
+				<p><span class="brand\">` + item[id].brand + `</span></p>
+				<p>` + item[id].name + `</p>
+				<p>` + item[id].color + `</p>
+				<p><span class="price">` + item[id].price + `đ</span>`;
+	if (item[id].sale!=0) {
+		s +=	`<span class="sale">` + item[id].sale + `đ</span></p>`;
+	}
+	s +=	`</div>
+		</div>`;
 
 	return s;
 }
@@ -416,17 +353,62 @@ function getPageBtn (page, params) {
 	else if (page == "<<")
 		pageAltered = 1;
 
-	s += "<div id=\"" + kind + "\">";
+	s += `<div id="` + kind + `">`;
 	if (kind == "pageBtn")
-		s += "<a href=\"index.html?" + params[0] + "&" + params[1] + "&" + pageAltered + "\">" + page + "</a>";
+		s += `<a href="index.html?` + params[0] + `&` + params[1] + `&` + pageAltered + `">` + page + `</a>`;
 	else
-		s += "<p>" + page + "</p>";
-	s += "</div>";
+		s += `<p>` + page + `</p>`;
+	s += `</div>`;
 
 	return s;
 }
 
+function goSearch (keyword) {
+	var s = window.location.hostname + `index.html?search=`;
+	keyword = keyword.replace (" ", "%20");						//OPTIONAL
+	s += keyword;
+	s += `&0&1`;
+	window.location.href = s;
+}
+
+function removeTone(str) {
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+    str = str.replace(/đ/g, "d");
+    str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+    str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+    str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+    str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+    str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+    str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+    str = str.replace(/Đ/g, "D");
+    return str;
+}
+
+function getComparator (item) {
+	var comparator = "";
+	var cID = item.id;
+	var cName = removeTone(item.name.toLowerCase()).split(" ");
+	var cBrand = removeTone(item.brand.toLowerCase()).split(" ");
+	var cColor = removeTone(item.color.toLowerCase()).split(" ");
+	for (var i=0; i<cName.length; i++) {
+		comparator += cName[i] + " ";	
+	}
+	for (var i=0; i<cBrand.length; i++) {
+		comparator += cBrand[i] + " ";	
+	}
+	for (var i=0; i<cColor.length; i++) {
+		comparator += cColor[i] + " ";	
+	}
+	return comparator;
+}
+
 window.onload = function() {
+	getSearchBar();
 	getMenu();
 	getProductWindow();
 }

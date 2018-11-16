@@ -1,4 +1,5 @@
 * {
+	
 	list-style: none;
 	text-decoration: none;
 	box-sizing: border-box;
@@ -8,6 +9,8 @@
 body {
 	background: #FFFFFF;
 	margin: 0;
+	width: 100%;
+	min-width: 1000px;
 }
 
 .container {
@@ -147,7 +150,7 @@ nav table td {
 
 nav table td:hover {
 	/*background: #FFC46E;*/
-	background: white;
+	background: #ffb344;
 	color: #000000;
 }
 
@@ -157,6 +160,25 @@ nav table td:hover {
 	/*display: flex;
 	flex-flow: row wrap;*/
 	background: #FFFFFF;
+}
+
+#searchBar {
+	margin: 0;
+	padding: 0 10px;
+	height: 30px;
+	border: thin solid #D6D6D6;
+}
+
+#searchBtn {
+	margin: 0;
+	padding: 0 10px;
+	height: 30px;
+	border: thin solid #D6D6D6;
+	background: #ff9700;
+}
+
+#searchBtn:hover {
+	background: #ffb344;
 }
 
 #sidebar {
@@ -186,7 +208,7 @@ nav table td:hover {
 
 #sidebar table tr td > a:hover {
 	color: #000000;
-	background: #FFFFFF;
+	background: #ffb344;
 }
 
 #sidebar table td {
@@ -216,6 +238,7 @@ nav table td:hover {
 	padding: 0em 2em;
     text-decoration:none;
 	color: #2F2F2F;
+	background: #fafafa;
 }
 
 #sidebar ul {
@@ -230,14 +253,14 @@ nav table td:hover {
 #sidebar table tr td div li {
 	display: list-item;
 	/*border: thin solid #FFCC01;*/
-	border: thin solid white;
+	border: thin solid #D6D6D6;
+	border-top: none;
 	margin: 0;
 	/*padding: 1px 0;				/* Vừa xát với table */	
 }
 
-#sidebar table tr td div li:hover {
-	background: #FFFFFF;
-	border: thin solid #D6D6D6;
+#sidebar table tr td div li a:hover {
+	background: #ffffff;
 }
 
 #sidebar p {
@@ -283,7 +306,14 @@ nav table td:hover {
 
 #main .price {
 	font-size: 14px;
-	text-decoration: underline;
+	font-weight: 600;
+	color: #ff9700;
+}
+
+#main .sale {
+	font-size: 10px;
+	padding-left: 1em;
+	text-decoration: line-through;
 }
 
 #main div > div {
