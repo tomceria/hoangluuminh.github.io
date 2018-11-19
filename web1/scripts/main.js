@@ -53,6 +53,19 @@ function getSearchBar () {
 	document.getElementById("sidebar").innerHTML += s;
 }
 
+function getCartBtnNum () {
+	var s = "";
+	var itemArray = getCartList();
+	if (itemArray.length <= 0)
+		return;
+
+	s += `<div id="cartBtnNum">
+			<p>` + itemArray.length + `</p>
+		</div>`;
+
+	document.getElementById("cartBtn").innerHTML += s;
+}
+
 function getMenu () {
 	var s = "";
 	
@@ -372,9 +385,9 @@ function getProduct (i, item) {
 				<p><span class="brand\">` + item[i].brand + `</span></p>
 				<p>` + item[i].name + `</p>
 				<p>` + item[i].color + `</p>
-				<p><span class="price">` + item[i].price + `đ</span>`;
+				<p><span class="price">` + item[i].price + `₫</span>`;
 	if (item[i].sale!=0) {
-		s +=	`<span class="sale">` + item[i].sale + `đ</span>`;
+		s +=	`<span class="sale">` + item[i].sale + `₫</span>`;
 	}
 	s += 		`</p>
 				<input type="button" name="addToCartBtn" value="Thêm vào giỏ" onclick="addToCart(` + prodID + `)"/>	
@@ -447,7 +460,8 @@ function getCartView () {
 			</div>
 			<div style="float: left; clear: both; margin: 1em 0">`
 			if (totalCart(itemArray)>0)
-				s += `<input type="button" name="checkout" value="Mua ngay" onclick="checkOut()" style="font-size: 20px"/>`;
+				s += `<input class="cartPay" type="button" name="checkout" value="Thanh toán" onclick="checkOut()"/>
+						<input class="cartClear" type="button" name="clear" value="Xóa hết" onclick="clearCart()"/>`;
 	s +=	`</div>`;
 
 	document.getElementById("main").innerHTML += s;
@@ -498,7 +512,6 @@ function goSearch (keyword) {
 /* CART */
 
 function addToCart (id) {
-	alert (id);
 	var itemIden = "item" + id;
 	addItemToCart (itemIden, 1);
 
@@ -511,7 +524,8 @@ function addItemToCart (iden, amount) {
 	}
 	var newAmount = parseInt(currentAmount) + amount;
 	window.localStorage.setItem (iden, newAmount);
-	alert (window.localStorage.getItem (iden));
+	/*alert (window.localStorage.getItem (iden));*/
+	window.location.href = window.location.href;
 }
 
 function changeCartItemAmount (id, amount) {
@@ -529,6 +543,23 @@ function changeCartItemAmount (id, amount) {
 function removeCartItem (id) {
 	window.localStorage.removeItem ("item"+id);
 	window.location.href = "index.html?cart";
+}
+
+function clearCart () {
+	var itemArray = getCartList();
+	for (var i=0; i<itemArray.length; i++) {
+		var spID = itemArray[i];
+		window.localStorage.removeItem ("item"+spID);
+	}
+	window.location.href = "index.html";
+}
+
+function checkOut () {
+	if (confirm("Bạn chắc chắn muốn mua?")==false)
+		return;
+	alert ("Mua thành công!");
+	// TODO: Thêm vào đơn đặt hàng
+	clearCart ();
 }
 
 function totalCart (itemArray) {
@@ -596,6 +627,7 @@ function getComparator (item) {
 
 window.onload = function() {
 	getSearchBar();
+	getCartBtnNum();
 	getMenu();
 	getProductWindow();
 }

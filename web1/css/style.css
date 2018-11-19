@@ -134,9 +134,45 @@ header div p {
 	text-align: center;
 }
 
+/* CART BUTTON */
+
+#cartBtn {
+	position: absolute;
+	border: thin solid white;
+	display: block;
+	min-width: 40px;
+	height: 40px;
+	top: -55px;
+	right: 10px;
+}
+
+#cartBtn:hover {
+	background: #368bb9;
+}
+
+#cartBtnIcon {
+	float: left;
+	height: 40px;
+	padding: 5px;
+}
+
+#cartBtnNum {
+	float: left;
+	height: 40px;
+	padding: 0 0.25em;
+}
+
+#cartBtnNum > p {
+	line-height: 5px;
+	color: white;
+}
+
+/* end CART BUTTON */
+
 nav {
 	width: inherit;
 	background: #FF9700;
+	position: relative;
 }
 
 nav table {
@@ -454,6 +490,21 @@ main > div > #pageBtnActive > p {
 	width: 100px;
 	min-height: 100px;
 	padding: 10px;
+}
+
+.cartPay, .cartClear {
+	font-size: 20px; 
+	padding: 0.5em; 
+	border: thin solid grey; 
+}
+
+.cartPay:hover {
+	background:green;
+	color: white;
+}
+
+.cartClear:hover {
+	background:red;
 }
 
 /* end CART DISPLAY */
