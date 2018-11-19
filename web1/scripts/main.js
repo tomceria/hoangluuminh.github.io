@@ -415,8 +415,11 @@ function getCartView () {
 			var itemAmount = window.localStorage.getItem ("item"+itemID);
 
 			s += `<div class="cartWindow">
+					<a href="index.html?detail=` + itemID + `">
 					<div style="float: left; width: 100px; height: 100px">
-						<img src="` + item[itemID].image + `" width="100px" height="100px">
+						
+							<img src="` + item[itemID].image + `" width="100px" height="100px"/>
+						
 					</div>
 					<div class="cartItem">
 						<p><span class="cartItemName">` + item[itemID].name + `</span></p>
@@ -427,23 +430,25 @@ function getCartView () {
 						s += `<span class="cartItemSale">400.000₫</span>`
 					s += `</p>
 					</div>
+					</a>
 					<div class="cartOptions">
 						<p>Số lượng: </p>
-						<input type="button" name="amountDecrease" value="-" style="width: 10px; padding: 0"/>
-						<input type="text" id="item1Amount" value="` + itemAmount +`" style="width: 30px"/>
-						<input type="button" name="amountIncrease" value="+" style="width: 10px; padding: 0"/>
-						<input type="button" name="deleteItem" value="Xóa" style="margin: 1.25em 0 0 2.5em"/>
+						<input type="button" name="amountDecrease" value="-" style="width: 10px; padding: 0" onclick="changeCartItemAmount(` + itemID + `, '-')"/>
+						<input type="text" id="item1Amount" value="` + itemAmount +`" style="width: 30px" onchange="changeCartItemAmount(` + itemID + `, this.value)" />
+						<input type="button" name="amountIncrease" value="+" style="width: 10px; padding: 0" onclick="changeCartItemAmount(` + itemID + `, '+')"/>
+						<input type="button" name="deleteItem" value="Xóa" style="margin: 1.25em 0 0 2.5em" onclick="removeCartItem(` + itemID + `)"/>
 					</div>
 				</div>`;
 		}
 			
 	s += 	`<div style="float: left; clear: both; margin-top: 1em">
 				<p>Thành tiền: </p>
-				<h2 style="margin: 0; color: #ff9700;">₫</h2>
+				<h2 style="margin: 0; color: #ff9700;">` + totalCart(itemArray) + `₫</h2>
 			</div>
-			<div style="float: left; clear: both; margin: 1em 0">
-				<input type="button" name="checkout" value="Mua ngay" onclick="checkOut()" style="font-size: 20px"/>
-			</div>`;
+			<div style="float: left; clear: both; margin: 1em 0">`
+			if (totalCart(itemArray)>0)
+				s += `<input type="button" name="checkout" value="Mua ngay" onclick="checkOut()" style="font-size: 20px"/>`;
+	s +=	`</div>`;
 
 	document.getElementById("main").innerHTML += s;
 }
@@ -490,6 +495,8 @@ function goSearch (keyword) {
 	window.location.href = s;
 }
 
+/* CART */
+
 function addToCart (id) {
 	alert (id);
 	var itemIden = "item" + id;
@@ -506,6 +513,46 @@ function addItemToCart (iden, amount) {
 	window.localStorage.setItem (iden, newAmount);
 	alert (window.localStorage.getItem (iden));
 }
+
+function changeCartItemAmount (id, amount) {
+	var currentAmount = window.localStorage.getItem ("item"+id);
+	if (amount == '-')
+		amount = parseInt(currentAmount)-1;
+	else if (amount == '+')
+		amount = parseInt(currentAmount)+1;
+	if (parseInt(amount) < 1)
+		amount = 1;
+	window.localStorage.setItem ("item"+id, amount);
+	window.location.href = "index.html?cart";
+}
+
+function removeCartItem (id) {
+	window.localStorage.removeItem ("item"+id);
+	window.location.href = "index.html?cart";
+}
+
+function totalCart (itemArray) {
+	var total = 0;
+	for (var i=0; i<itemArray.length; i++) {
+		var spID = itemArray[i];
+		var newPrice = parseInt(item[spID].price.replace('.', ''));
+		var currentAmount = window.localStorage.getItem ("item"+spID);
+		total += newPrice * currentAmount;
+	}
+	return total;
+}
+
+function getCartList () {
+	var itemArray = new Array();
+	for (var i=1; i<item.length; i++) {
+		var itemAmount = window.localStorage.getItem ("item"+i);
+		if (itemAmount != null && itemAmount>0)
+			itemArray.push(i);
+	}
+	return itemArray;
+}
+
+/* end CART */
 
 function removeTone(str) {
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
@@ -545,15 +592,7 @@ function getComparator (item) {
 	return comparator;
 }
 
-function getCartList () {
-	var itemArray = new Array();
-	for (var i=1; i<item.length; i++) {
-		var itemAmount = window.localStorage.getItem ("item"+i);
-		if (itemAmount != null && itemAmount>0)
-			itemArray.push(i);
-	}
-	return itemArray;
-}
+
 
 window.onload = function() {
 	getSearchBar();

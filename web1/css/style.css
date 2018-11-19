@@ -429,6 +429,7 @@ main > div > #pageBtnActive > p {
 
 .cartItem > p {
 	font-size: 12px;
+	color: black;
 }
 
 .cartItemName {
