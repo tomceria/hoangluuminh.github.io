@@ -41,21 +41,12 @@ item[15] = new SanPham ("QT-005", "165.000", "Quần thun sooc", "BST", "Xanh", 
 
 /* ------------------------ */
 
-function IsSafari() {
-  var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
-  return is_safari;
-}
-
 function getSearchBar () {
 	var s = "";
 
-	var barSize=24;
-	if (IsSafari())
-		barSize=22;
-
 	s += `<div style="width: 200px; min-height: 30px; float: left">
-			<input id="searchBar" type="text" name="search" size=` + barSize + ` placeholder="Tìm kiếm">
-			<input id="searchBtn" type="button" name="goSearch" value="🔎" size="10" onclick="goSearch(document.getElementById('searchBar').value)"/>
+			<input id="searchBar" type="text" name="search" placeholder="Tìm kiếm" style="width: 75%">
+			<input id="searchBtn" type="button" name="goSearch" value="🔎" style="width: 20%" onclick="goSearch(document.getElementById('searchBar').value)"/>
 		</div>`;
 
 	/* s += `</script>`;	*/
@@ -112,9 +103,11 @@ function getProductWindow () {
 	// Filter products
 	items.push (items[0]);	// empty item
 	if (splitter[1]==null) {		// Home page
+		/*
 		for (var i=1; i<item.length; i++) {
 			items.push (item[i]);
-		}
+		}*/
+		/*getCarousel();*/
 	}
 	else {
 		switch (params[0]) {
@@ -295,6 +288,11 @@ function getProductWindow () {
 			getProductDetail (itemID);
 			return;
 		}
+		// Cart View
+		else if (params[0].split("=")[0]=="cart") {
+			getCartView ();
+			return;
+		}
 
 	}
 
@@ -367,17 +365,20 @@ function getProduct (i, item) {
 	var s = "";
 	var prodID = getProductID(item[i].id);
 
-	s += `<div id="productDiv" onclick="window.location.href='index.html?detail=` + prodID + `'">
-			<img src="` + item[i].image + `" width="178px" height="178px"><br>
+	s += `<div id="productDiv">
+			<a href="index.html?detail=` + prodID + `">
+			<img src="` + item[i].image + `" width="178px" height="178px" ></a><br>
 			<div>
 				<p><span class="brand\">` + item[i].brand + `</span></p>
 				<p>` + item[i].name + `</p>
 				<p>` + item[i].color + `</p>
 				<p><span class="price">` + item[i].price + `đ</span>`;
 	if (item[i].sale!=0) {
-		s +=	`<span class="sale">` + item[i].sale + `đ</span></p>`;
+		s +=	`<span class="sale">` + item[i].sale + `đ</span>`;
 	}
-	s +=	`</div>
+	s += 		`</p>
+				<input type="button" name="addToCartBtn" value="Thêm vào giỏ" onclick="addToCart(` + prodID + `)"/>	
+			</div>
 		</div>`;
 
 	return s;
@@ -398,8 +399,51 @@ function getProductDetail (id) {
 			<p style="margin: 1em 0"><span id="detailPrice">` + item[id].price + `₫</span>`;
 	if (item[id].sale!=0)
 		s+=		`<span id="detailSale">` + item[id].sale + `₫</span>`;
-	s +=	`</p>	
+	s +=	`</p>
 		</div>`;
+
+	document.getElementById("main").innerHTML += s;
+}
+
+function getCartView () {
+	var s = "";
+	var itemArray = getCartList();
+
+	s += `<h1>Giỏ hàng</h1>`
+		for (var i=0; i<itemArray.length; i++) {
+			var itemID = itemArray[i];
+			var itemAmount = window.localStorage.getItem ("item"+itemID);
+
+			s += `<div class="cartWindow">
+					<div style="float: left; width: 100px; height: 100px">
+						<img src="` + item[itemID].image + `" width="100px" height="100px">
+					</div>
+					<div class="cartItem">
+						<p><span class="cartItemName">` + item[itemID].name + `</span></p>
+						<p>Thương hiệu: ` + item[itemID].brand + `</p>
+						<p>Mã SP: ` + item[itemID].id + `</p>
+						<p><span class="cartItemPrice">` + item[itemID].price + `₫</span>`
+					if (item[itemID].sale!=0)
+						s += `<span class="cartItemSale">400.000₫</span>`
+					s += `</p>
+					</div>
+					<div class="cartOptions">
+						<p>Số lượng: </p>
+						<input type="button" name="amountDecrease" value="-" style="width: 10px; padding: 0"/>
+						<input type="text" id="item1Amount" value="` + itemAmount +`" style="width: 30px"/>
+						<input type="button" name="amountIncrease" value="+" style="width: 10px; padding: 0"/>
+						<input type="button" name="deleteItem" value="Xóa" style="margin: 1.25em 0 0 2.5em"/>
+					</div>
+				</div>`;
+		}
+			
+	s += 	`<div style="float: left; clear: both; margin-top: 1em">
+				<p>Thành tiền: </p>
+				<h2 style="margin: 0; color: #ff9700;">₫</h2>
+			</div>
+			<div style="float: left; clear: both; margin: 1em 0">
+				<input type="button" name="checkout" value="Mua ngay" onclick="checkOut()" style="font-size: 20px"/>
+			</div>`;
 
 	document.getElementById("main").innerHTML += s;
 }
@@ -430,6 +474,13 @@ function getPageBtn (page, params) {
 	return s;
 }
 
+function getCarousel () {
+	var s = "";
+	
+
+  document.getElementById("main").innerHTML += s;
+}
+
 function goSearch (keyword) {
 	var s = `index.html?search=`;
 	keyword = removeTone (keyword);
@@ -437,6 +488,23 @@ function goSearch (keyword) {
 	s += keyword;
 	s += `&0&1`;
 	window.location.href = s;
+}
+
+function addToCart (id) {
+	alert (id);
+	var itemIden = "item" + id;
+	addItemToCart (itemIden, 1);
+
+}
+
+function addItemToCart (iden, amount) {
+	var currentAmount = window.localStorage.getItem (iden);
+	if (currentAmount == null) {
+		currentAmount = 0;
+	}
+	var newAmount = parseInt(currentAmount) + amount;
+	window.localStorage.setItem (iden, newAmount);
+	alert (window.localStorage.getItem (iden));
 }
 
 function removeTone(str) {
@@ -475,6 +543,16 @@ function getComparator (item) {
 		comparator += cColor[i] + " ";	
 	}
 	return comparator;
+}
+
+function getCartList () {
+	var itemArray = new Array();
+	for (var i=1; i<item.length; i++) {
+		var itemAmount = window.localStorage.getItem ("item"+i);
+		if (itemAmount != null && itemAmount>0)
+			itemArray.push(i);
+	}
+	return itemArray;
 }
 
 window.onload = function() {
