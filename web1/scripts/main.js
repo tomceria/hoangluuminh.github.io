@@ -9,9 +9,19 @@ class SanPham {
 		this.sale = sale;
 	}
 }
+// MENU
+var menu = new Array ();
+var menuLabel = new Array ("Áo", "Quần", "Nón", "Giày", "Dép", "Balo");
+var menuUrl = new Array ("ao", "quan", "non", "giay", "dep", "balo");
+menu[0] = new Array ("0", "Áo thun", "Áo sơ mi");
+menu[1] = new Array ("0", "Quần thun", "Quần jean");
+menu[2] = new Array ("0", "Nón kết", "Nón snapback");
+menu[3] = new Array ();
+menu[4] = new Array ();
+menu[5] = new Array ("0", "Balo", "Túi đeo chéo");
 
+// ITEM
 var item = new Array();	//0: id; 1: price; 2: name; 3: brand; 4: color; 5: image; 6: sale
-
 item[0] = new SanPham ();
 item[1] = new SanPham ("AT-001", "300.000", "Áo dài tay thể thao", "Adidas", "Xanh", "images/AT/AT-001.jpg", "350.000");
 item[2] = new SanPham ("QJ-001", "250.000", "Quần jean rách", "Châu Âu", "Đen", "images/QJ/QJ-001.jpg", 0);
@@ -54,15 +64,7 @@ function getSearchBar () {
 
 function getMenu () {
 	var s = "";
-	var menu = new Array ();
-	var menuLabel = new Array ("Áo", "Quần", "Nón", "Giày", "Dép", "Balo");
-	var menuUrl = new Array ("ao", "quan", "non", "giay", "dep", "balo");
-	menu[0] = new Array ("0", "Áo thun", "Áo sơ mi");
-	menu[1] = new Array ("0", "Quần thun", "Quần jean");
-	menu[2] = new Array ("0", "Nón kết", "Nón snapback");
-	menu[3] = new Array ();
-	menu[4] = new Array ();
-	menu[5] = new Array ("0", "Balo", "Túi đeo chéo");
+	
 	var page = 1;		//Default page
 
 	s += `<table cellspacing="0">`;
@@ -270,12 +272,12 @@ function getProductWindow () {
 				}
 				break;
 			}
+
 		}
 		// Filter products (SEARCH)
 		if (params[0].split("=")[0]=="search") {
 			var searchKeyword = params[0].split("=")[1];
 			searchKeyword = searchKeyword.toLowerCase();
-			console.debug (searchKeyword);
 			for (var i=1; i<item.length; i++) {
 				var comparator = getComparator (item[i]);
 				var keywordSplitted = searchKeyword.split("+");
@@ -287,7 +289,12 @@ function getProductWindow () {
 					items.push (item[i]);
 			}
 		}
-		
+		// Product detail
+		else if (params[0].split("=")[0]=="detail") {
+			var itemID = params[0].split("=")[1];
+			getProductDetail (itemID);
+			return;
+		}
 
 	}
 
@@ -344,7 +351,7 @@ function getProductWindow () {
 	
 	
 	//alert (s);
-	document.getElementById("main").innerHTML = s;
+	document.getElementById("main").innerHTML += s;
 }
 
 function getProductID (spID) {
@@ -374,6 +381,27 @@ function getProduct (i, item) {
 		</div>`;
 
 	return s;
+}
+
+function getProductDetail (id) {
+	var s = "";
+
+	s += `<div style="float: left">
+			<img src="` + item[id].image + `" width="200" height="200">
+		</div>
+		<div id="productDetail">
+			<h1>` + item[id].name + `</h1>
+			<p>Thương hiệu: ` + item[id].brand + `</p>
+			<p>Loại: EPIC</p>
+			<p>Màu: ` + item[id].color + `</p>
+			<p>Mã SP: ` + item[id].id + `</p>
+			<p style="margin: 1em 0"><span id="detailPrice">` + item[id].price + `₫</span>`;
+	if (item[id].sale!=0)
+		s+=		`<span id="detailSale">` + item[id].sale + `₫</span>`;
+	s +=	`</p>	
+		</div>`;
+
+	document.getElementById("main").innerHTML += s;
 }
 
 function getPageBtn (page, params) {

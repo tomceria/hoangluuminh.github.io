@@ -339,6 +339,26 @@ nav table td:hover {
 
 /* end ITEM DISPLAY */
 
+/* ITEM DETAIL */
+
+#main > #productDetail {
+	float: left;
+	margin-left: 2em;
+}
+#main #detailPrice {
+	font-size: 25px;
+	font-weight: bold;
+	color: #ff9700;
+}
+#main #detailSale {
+	font-size: 14px;
+	padding-left: 0.5em;
+	text-decoration: line-through;
+	color: grey;
+}
+
+/* end ITEM DETAIL */
+
 /* PAGE BUTTONS DISPLAY */
 
 main > div > #pageBtn {
