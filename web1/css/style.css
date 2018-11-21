@@ -380,6 +380,7 @@ nav table td:hover {
 #main > #productDetail {
 	float: left;
 	margin-left: 2em;
+	width: 510px;
 }
 #main #detailPrice {
 	font-size: 25px;
