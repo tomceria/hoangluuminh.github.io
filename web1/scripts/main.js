@@ -17,7 +17,7 @@ menu[0] = new Array ("0", "Áo thun nam", "Áo sơ mi nam ","Áo len nữ","A�
 menu[1] = new Array ("0", "Quần thun", "Quần jean");
 menu[2] = new Array ("0", "Nón kết", "Nón snapback");
 menu[3] = new Array ("0","Giày thể thao","Giày công sở");
-menu[4] = new Array ("0","Dép lê","Dép sandal");
+menu[4] = new Array ("0","Dép lê","Sandal");
 menu[5] = new Array ("0", "Balo", "Túi đeo chéo", "Túi xách");
 
 // ITEM
@@ -124,6 +124,16 @@ item[97] = new SanPham ("AT-007", "100.000", "Áo thun nam cổ tròn", "Châu 
 item[98] = new SanPham ("AT-008", "50.000", "Áo thun nam bó Thể thao", "Châu Âu", "Xám", "images/AT/AT-008.jpg", "90.000");
 item[99] = new SanPham ("AT-009", "40.000", "Áo thun nam sọc có cổ", "Việt Nam", "Trắng Đen", "images/AT/AT-009.jpg", "50.000");
 item[100] = new SanPham ("AT-010", "70.000", "Áo thun nam hàn quốc", "Metange", "Xanh", "images/AT/AT-010.jpg", "88.000");
+item[101] = new SanPham ("DL-001", "50.000", "Dép lê xốp thoáng mát ", "Nike", "Trắng đen", "images/DL/DL-001.jpg", 0);
+item[102] = new SanPham ("DL-002", "40.000", "Dép lê xốp thoáng mát nhẹ", "Nike", "Đen xám", "images/DL/DL-002.jpg", 0);
+item[103] = new SanPham ("DL-003", "140.000", "Dép lê cao cấp", "Nike", "Xanh", "images/DL/DL-003.jpg", 0);
+item[104] = new SanPham ("DL-004", "131.000", "Dép lê cao cấp loại siêu bền", "Nike", "Xanh đen", "images/DL/DL-004.jpg", 0);
+item[105] = new SanPham ("DL-005", "134.000", "Dép lê xốp nhẹ", "China", "Đen Đỏ", "images/DL/DL-005.jpg", 0);
+item[106] = new SanPham ("DS-001", "123.000", "Sandal nhẹ thoáng mát ", "Maxbun", "Đen Trắng", "images/DS/DS-001.jpg", 0);
+item[107] = new SanPham ("DS-002", "223.000", "Sandal đế dày", "Nunce", "Nâu Đen", "images/DS/DS-002.jpg", 0);
+item[108] = new SanPham ("DS-003", "523.000", "Sandal kiểu gỗ cao cấp ", "Statajor", "Nâu", "images/DS/DS-003.jpg", "599.900");
+item[109] = new SanPham ("DS-004", "323.000", "Sandal katafashion", "Katafashion", "Đen", "images/DS/DS-004.jpg", 0);
+item[110] = new SanPham ("DS-005", "221.000", "Sandal phong cách hàn quốc", "Zannado", "Đen đỏ trắng", "images/DS/DS-005.jpg", "300.000");
 
 
 /* ------------------------ */
@@ -344,10 +354,31 @@ function getProductWindow () {
 				break;
 			}
 			case 'dep': {
-				for (var i=1; i<item.length; i++) {
-					var kind = item[i].id.split('-');
-					if (kind[0]=="DE")
-						items.push (item[i]);
+				switch (params[1]) {
+					case '0': {
+						for (var i=item.length-1; i>=1; i--) {
+							var kind = item[i].id.split('-');
+							if (kind[0]=="DL" || kind[0]=="DS")
+								items.push (item[i]);
+						}
+						break;
+					}
+					case '1': {
+						for (var i=item.length-1; i>=1; i--) {
+							var kind = item[i].id.split('-');
+							if (kind[0]=="DL")
+								items.push (item[i]);
+						}
+						break;
+					}
+					case '2': {
+						for (var i=item.length-1; i>=1; i--) {
+							var kind = item[i].id.split('-');
+							if (kind[0]=="DS")
+								items.push (item[i]);
+						}
+						break;
+					}
 				}
 				break;
 			}
