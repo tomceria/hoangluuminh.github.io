@@ -14,7 +14,7 @@ body {
 	min-width: 1000px;
 }
 
-.container {
+#container {
 	margin: 0px auto;
 	width: 1000px;
 	display: -webkit-box;

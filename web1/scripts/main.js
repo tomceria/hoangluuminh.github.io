@@ -20,6 +20,15 @@ menu[3] = new Array ("0","Giày thể thao","Giày công sở");
 menu[4] = new Array ("0","Dép lê","Sandal");
 menu[5] = new Array ("0", "Balo", "Túi đeo chéo", "Túi xách");
 
+
+// HREF
+var url = window.location.href;
+var splitter = url.split('?');			// [index.html]?[ao&1&0]
+var splitted = "";
+if (url != splitter)					// url == splitter => index.html
+	splitted = splitter[1];				// [ao&1&0]
+var params = splitted.split('&');		// [ao]&[1]&[0] ; 0: Category; 1: Subcategory; 2: Page
+
 // ITEM
 var item = new Array();	//0: id; 1: price; 2: name; 3: brand; 4: color; 5: image; 6: sale
 item[0] = new SanPham ();
@@ -194,14 +203,6 @@ function getMenu () {
 
 function getProductWindow () {
 	var s = "";
-	var url = window.location.href;
-	var splitter = url.split('?');			// [index.html]?[ao&1&0]
-	var splitted = "";
-	if (url != splitter)					// url == splitter => index.html
-		splitted = splitter[1];				// [ao&1&0]
-	var params = splitted.split('&');		// [ao]&[1]&[0] ; 0: Category; 1: Subcategory; 2: Page
-
-	
 	
 	// EXPERIMENTAL
 	items = new Array ();			// filtered array
@@ -789,8 +790,16 @@ function getComparator (item) {
 
 
 window.onload = function() {
-	getSearchBar();
-	getCartBtnNum();
-	getMenu();
-	getProductWindow();
+	if (params[0].split("=")[0]=="admin")
+		getAdminPage();
+	else {
+		getLandingPage();
+		getSearchBar();
+		getCartBtnNum();
+		getMenu();
+		getProductWindow();
+	}
+	
+	
+	/*adminSelectView ();*/
 }
