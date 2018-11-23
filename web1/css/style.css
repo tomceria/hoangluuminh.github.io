@@ -28,7 +28,7 @@ body {
 	/*border: medium solid #368BB9;*/
 }
 
-.memberbar {
+#topbar {
 	width: 100%;
 	/*background: #7ED2FF;*/
 	background: #31363a;
@@ -40,22 +40,22 @@ body {
 	/*height: 30px;*/
 }
 
-.memberbar > div {
+#topbar > div {
 	width: 1000px;
 	min-height: 30px;
 	/*display: inline-block;*/
 	margin: auto;
 }
 
-.signinBtn {
+.topbarBtn {
 	float: right;
 	position: relative;
 }
-.signinBtn > p {
+.topbarBtn > p {
 	margin: 0;
 }
 
-.signinBtn a {
+.topbarBtn > p > a {
 	display: block;
 	color: black;
 	line-height: 30px;
@@ -64,12 +64,12 @@ body {
 	color: white;
 }
 
-.signinBtn:hover {
+.topbarBtn:hover {
 	background: #707579;
 }
 
 /* MEMBER POP */
-.signinBtn > div {
+.topbarBtn > div {
 	z-index: 10;
 	display: none;
 	position: absolute;
@@ -78,7 +78,7 @@ body {
 	border: thin solid #368BB9;
 }
 
-.signinBtn:hover > div {
+.topbarBtn:hover > div {
 	display: block;
 }
 

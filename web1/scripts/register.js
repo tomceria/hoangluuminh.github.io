@@ -1,5 +1,5 @@
 // JavaScript Document
-function formcheck(){
+function registerCheck(){
 	var check=1;
 // username
 	username=document.getElementById("username").value;
@@ -95,6 +95,16 @@ function formcheck(){
 
 	if(check==1){
 		alert("Bạn đã đăng ký thành công");
+		//
+		var userID=0;
+		while (true) {
+			if (window.localStorage.getItem('user' + userID)==null)
+				break;
+			userID++;
+		}
+		window.localStorage.setItem ('user'+userID, username);
+		window.localStorage.setItem ('user'+userID+'pw', password);
+		//
 		return true;
 	}
 	else{
@@ -119,4 +129,47 @@ function fixlname(){
 }
 function fixemail(){	
 	document.register.email.style.backgroundColor="white";
+}
+
+
+
+// SIGN IN
+function signinCheck () {
+	username = document.signin.username.value;
+	if (username=="") {
+		alert ("Vui lòng điền tên đăng nhập");
+		return false;
+	}
+	password = document.signin.password.value;
+	if (password=="") {
+		alert ("Vui lòng điền mật khẩu");
+		return false;
+	}
+
+	var userID = 0;
+
+	while (true) {
+		if (window.localStorage.getItem('user' + userID) == username || window.localStorage.getItem('user' + userID)==null)
+			break;
+		userID++;
+	}
+
+	if (window.localStorage.getItem('user' + userID)==null) {
+		alert ("Tài khoản không tồn tại");
+		return false;
+	}
+
+	if (window.localStorage.getItem ('user'+userID+'pw') != password) {
+		alert ("Vui lòng kiểm tra lại tài khoản và mật khẩu");
+		return false;
+	}
+
+	window.localStorage.setItem ('signedinID', userID);
+	window.location.href = window.location.href;
+	return false;
+}
+
+function signout () {
+	window.localStorage.removeItem ('signedinID');
+	window.location.href = window.location.href;
 }

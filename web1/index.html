@@ -7,29 +7,12 @@
 		<script type="text/javascript" src="scripts/main.js"></script>
 		<script type="text/javascript" src="scripts/container.js"></script>
 		<script type="text/javascript" src="scripts/adminPage.js"></script>
+		<script type="text/javascript" src="scripts/register.js"></script>
 	</head>
 
 	<body>
-		<div class="memberbar">
-			<div>
-				<div class="signinBtn">
-					<p><a href="">Đăng nhập</a></p>
-					<div id="memberpop">
-						<br>
-						<form name="signinCheck" onsubmit="signinCheck()">
-							<p>Tài khoản:</p>
-							<input type="text" name="username" size="20"><br>
-							<p>Mật khẩu:</p>
-							<input type="password" name="password" size="20"><br>
-							<div id="signinError">
-							</div>
-							<input type="submit" name="signin" value ="Đăng nhập" style="margin: 1em 0 1em 1em">
-							<input type="button" name="signup" value ="Đăng ký" style="margin: 1em 0" onClick="window.location.href='./register.html'">
-						</form>
-					</div>
-				</div>
-			</div>
-			
+		<div id="topbar">
+			<!-- JAVASCRIPT INSERT TOPBAR -->
 		</div>
 		<header>
 			<div>
@@ -40,7 +23,7 @@
 		</header>
 
 		<div id = "container">
-			<!-- JAVASCRIPT INSERT CONTAINER -->
+			<!-- JAVASCRIPT INSERT MAIN CONTAINER -->
 		</div>
 
 		<footer id = "footer">

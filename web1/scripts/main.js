@@ -465,11 +465,6 @@ function getProductWindow () {
 			getProductDetail (itemID);
 			return;
 		}
-		// Cart View
-		else if (params[0].split("=")[0]=="cart") {
-			getCartView ();
-			return;
-		}
 
 	}
 
@@ -561,102 +556,6 @@ function getProduct (i, item) {
 	return s;
 }
 
-function getProductDetail (id) {
-	var s = "";
-
-	s += `<div style="float: left">
-			<img src="` + item[id].image + `" width="200" height="200">
-		</div>
-		<div id="productDetail">
-			<h1>` + item[id].name + `</h1>
-			<p>Thương hiệu: ` + item[id].brand + `</p>
-			<p>Loại: EPIC</p>
-			<p>Màu: ` + item[id].color + `</p>
-			<p>Mã SP: ` + item[id].id + `</p>
-			<p style="margin: 1em 0"><span id="detailPrice">` + item[id].price + `₫</span>`;
-	if (item[id].sale!=0)
-		s+=		`<span id="detailSale">` + item[id].sale + `₫</span>`;
-	s +=	`</p>
-		</div>`;
-
-	document.getElementById("main").innerHTML += s;
-}
-
-function getCartView () {
-	var s = "";
-	var itemArray = getCartList();
-
-	s += `<h1>Giỏ hàng</h1>`
-		for (var i=0; i<itemArray.length; i++) {
-			var itemID = itemArray[i];
-			var itemAmount = window.localStorage.getItem ("item"+itemID);
-
-			s += `<div class="cartWindow">
-					<a href="index.html?detail=` + itemID + `">
-					<div style="float: left; width: 100px; height: 100px">
-						
-							<img src="` + item[itemID].image + `" width="100px" height="100px"/>
-						
-					</div>
-					<div class="cartItem">
-						<p><span class="cartItemName">` + item[itemID].name + `</span></p>
-						<p>Thương hiệu: ` + item[itemID].brand + `</p>
-						<p>Mã SP: ` + item[itemID].id + `</p>
-						<p><span class="cartItemPrice">` + item[itemID].price + `₫</span>`
-					if (item[itemID].sale!=0)
-						s += `<span class="cartItemSale">400.000₫</span>`
-					s += `</p>
-					</div>
-					</a>
-					<div class="cartOptions">
-						<p>Số lượng: </p>
-						<input type="button" name="amountDecrease" value="-" style="width: 10px; padding: 0" onclick="changeCartItemAmount(` + itemID + `, '-')"/>
-						<input type="text" id="item1Amount" value="` + itemAmount +`" style="width: 30px" onchange="changeCartItemAmount(` + itemID + `, this.value)" />
-						<input type="button" name="amountIncrease" value="+" style="width: 10px; padding: 0" onclick="changeCartItemAmount(` + itemID + `, '+')"/>
-						<input type="button" name="deleteItem" value="Xóa" style="margin: 1.25em 0 0 2.5em" onclick="removeCartItem(` + itemID + `)"/>
-					</div>
-				</div>`;
-		}
-			
-	s += 	`<div style="float: left; clear: both; margin-top: 1em">
-				<p>Thành tiền: </p>
-				<h2 style="margin: 0; color: #ff9700;">` + totalCart(itemArray) + `₫</h2>
-			</div>
-			<div style="float: left; clear: both; margin: 1em 0">`
-			if (totalCart(itemArray)>0)
-				s += `<input class="cartPay" type="button" name="checkout" value="Thanh toán" onclick="checkOut()"/>
-						<input class="cartClear" type="button" name="clear" value="Xóa hết" onclick="clearCart()"/>`;
-	s +=	`</div>`;
-
-	document.getElementById("main").innerHTML += s;
-}
-
-function getPageBtn (page, params) {
-	//console.debug (page + " " + params[2] + params);
-
-	var s = "";
-	var pageAltered = page;
-	var kind = "pageBtn";
-
-	if (page == params[2])
-		kind = "pageBtnActive";
-	if (page == "<")
-		pageAltered = parseInt(params[2])-1;
-	else if (page == ">")
-		pageAltered = parseInt(params[2])+1;
-	else if (page == "<<")
-		pageAltered = 1;
-
-	s += `<div id="` + kind + `">`;
-	if (kind == "pageBtn")
-		s += `<a href="index.html?` + params[0] + `&` + params[1] + `&` + pageAltered + `">` + page + `</a>`;
-	else
-		s += `<p>` + page + `</p>`;
-	s += `</div>`;
-
-	return s;
-}
-
 function getCarousel () {
 	var s = "";
 	
@@ -678,7 +577,6 @@ function goSearch (keyword) {
 function addToCart (id) {
 	var itemIden = "item" + id;
 	addItemToCart (itemIden, 1);
-
 }
 
 function addItemToCart (iden, amount) {
@@ -689,6 +587,7 @@ function addItemToCart (iden, amount) {
 	var newAmount = parseInt(currentAmount) + amount;
 	window.localStorage.setItem (iden, newAmount);
 	/*alert (window.localStorage.getItem (iden));*/
+	alert ("Đã thêm vào giỏ hàng!");
 	window.location.href = window.location.href;
 }
 
@@ -790,16 +689,28 @@ function getComparator (item) {
 
 
 window.onload = function() {
-	if (params[0].split("=")[0]=="admin")
+	if (params[0].split("=")[0]=="admin") {
 		getAdminPage();
+		return;
+	}
+	getLandingPage();
+	getSearchBar();
+	getCartBtnNum();
+	getMenu();
+	if (params[0].split("=")[0]=="register") {
+		getRegisterPage();
+	}
+	if (params[0].split("=")[0]=="cart") {
+		getCartView ();
+	}
 	else {
-		getLandingPage();
-		getSearchBar();
-		getCartBtnNum();
-		getMenu();
 		getProductWindow();
 	}
 	
-	
+	if (window.localStorage.getItem ('signedinID')==null)
+		getTopBar_NoMember();
+	else
+		getTopBar_IsMember();
+
 	/*adminSelectView ();*/
 }
