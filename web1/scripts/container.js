@@ -15,7 +15,7 @@ function getLandingPage () {
 		<table cellspacing="0">
 			<tbody>
 				<tr>
-					<td><a href="index.html?all&0&1" target="_self" title="Nổi bật">Nổi bật</a>
+					<td><a href="index.html" target="_self" title="Nổi bật">Nổi bật</a>
 					</td>
 					<td><a href="index.html?new&0&1" target="_self" title="Hàng mới">Hàng mới</a></td>
 					<td><a href="index.html?deals&0&1" target="_self" title="Khuyến mãi">Khuyến mãi</a></td>
@@ -35,7 +35,6 @@ function getLandingPage () {
 		<main id = "main">
 			<!--<h1>Hello world</h1><br>-->
 			<!-- JAVASCRIPT INSERT MAIN -->
-			
 		</main>
 		
 	</div>
@@ -190,6 +189,122 @@ function getRegisterPage () {
 
 // MAIN
 
+function getFeaturedPage () {
+	var s = "";
+	var aDeals = new Array ();
+	for (var i=1; i<item.length; i++) {
+		var dem=0;
+		if (item[i].sale != 0) {
+			aDeals.push (item[i]);
+			dem++;
+		}
+		if (dem==4)	break;
+	}
+	var aAoNam = new Array ();
+	for (var i=item.length-1; i>=1; i--) {
+		var dem=0;
+		var kind = item[i].id.split('-');
+		if (kind[0]=="AT") {
+			aAoNam.push (item[i]);
+			dem++;
+		}
+		if (dem==4)	break;
+	}
+	var aAoNu = new Array ();
+	for (var i=item.length-1; i>=1; i--) {
+		var dem=0;
+		var kind = item[i].id.split('-');
+		if (kind[0]=="ATN") {
+			aAoNu.push (item[i]);
+			dem++;
+		}
+		if (dem==4)	break;
+	}
+	var aQuan = new Array ();
+	for (var i=item.length-1; i>=1; i--) {
+		var dem=0;
+		var kind = item[i].id.split('-');
+		if (kind[0]=="QT" || kind[0]=="QJ") {
+			aQuan.push (item[i]);
+			dem++;
+		}
+		if (dem==4) break;
+	}
+	var aNon = new Array ();
+	for (var i=item.length-1; i>=1; i--) {
+		var dem=0;
+		var kind = item[i].id.split('-');
+		if (kind[0]=="NK" || kind[0]=="NS") {
+			aNon.push (item[i]);
+			dem++;
+		}
+		if (dem==4)	break;
+	}
+	var aGiay = new Array ();
+	for (var i=item.length-1; i>=1; i--) {
+		var dem=0;
+		var kind = item[i].id.split('-');
+		if (kind[0]=="GI") {
+			aGiay.push (item[i]);
+			dem++;
+		}
+		if (dem==4)	break;
+	}
+
+	s += `
+			<h3>Sản phẩm HOT</h3>`;
+	s += 		getProduct (5, item);
+	s += 		getProduct (13, item);
+	s += 		getProduct (104, item);
+	s += 		getProduct (41, item);
+
+	s += `	<br>
+			<hr><br><h3>Khuyến mãi</h3>`;
+		for (var i=0; i<4; i++) {
+			s+=	getProduct (i, aDeals);
+		}
+	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?deals&0&1">Xem tất cả >></a></div>`;
+
+	s += `	<br>
+			<hr><br><h3>Áo thun nam</h3>`;
+		for (var i=0; i<4; i++) {
+			s+=	getProduct (i, aAoNam);
+		}
+	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?ao&1&1">Xem tất cả >></a></div>`;
+
+	s += `	<br>
+			<hr><br><h3>Áo thun nữ</h3>`;
+		for (var i=0; i<4; i++) {
+			s+=	getProduct (i, aAoNu);
+		}
+	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?ao&4&1">Xem tất cả >></a></div>`;
+
+	s += `	<br>
+			<hr><br><h3>Quần</h3>`;
+		for (var i=0; i<4; i++) {
+			s+=	getProduct (i, aQuan);
+		}
+	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?quan&0&1">Xem tất cả >></a></div>`;
+
+	s += `	<br>
+			<hr><br><h3>Nón</h3>`;
+		for (var i=0; i<4; i++) {
+			s+=	getProduct (i, aNon);
+		}
+	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?non&0&1">Xem tất cả >></a></div>`;
+
+	s += `	<br>
+			<hr><br><h3>Giày thể thao</h3>`;
+		for (var i=0; i<4; i++) {
+			s+=	getProduct (i, aGiay);
+		}
+	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?giay&1&1">Xem tất cả >></a></div>`;
+
+	s += `<br><hr>`;
+
+	document.getElementById("main").innerHTML += s;
+}
+
 function getProductDetail (id) {
 	var s = "";
 
@@ -199,7 +314,7 @@ function getProductDetail (id) {
 		<div id="productDetail">
 			<h1>` + item[id].name + `</h1>
 			<p>Thương hiệu: ` + item[id].brand + `</p>
-			<p>Loại: EPIC</p>
+			<p>Loại: ` + getKindName(id) + `</p>
 			<p>Màu: ` + item[id].color + `</p>
 			<p>Mã SP: ` + item[id].id + `</p>
 			<p style="margin: 1em 0"><span id="detailPrice">` + item[id].price + `₫</span>`;

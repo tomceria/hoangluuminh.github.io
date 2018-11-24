@@ -686,31 +686,62 @@ function getComparator (item) {
 	return comparator;
 }
 
+function getKindName (itemID) {
+	var kind = item[itemID].id.split('-')[0];
+	switch (kind) {
+		case 'AT': return 'Áo thun nam';
+		case 'AS': return 'Áo sơ mi nam';
+		case 'AL': return 'Áo len nữ';
+		case 'ATN': return 'Áo thun nữ';
 
+		case 'QT': return 'Quần thun';
+		case 'QJ': return 'Quần jean';
+
+		case 'NK': return 'Nón kết';
+		case 'NS': return 'Nón snapback';
+
+		case 'GI': return 'Giày thể thao';
+		case 'GICS': return 'Giày công sở';
+
+		case 'DL': return 'Dép lê';
+		case 'DS': return 'Sandal';
+
+		case 'BL': return 'Balo';
+		case 'TDC': return 'Túi đeo chéo';
+		case 'TX': return 'Túi xách';
+	}
+}
 
 window.onload = function() {
-	if (params[0].split("=")[0]=="admin") {
+	if (window.localStorage.getItem ('signedinID')==null)
+		getTopBar_NoMember();
+	else
+		getTopBar_IsMember();
+
+	if (splitter[1]=="admin") {
 		getAdminPage();
 		return;
 	}
+
 	getLandingPage();
 	getSearchBar();
 	getCartBtnNum();
 	getMenu();
-	if (params[0].split("=")[0]=="register") {
+
+	if (splitter[1]==null) {
+		getFeaturedPage();
+	}
+	else if (splitter[1]=="register") {
 		getRegisterPage();
 	}
-	if (params[0].split("=")[0]=="cart") {
+	else if (splitter[1]=="cart") {
 		getCartView ();
 	}
 	else {
 		getProductWindow();
 	}
 	
-	if (window.localStorage.getItem ('signedinID')==null)
-		getTopBar_NoMember();
-	else
-		getTopBar_IsMember();
+	
 
 	/*adminSelectView ();*/
 }

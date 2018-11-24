@@ -331,6 +331,31 @@ nav table td:hover {
 	min-height: 1101px;				/* Nhớ thay đổi khi đổi itemsOnPage */
 }
 
+/* FEATURED DISPLAY */
+
+#main > h3 {
+	color: #ff9700;
+	float: left;
+	clear: both;
+	width: 100%;
+	margin: 0.5em 0;
+}
+
+#main > hr {
+	display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #368bb9;
+    margin: 0.5em 0;
+    padding: 0; 
+
+    float: left;
+    clear: both;
+    width: 100%;
+}
+
+/* end FEATURED DISPLAY */
+
 /* ITEM DISPLAY */
 
 #main > #productDiv {
@@ -398,7 +423,7 @@ nav table td:hover {
 
 /* PAGE BUTTONS DISPLAY */
 
-main > div > #pageBtn {
+main #pageBtn {
 	float: left; 
 	width: initial;
 	height: initial;
@@ -407,19 +432,19 @@ main > div > #pageBtn {
 }
 
 
-main > div > #pageBtn:hover {
+main #pageBtn:hover {
 	background: #a5dfff;
 }
 
 
-main > div > #pageBtn > a {
+main #pageBtn > a {
 	display: block; 
 	color: #000000;
 	line-height: 30px;
 	padding: 0 0.5em;
 }
 
-main > div > #pageBtnActive {
+main #pageBtnActive {
 	float: left;
 	width: initial;
 	height: initial;
@@ -428,11 +453,11 @@ main > div > #pageBtnActive {
 	background: #368bb9;
 }
 
-main > div > #pageBtnActive:hover {
+main #pageBtnActive:hover {
 	background: #368bb9;
 }
 
-main > div > #pageBtnActive > p {
+main #pageBtnActive > p {
 	display: block; 
 	color: #FFFFFF;
 	margin: 0;
