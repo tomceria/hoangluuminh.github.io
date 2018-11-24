@@ -13,12 +13,12 @@ class SanPham {
 var menu = new Array ();
 var menuLabel = new Array ("Áo", "Quần", "Nón", "Giày", "Dép", "Balo");
 var menuUrl = new Array ("ao", "quan", "non", "giay", "dep", "balo");
-menu[0] = new Array ("0", "Áo thun nam", "Áo sơ mi nam ","Áo len nữ","Áo thun nữ");
-menu[1] = new Array ("0", "Quần thun", "Quần jean");
-menu[2] = new Array ("0", "Nón kết", "Nón snapback");
-menu[3] = new Array ("0","Giày thể thao","Giày công sở");
-menu[4] = new Array ("0","Dép lê","Sandal");
-menu[5] = new Array ("0", "Balo", "Túi đeo chéo", "Túi xách");
+menu[0] = new Array ("Áo", "Áo thun nam", "Áo sơ mi nam ","Áo len nữ","Áo thun nữ");
+menu[1] = new Array ("Quần", "Quần thun", "Quần jean");
+menu[2] = new Array ("Nón", "Nón kết", "Nón snapback");
+menu[3] = new Array ("Giày","Giày thể thao","Giày công sở");
+menu[4] = new Array ("Dép","Dép lê","Sandal");
+menu[5] = new Array ("Balo", "Balo du lịch", "Túi đeo chéo", "Túi xách");
 
 
 // HREF
@@ -539,7 +539,7 @@ function getProduct (i, item) {
 
 	s += `<div id="productDiv">
 			<a href="index.html?detail=` + prodID + `">
-			<img src="` + item[i].image + `" width="178px" height="178px" ></a><br>
+			<img src="` + item[i].image + `"></a><br>
 			<div>
 				<p><span class="brand\">` + item[i].brand + `</span></p>
 				<p>` + item[i].name + `</p>
@@ -554,13 +554,6 @@ function getProduct (i, item) {
 		</div>`;
 
 	return s;
-}
-
-function getCarousel () {
-	var s = "";
-	
-
-  document.getElementById("main").innerHTML += s;
 }
 
 function goSearch (keyword) {
@@ -706,7 +699,7 @@ function getKindName (itemID) {
 		case 'DL': return 'Dép lê';
 		case 'DS': return 'Sandal';
 
-		case 'BL': return 'Balo';
+		case 'BL': return 'Balo du lịch';
 		case 'TDC': return 'Túi đeo chéo';
 		case 'TX': return 'Túi xách';
 	}
@@ -729,6 +722,7 @@ window.onload = function() {
 	getMenu();
 
 	if (splitter[1]==null) {
+		getCarousel();
 		getFeaturedPage();
 	}
 	else if (splitter[1]=="register") {

@@ -14,6 +14,9 @@ function getLandingPage () {
 		</a>
 		<table cellspacing="0">
 			<tbody>
+				<tr id="carouselTR">
+					<!-- JAVASCRIPT INSERT CAROUSEL -->
+				</tr>
 				<tr>
 					<td><a href="index.html" target="_self" title="Nổi bật">Nổi bật</a>
 					</td>
@@ -451,4 +454,15 @@ function getTopBar_IsMember () {
 	`;
 
 	document.getElementById("topbar").innerHTML = s;
+}
+
+// CAROUSEL TR
+function getCarousel () {
+	var s = "";
+	
+	s += `
+	<td colspan="4" height="250px">carousel here</td>
+	`;
+
+  	document.getElementById("carouselTR").innerHTML += s;
 }

@@ -144,6 +144,8 @@ header div p {
 	height: 40px;
 	top: -55px;
 	right: 10px;
+
+	transition-duration: 0.2s;
 }
 
 #cartBtn:hover {
@@ -184,6 +186,8 @@ nav table a {
 	display: block;
 	line-height: 30px;
 	color: #FFFFFF;
+
+	transition-duration: 0.2s;
 }
 
 nav table a:hover {
@@ -255,6 +259,8 @@ nav table td:hover {
 
 	background: #FF9700;
 	border: thin solid #D6D6D6;
+
+	transition-duration: 0.2s;
 }
 
 #sidebar table tr td > a:hover {
@@ -290,6 +296,8 @@ nav table td:hover {
     text-decoration:none;
 	color: #2F2F2F;
 	background: #fafafa;
+
+	transition-duration: 0.2s;
 }
 
 #sidebar ul {
@@ -365,10 +373,25 @@ nav table td:hover {
 	width: 180px;
 	height: 325px;
 	border: thin solid #368bb9;
+
+	transition-duration: 0.2s;
 }
 
 #main > #productDiv:hover {
-	background: #a5dfff;
+	background: #b7e5ff;
+}
+
+#main > #productDiv img {
+	margin: 10px;
+	width: 158px;
+	height: 158px;
+	transition-duration: 0.2s;
+}
+
+#main > #productDiv:hover img {
+	margin: 0;
+	width: 178px;
+	height: 178px;
 }
 
 #main p {
@@ -429,11 +452,12 @@ main #pageBtn {
 	height: initial;
 	margin: initial;
 	border: thin solid #368bb9;
+	transition-duration: 0.2s;
 }
 
 
 main #pageBtn:hover {
-	background: #a5dfff;
+	background: #b7e5ff;
 }
 
 
@@ -476,10 +500,12 @@ main #pageBtnActive > p {
 	width: 100%;
 	min-height: 100px;
 	margin: 0.25em 0;
+
+	transition-duration: 0.1s;
 }
 
 .cartWindow:hover {
-	background: #a5dfff;
+	background: #b7e5ff;
 }
 
 .cartItem {
