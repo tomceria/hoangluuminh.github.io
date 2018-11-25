@@ -611,10 +611,38 @@ function clearCart () {
 }
 
 function checkOut () {
+	if (window.localStorage.getItem("signedinID")==null) {
+		alert ("Vui lòng đăng nhập trước khi mua");
+		return;
+	}
 	if (confirm("Bạn chắc chắn muốn mua?")==false)
 		return;
 	alert ("Mua thành công!");
-	// TODO: Thêm vào đơn đặt hàng
+
+	// memberid=0 amount=7 total=3867222 time=1543115459890/1=1 5=3 8=6 13=3 16=1 
+	// Thêm vào đơn đặt hàng
+	var d = new Date();
+	var orderString = "";
+	orderString += `memberid=`+window.localStorage.getItem("signedinID")+` `;
+	orderString += `amount=`+getCartList().length+` `;
+	orderString += `total=`+totalCart(getCartList())+` `;
+	orderString += `time=`+d.valueOf()+`/`;
+
+	for (var i=1; i<item.length; i++) {
+		var itemAmount = window.localStorage.getItem ("item"+i);
+		if (itemAmount != null && itemAmount>0)
+			orderString += i+`=`+itemAmount+` `;
+	}
+
+	var dem=0;
+	while (true) {
+		if (window.localStorage.getItem("order"+dem)==null)
+			break;
+		dem++;
+	}
+	window.localStorage.setItem("order"+dem, orderString);
+	//
+
 	clearCart ();
 }
 
@@ -730,6 +758,9 @@ window.onload = function() {
 	}
 	else if (splitter[1]=="cart") {
 		getCartView ();
+	}
+	else if (params[0].split("=")[0]=="order") {
+		getOrderView ();
 	}
 	else {
 		getProductWindow();

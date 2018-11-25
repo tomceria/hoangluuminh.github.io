@@ -230,6 +230,8 @@ nav table td:hover {
 	height: 30px;
 	border: thin solid #D6D6D6;
 	background: #ff9700;
+
+	transition-duration: 0.1s;
 }
 
 #searchBtn:hover {

@@ -171,5 +171,5 @@ function signinCheck () {
 
 function signout () {
 	window.localStorage.removeItem ('signedinID');
-	window.location.href = window.location.href;
+	window.location.href = "index.html";
 }

@@ -342,20 +342,20 @@ function getCartView () {
 
 			s += `<div class="cartWindow">
 					<a href="index.html?detail=` + itemID + `">
-					<div style="float: left; width: 100px; height: 100px">
+						<div style="float: left; width: 100px; height: 100px">
 						
 							<img src="` + item[itemID].image + `" width="100px" height="100px"/>
 						
-					</div>
-					<div class="cartItem">
-						<p><span class="cartItemName">` + item[itemID].name + `</span></p>
-						<p>Thương hiệu: ` + item[itemID].brand + `</p>
-						<p>Mã SP: ` + item[itemID].id + `</p>
-						<p><span class="cartItemPrice">` + item[itemID].price + `₫</span>`
-					if (item[itemID].sale!=0)
-						s += `<span class="cartItemSale">400.000₫</span>`
-					s += `</p>
-					</div>
+						</div>
+						<div class="cartItem">
+							<p><span class="cartItemName">` + item[itemID].name + `</span></p>
+							<p>Thương hiệu: ` + item[itemID].brand + `</p>
+							<p>Mã SP: ` + item[itemID].id + `</p>
+							<p><span class="cartItemPrice">` + item[itemID].price + `₫</span>`
+						if (item[itemID].sale!=0)
+							s += `<span class="cartItemSale">` + item[itemID].sale + `₫</span>`
+					s += `	</p>
+						</div>
 					</a>
 					<div class="cartOptions">
 						<p>Số lượng: </p>
@@ -378,6 +378,52 @@ function getCartView () {
 	s +=	`</div>`;
 
 	document.getElementById("main").innerHTML += s;
+}
+
+function getOrderView () {
+	var memberID = window.localStorage.getItem("signedinID");
+	// memberid=0 amount=7 total=3867222 time=1543115459890/1=1 5=3 8=6 13=3 16=1 
+	var amount;
+	var total;
+	var time;
+	var itemArray = new Array();
+	var itemArrayAmount = new Array();
+	var dem=0;
+	while (true) {
+		var s = "";
+		if (window.localStorage.getItem("order"+dem)==null)
+			return;
+		var orderString = window.localStorage.getItem("order"+dem);
+		var checkingMemberID = orderString.split('/')[0].split(' ')[0].split('=')[1];
+		if (checkingMemberID == memberID) {
+			amount = parseInt(orderString.split('/')[0].split(' ')[1].split('=')[1]);
+			total = parseInt(orderString.split('/')[0].split(' ')[2].split('=')[1]);
+			time = new Date( parseInt(orderString.split('/')[0].split(' ')[3].split('=')[1]) );
+			for (var i=0; i<amount; i++) {
+				itemArray.push (parseInt(orderString.split('/')[1].split(' ')[i].split('=')[0]));
+				itemArrayAmount.push (parseInt(orderString.split('/')[1].split(' ')[i].split('=')[1]));
+			}
+			
+			s += `
+			<div class="cartWindow">
+				<div class="cartItem">
+					<p><span class="cartItemName">Mã đơn: ` + dem + `</span></p>
+					<p>` + time.toLocaleDateString() + ` ` + time.toLocaleTimeString() + `</p>
+					<br>`;
+			for (var i=0; i<amount; i++) {
+				s += `<p>` + item[itemArray[i]].name + ` [` + itemArrayAmount[i] + `]: ` + parseInt(item[itemArray[i]].price.replace(/\./g, ''))*itemArrayAmount[i] + `₫</p>`;
+			}
+			s +=	`<br>
+					<p>Thành tiền: <span class="cartItemPrice">` + total + `₫</span></p>
+				</div>
+			</div>
+			`;
+			document.getElementById("main").innerHTML += s;
+		}
+		dem++;
+	}
+
+
 }
 
 function getPageBtn (page, params) {
@@ -445,7 +491,7 @@ function getTopBar_IsMember () {
 			<div id="memberpop">
 				<br>
 				<p style="font-weight: bold; font-size: 15px">Xin chào</p>
-				<p><a>Xem đơn hàng</a></p>
+				<p><a href="index.html?order">Xem đơn hàng</a></p>
 				<p><a href="javascript:void(0);" onclick="signout()">Đăng xuất</a></p>
 				<br>
 			</div>
