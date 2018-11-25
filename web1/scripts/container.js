@@ -437,18 +437,23 @@ function getCartView () {
 function getOrderView () {
 	var memberID = window.localStorage.getItem("signedinID");
 	// memberid=0 amount=7 total=3867222 time=1543115459890/1=1 5=3 8=6 13=3 16=1 
-	var amount;
-	var total;
-	var time;
-	var itemArray = new Array();
-	var itemArrayAmount = new Array();
+	
 	var dem=0;
 	while (true) {
 		var s = "";
+		var amount;
+		var total;
+		var time;
+		var itemArray = new Array();
+		var itemArrayAmount = new Array();
+
 		if (window.localStorage.getItem("order"+dem)==null)
 			return;
+
 		var orderString = window.localStorage.getItem("order"+dem);
+		//console.debug (dem + ": " + orderString);
 		var checkingMemberID = orderString.split('/')[0].split(' ')[0].split('=')[1];
+
 		if (checkingMemberID == memberID) {
 			amount = parseInt(orderString.split('/')[0].split(' ')[1].split('=')[1]);
 			total = parseInt(orderString.split('/')[0].split(' ')[2].split('=')[1]);
