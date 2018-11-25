@@ -22,7 +22,7 @@ function getLandingPage () {
 					</td>
 					<td><a href="index.html?new&0&1" target="_self" title="Hàng mới">Hàng mới</a></td>
 					<td><a href="index.html?deals&0&1" target="_self" title="Khuyến mãi">Khuyến mãi</a></td>
-					<td><a href="link" target="_self" title="Liên hệ">Liên hệ</a></td>
+					<td><a href="index.html?contact" target="_self" title="Liên hệ">Liên hệ</a></td>
 				</tr>
 			</tbody>
 					
@@ -85,7 +85,7 @@ function getAdminPage () {
 function getRegisterPage () {
 	var s = "";
 	s += `
-	<form name="register" method="post" action="index.html" onSubmit="return registerCheck()">
+	<form name="register">
 		<table border="0" width="700px" style="margin: auto">
 			<tr   align="center"  bgcolor="aqua"> <td colspan="2">ĐĂNG KÝ THÀNH VIÊN</td> </tr>
 			<tr cosplan="2">
@@ -179,12 +179,50 @@ function getRegisterPage () {
 			</tr>
 			<tr> <td colspan="2"><hr></td></tr>
 			<tr>
-				<td align="right"><input type="submit" name="submit" value="Đăng ký" tabindex="12" accesskey="d"> </td>
+				<td align="right"><input type="button" name="submit" value="Đăng ký" tabindex="12" accesskey="d" onclick="registerCheck()"></td>
 				<td><input type="reset" name="reset" value="hủy" tabindex="13"></td>
 			</tr>
 		</table>
 	
 	</form>
+	`;
+
+	document.getElementById("main").innerHTML = s;
+}
+
+function getContactPage () {
+	var s = "";
+
+	s += `
+	<b>Nhóm 1 - Phát triển ứng dụng Web 1 thầy Sang (Nhóm 6)</b><br>
+	Thành viên:<br>
+	<table border="1" cellpadding="10px" style="border-collapse: collapse">
+		<tr>
+			<th>Tên</th>
+			<th>Phân công</th>
+			<th>Email</th>
+		</tr>
+		<tr>
+			<td>Lưu Minh Hoàng</td>
+			<td>Cấu trúc, giao diện, javascript chính</td>
+			<td>hoangluuminh@icloud.com</td>
+		</tr>
+		<tr>
+			<td>Vũ Trường Giang</td>
+			<td>Trang Quản trị, trang Đăng ký, javascript</td>
+			<td>vuapha008@gmail.com</td>
+		</tr>
+		<tr>
+			<td>Đặng Đình Nhất Vinh</td>
+			<td>Branding, đồ họa, javascript</td>
+			<td>ddnv286@gmail.com</td>
+		</tr>
+		<tr>
+			<td>Nguyễn Văn Sỹ</td>
+			<td>Thông tin, hình ảnh sản phẩm</td>
+			<td>nguyenvansylhp@gmail.com</td>
+		</tr>
+	</table>
 	`;
 
 	document.getElementById("main").innerHTML = s;
@@ -316,11 +354,27 @@ function getProductDetail (id) {
 		</div>
 		<div id="productDetail">
 			<h1>` + item[id].name + `</h1>
-			<p>Thương hiệu: ` + item[id].brand + `</p>
-			<p>Loại: ` + getKindName(id) + `</p>
-			<p>Màu: ` + item[id].color + `</p>
-			<p>Mã SP: ` + item[id].id + `</p>
-			<p style="margin: 1em 0"><span id="detailPrice">` + item[id].price + `₫</span>`;
+			<table border="1" cellpadding="10px" style="border-collapse: collapse">
+				<tr>
+					<th>Mã SP</th>
+					<td width="300px">` + item[id].id +`</td>
+				</tr>
+				<tr>
+					<th>Thương hiệu</th>
+					<td>` + item[id].brand +`</td>
+				</tr>
+				<tr>
+					<th>Loại</th>
+					<td>` + getKindName(id) +`</td>
+				</tr>
+				<tr>
+					<th>Màu</th>
+					<td>` + item[id].color +`</td>
+				</tr>
+			</table>
+			<p style="margin: 1em 0"><span id="detailPrice">` + item[id].price + `₫</span>
+
+			`;
 	if (item[id].sale!=0)
 		s+=		`<span id="detailSale">` + item[id].sale + `₫</span>`;
 	s +=	`</p>
@@ -418,7 +472,7 @@ function getOrderView () {
 				</div>
 			</div>
 			`;
-			document.getElementById("main").innerHTML += s;
+			document.getElementById("main").innerHTML = s + document.getElementById("main").innerHTML;			//Xuất ngược (addToHead)
 		}
 		dem++;
 	}
@@ -490,7 +544,7 @@ function getTopBar_IsMember () {
 			<p><a href="javascript:void(0);">` + username + `</a></p>
 			<div id="memberpop">
 				<br>
-				<p style="font-weight: bold; font-size: 15px">Xin chào</p>
+				<p style="font-weight: bold; font-size: 16px">Xin chào</p>
 				<p><a href="index.html?order">Xem đơn hàng</a></p>
 				<p><a href="javascript:void(0);" onclick="signout()">Đăng xuất</a></p>
 				<br>

@@ -152,7 +152,7 @@ function getSearchBar () {
 
 	s += `<div style="width: 200px; min-height: 30px; float: left">
 			<input id="searchBar" type="text" name="search" placeholder="Tìm kiếm" style="width: 75%">
-			<input id="searchBtn" type="button" name="goSearch" value="🔎" style="width: 20%" onclick="goSearch(document.getElementById('searchBar').value)"/>
+			<input id="searchBtn" type="image" src="images/search-white.png" name="goSearch" value=" " style="width: 20%" onclick="goSearch(document.getElementById('searchBar').value)"/>
 		</div>`;
 
 	/* s += `</script>`;	*/
@@ -761,6 +761,9 @@ window.onload = function() {
 	}
 	else if (params[0].split("=")[0]=="order") {
 		getOrderView ();
+	}
+	else if (splitter[1]=="contact") {
+		getContactPage();
 	}
 	else {
 		getProductWindow();

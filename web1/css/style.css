@@ -82,6 +82,12 @@ body {
 	display: block;
 }
 
+#memberpop > p > a {			/* for IsMember */
+	text-decoration: none;
+	color: #ff9700;
+	text-decoration: underline;
+}
+
 #memberpop {
 	background: white;
 	width: 160px;

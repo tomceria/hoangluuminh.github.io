@@ -105,11 +105,12 @@ function registerCheck(){
 		window.localStorage.setItem ('user'+userID, username);
 		window.localStorage.setItem ('user'+userID+'pw', password);
 		//
-		return true;
+		//return true;
+		window.location.href = "index.html";
 	}
 	else{
 		alert("Bạn đăng ký chưa thành công! Bạn cần phải sửa lại thông tin chưa chính xác.");
-		return false;
+		//return false;
 	}
 }
 function fixusername(){	
