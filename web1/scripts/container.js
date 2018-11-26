@@ -62,9 +62,6 @@ function getAdminPage () {
 				<option value="7">Balo </option>
 			</select>
 		</div>
-		<div style="float:right;">
-			<button name="addproduct" >+</button>
-		</div>
 	</div>
 	<div class = "content">
 		<div style="background-color: skyblue; 

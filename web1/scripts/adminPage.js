@@ -90,7 +90,7 @@ function viewProductsAdmin(number){
 			+ `<td style="width: 150px"><p>` +item[itemID].color + `</p> </td>`
 			+ `<td style="width: 150px"> <p><span class="cartItemPrice">` + item[itemID].price + `₫</span>`
 					if (item[itemID].sale!=0)
-						sa += `<span class="cartItemSale">400.000â‚«</span>`
+						sa += `<span class="cartItemSale">` + item[itemID].sale + `₫</span>`
 					sa += `</p> </td>`
 			sa +=`<td style="width: 150px"> 
 					<input type="button" name ="editproduct" value="sửa" onClick="">
