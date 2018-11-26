@@ -563,7 +563,28 @@ function getCarousel () {
 	var s = "";
 	
 	s += `
-	<td colspan="4" height="250px">carousel here</td>
+	<td colspan="4" min-height="350px" style="background: white; border: none; vertical-align: top;">
+		<div class="carouselContainer">
+			<div class="carouselDiv carouselFade">
+				<img src="images/carouseltest.png" style="width: 100%"/>
+			</div>
+			<div class="carouselDiv carouselFade">
+				<img src="images/carouseltest2.png" style="width: 100%"/>
+			</div>
+			<div class="carouselDiv carouselFade">
+				<img src="images/carouseltest3.png" style="width: 100%"/>
+			</div>
+			<a class="carouselPrev" onclick="plusSlides(-1)">&#10094;</a>
+ 			<a class="carouselNext" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+
+ 		<div style="height: 25px; text-align:center; vertical-align: middle;">
+  		<span class="carouselDot" onclick="currentSlide(1)"></span> 
+  		<span class="carouselDot" onclick="currentSlide(2)"></span> 
+  		<span class="carouselDot" onclick="currentSlide(3)"></span> 
+	</div>
+	</td>
+	
 	`;
 
   	document.getElementById("carouselTR").innerHTML += s;

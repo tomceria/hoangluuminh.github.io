@@ -734,6 +734,7 @@ function getKindName (itemID) {
 }
 
 window.onload = function() {
+	
 	if (window.localStorage.getItem ('signedinID')==null)
 		getTopBar_NoMember();
 	else
@@ -743,7 +744,6 @@ window.onload = function() {
 		getAdminPage();
 		return;
 	}
-
 	getLandingPage();
 	getSearchBar();
 	getCartBtnNum();
@@ -751,6 +751,7 @@ window.onload = function() {
 
 	if (splitter[1]==null) {
 		getCarousel();
+		initCarousel();
 		getFeaturedPage();
 	}
 	else if (splitter[1]=="register") {
