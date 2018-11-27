@@ -36,5 +36,5 @@ function showSlides(n) {
   dots[slideIndex-1].className += " carouselActive";
 
   if (n==null)
-  	setTimeout(showSlides, 4000);
+  	setTimeout(showSlides, 5000);
 }
