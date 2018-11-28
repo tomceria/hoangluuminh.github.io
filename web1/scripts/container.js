@@ -563,16 +563,19 @@ function getCarousel () {
 	var s = "";
 	
 	s += `
-	<td colspan="4" min-height="350px" style="background: white; border: none; vertical-align: top;">
+	<td colspan="4" height="250px" style="background: white; border: none; vertical-align: top;">
 		<div class="carouselContainer">
 			<div class="carouselDiv carouselFade">
-				<img src="images/carousel1.png" style="width: 100%"/>
+				<img src="images/caro4.jpg" style="width: 100%"/>
 			</div>
 			<div class="carouselDiv carouselFade">
-				<img src="images/carousel2.png" style="width: 100%"/>
+				<img src="images/caro1.jpg" style="width: 100%"/>
 			</div>
 			<div class="carouselDiv carouselFade">
-				<img src="images/carousel3.png" style="width: 100%"/>
+				<img src="images/caro2.jpg" style="width: 100%"/>
+			</div>
+			<div class="carouselDiv carouselFade">
+				<img src="images/caro3.jpg" style="width: 100%"/>
 			</div>
 			<a class="carouselPrev" onclick="plusSlides(-1)">&#10094;</a>
  			<a class="carouselNext" onclick="plusSlides(1)">&#10095;</a>
@@ -582,6 +585,7 @@ function getCarousel () {
   		<span class="carouselDot" onclick="currentSlide(1)"></span> 
   		<span class="carouselDot" onclick="currentSlide(2)"></span> 
   		<span class="carouselDot" onclick="currentSlide(3)"></span> 
+  		<span class="carouselDot" onclick="currentSlide(4)"></span> 
 	</div>
 	</td>
 	
