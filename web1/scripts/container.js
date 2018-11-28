@@ -32,6 +32,9 @@ function getLandingPage () {
 	<div class = "content">
 		
 		<aside id = "sidebar">
+			<div id = "searchDiv">
+				<!-- JAVASCRIPT INSERT SEARCH -->
+			</div>
 			<!-- JAVASCRIPT INSERT MENU -->
 		</aside>
 			
@@ -69,7 +72,6 @@ function getAdminPage () {
 					text-align: center;
 					color: azure">Danh sách sản phẩm</div>
 			<main id = "adminmain">
-				<!--<h1>Hello world</h1><br>-->
 				<!-- JAVASCRIPT INSERT MAIN -->
 				
 			</main>			

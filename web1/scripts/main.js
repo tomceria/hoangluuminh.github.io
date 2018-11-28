@@ -13,12 +13,19 @@ class SanPham {
 var menu = new Array ();
 var menuLabel = new Array ("Áo", "Quần", "Nón", "Giày", "Dép", "Balo");
 var menuUrl = new Array ("ao", "quan", "non", "giay", "dep", "balo");
-menu[0] = new Array ("Áo", "Áo thun nam", "Áo sơ mi nam ","Áo len nữ","Áo thun nữ");
+menu[0] = new Array ("Áo", "Áo thun nam", "Áo sơ mi nam ", "Áo len nữ", "Áo thun nữ");
 menu[1] = new Array ("Quần", "Quần thun", "Quần jean");
 menu[2] = new Array ("Nón", "Nón kết", "Nón snapback");
 menu[3] = new Array ("Giày","Giày thể thao","Giày công sở");
 menu[4] = new Array ("Dép","Dép lê","Sandal");
 menu[5] = new Array ("Balo", "Balo du lịch", "Túi đeo chéo", "Túi xách");
+var itemKind = new Array ();
+itemKind[0] = new Array ("A", "AT", "AS", "AL", "ATN");
+itemKind[1] = new Array ("Q", "QT", "QJ");
+itemKind[2] = new Array ("N", "NK", "NS");
+itemKind[3] = new Array ("G","GI", "GICS");
+itemKind[4] = new Array ("D","DL", "DS");
+itemKind[5] = new Array ("B", "BL", "TDC", "TX");
 
 
 // HREF
@@ -72,13 +79,13 @@ item[36] = new SanPham ("NS-006", "46.000", "Nón snapback Power", "Julie Caps"
 item[37] = new SanPham ("NS-007", "73.222", "Nón snapback Eagle",  "Julie Caps", "Xám Đỏ", "images/NS/NS-007.jpg", 0);
 item[38] = new SanPham ("NS-008", "23.222", "Nón snapback Power",  "Julie Caps", "Đen Nâu Camo", "images/NS/NS-008.jpg", 0);
 item[39] = new SanPham ("BL-001", "328.522", "Balo ONCADA",  "Adidas Originals", "Đen Cam", "images/BL/BL-001.jpg", 0);
-item[40] = new SanPham ("BL-002", "255.662", "Balo Supreme BLS201",  "Supreme (replica)", "Đen", "images/BL/BL-002.jpg", 0);
+item[40] = new SanPham ("BL-002", "255.662", "Balo Supreme BLS201",  "Supreme", "Đen", "images/BL/BL-002.jpg", 0);
 item[41] = new SanPham ("BL-003", "159.111", "Balo Puma Mens Pro",  "Puma", "Đỏ Đen", "images/BL/BL-003.jpg", "210.000");
 item[42] = new SanPham ("BL-004", "421.000", "Balo Vans Galaxy print",  "Vans", "Xanh trắng", "images/BL/BL-004.jpg", "488.000");
 item[43] = new SanPham ("TDC-002", "128.000", "Túi đeo chéo Nike logo xéo", "Nike", "Đen", "images/TDC/TDC-002.jpg", 0);
 item[44] = new SanPham ("TDC-001", "224.455", "Túi đeo chéo Nike logo to",  "Nike", "Đen", "images/TDC/TDC-001.jpg", 0);
 item[45] = new SanPham ("TDC-003", "127.000", "Túi đeo chéo Puma SC102",  "Puma", "Xám ", "images/TDC/TDC-003.jpg", 0);
-item[46] = new SanPham ("TDC-004", "225.030", "Túi đeo chéo Supreme họa tiết", "Supreme (replica)", "Tím", "images/TDC/TDC-004.jpg", 0);
+item[46] = new SanPham ("TDC-004", "225.030", "Túi đeo chéo Supreme họa tiết", "Supreme", "Tím", "images/TDC/TDC-004.jpg", 0);
 item[47] = new SanPham ("TDC-005", "321.130", "Tui đeo chéo Nike", "Nike", "Trắng Xanh Đen", "images/TDC/TDC-005.jpg", 0);
 item[48] = new SanPham ("BL-006", "428.335", "Balo Vans Old Skool", "Vans", "Xanh dương", "images/BL/BL-005.jpg", 0);
 item[49] = new SanPham ("BL-007", "322.358", "Balo  Đen Adidas Training CF9008",  "Adidas", "Đen", "images/BL/BL-006.jpg", 0);
@@ -150,13 +157,44 @@ item[110] = new SanPham ("DS-005", "221.000", "Sandal phong cách hàn quốc"
 function getSearchBar () {
 	var s = "";
 
-	s += `<div style="width: 200px; min-height: 30px; float: left">
-			<input id="searchBar" type="text" name="search" placeholder="Tìm kiếm" style="width: 75%">
-			<input id="searchBtn" type="image" src="images/search-white.png" name="goSearch" value=" " style="width: 20%" onclick="goSearch(document.getElementById('searchBar').value)"/>
+	s += `<div id="searchDiv" style="width: 200px; min-height: 30px; float: left">
+			<input id="searchBar" type="text" name="search" placeholder="Tìm kiếm">
+			<input id="searchBtn" type="image" src="images/search-white.png" name="goSearch" value=" " onclick="goSearch(document.getElementById('searchBar').value)"/>
+			<input id="searchExpand" type="button" value="↓  Tìm kiếm nâng cao  ↓" style="margin-top: 1em" onclick="getAdvancedSearchBar()" />
+			<hr>
 		</div>`;
 
 	/* s += `</script>`;	*/
-	document.getElementById("sidebar").innerHTML += s;
+	document.getElementById("searchDiv").innerHTML = s;
+}
+
+function getAdvancedSearchBar () {
+	var s = "";
+
+	s += `<div id="searchDiv" style="width: 200px; min-height: 30px; float: left">
+			<input id="searchBar" type="text" name="search" placeholder="Tìm kiếm nâng cao">
+			<input id="searchBtn" type="image" src="images/search-white.png" name="goSearch" value=" " onclick="goAdvancedSearch(document.getElementById('searchBar').value, document.getElementById('advSearchKind').value, document.getElementById('advSearchFrom').value, document.getElementById('advSearchTo').value)"/>
+			<div style="float: left; clear: both; padding-left: 5px">
+				<p style="margin: 0.25em 0">Phân loại</p>
+				<select id="advSearchKind" style="width: 100px">
+					<option value="all">Tất cả</option>`;
+			for (var i=0; i<menu.length; i++) {
+				s += `<option disabled>---</option>`;
+				for (var j=0; j<menu[i].length; j++) {
+					s += `<option value="` + i + `&` + j + `">` + menu[i][j] + `</option>`;
+				}
+			}
+	s += 		`</select>
+				<p style="margin: 0.25em 0">Giá</p>
+				<input id="advSearchFrom" type="text" style="width: 70px" placeholder="Từ"/> ~ <input id="advSearchTo" type="text" style="width: 70px" placeholder="Đến"/>
+
+			</div>
+			<input id="searchExpand" type="button" value="↑  Tìm kiếm thường  ↑" style="margin-top: 1em" onclick="getSearchBar()" />
+			<hr>
+		</div>`;
+
+	/* s += `</script>`;	*/
+	document.getElementById("searchDiv").innerHTML = s;
 }
 
 function getCartBtnNum () {
@@ -464,6 +502,62 @@ function getProductWindow () {
 					items.push (item[i]);
 			}
 		}
+		// Filter products (ADVANCED SEARCH)
+		if (params[0].split("=")[0]=="advancedsearch") {
+			var searchKeyword = params[0].split("=")[1];
+			searchKeyword = searchKeyword.toLowerCase();
+			for (var i=1; i<item.length; i++) {
+				var comparator = getComparator (item[i]);
+				var keywordSplitted = searchKeyword.split("+");
+				var count=0;
+				for (var j=0; j<keywordSplitted.length; j++)
+					if (comparator.indexOf(keywordSplitted[j])!=-1)
+						count++;
+				if (count == keywordSplitted.length) {
+					//index.html?advancedsearch=keyword&0&page&kind&from&to
+					//
+					var added=0;
+					var kind = params[3];
+					var priceFrom = parseInt(params[4].replace(/\./g, ''));
+					var priceTo = parseInt(params[5].replace(/\./g, ''));
+					
+					if (kind=="all") {
+						items.push (item[i]);
+						continue;
+					}
+					for (var j=0; j<itemKind.length; j++) {
+						if (kind==itemKind[j][0]) {
+							if (itemKind[j].indexOf(item[i].id.split('-')[0])!=-1) {
+								items.push (item[i]);
+								added=1;
+								break;
+							}
+						}
+						else {
+							if (kind == item[i].id.split('-')[0]) {
+								items.push (item[i]);
+								added=1;
+								break;
+							}
+						}
+					}
+					console.debug (priceTo);
+					if (!parseInt(priceFrom) || priceFrom < 0) {
+						priceFrom = 0;
+					}
+					if (!parseInt(priceTo)) {
+						priceTo = 99999999;
+					}
+					else if (priceTo < 0)
+						priceTo = 0;
+					var newPrice = parseInt(item[i].price.replace(/\./g, ''));
+					console.debug (newPrice + " " + priceFrom + " " + priceTo);
+					if (added==1 && (newPrice < priceFrom || newPrice > priceTo))
+						items.pop();
+					//
+				}
+			}
+		}
 		// Product detail
 		else if (params[0].split("=")[0]=="detail") {
 			var itemID = params[0].split("=")[1];
@@ -567,6 +661,22 @@ function goSearch (keyword) {
 	keyword = keyword.replace (/ /g, "+");						//OPTIONAL
 	s += keyword;
 	s += `&0&1`;
+	window.location.href = s;
+}
+
+function goAdvancedSearch (keyword, kind, priceFrom, priceTo) {
+	//index.html?advancedsearch=keyword&0&page&kind&from&to
+	var s = `index.html?advancedsearch=`;
+	keyword = removeTone (keyword);
+	keyword = keyword.replace (/ /g, "+");						//OPTIONAL
+	s += keyword;
+	s += '&0&1';
+	if (kind=="all")
+		s += '&all';
+	else
+		s += '&'+itemKind[kind.split('&')[0]][kind.split('&')[1]];
+	s += '&'+priceFrom;
+	s += '&'+priceTo;
 	window.location.href = s;
 }
 

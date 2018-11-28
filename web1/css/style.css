@@ -292,8 +292,11 @@ nav table td:hover {
 	background: #FFFFFF;
 }
 
+/* SEARCH */
+
 #searchBar {
 	float: left;
+	width: 75%;
 	margin: 0 0 0 1px;
 	padding: 0 10px;
 	height: 30px;
@@ -302,24 +305,55 @@ nav table td:hover {
 
 #searchBtn {
 	float: right;
+	width: 20%;
 	margin: 0 1px 0 0;
 	/*padding: 0 10px;*/
 	height: 30px;
 	border: thin solid #D6D6D6;
 	background: #ff9700;
+	cursor: pointer;
 
 	transition-duration: 0.1s;
 }
 
-#searchBtn:hover {
+#searchExpand {
+	float: left;
+	width: 99%;
+	margin: 0 1px 0 1px;
+	padding: 0 10px;
+	height: 20px;
+	background: #ff9700;
+	border: thin solid #D6D6D6;
+	color: white;
+	cursor: pointer;
+
+	transition-duration: 0.1s;
+}
+
+#searchBtn:hover, #searchExpand:hover {
 	background: #ffb344;
 }
+
+/* end SEARCH */
 
 #sidebar {
 	width: 20%;
 	float: left;
 	/*background: #368BB9;*/
 	padding: 1em 0em;
+}
+
+#sidebar hr {
+	display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #D6D6D6;
+    margin: 0.5em 0;
+    padding: 0; 
+
+    float: left;
+    clear: both;
+    width: 100%;
 }
 
 #sidebar table {
@@ -399,10 +433,6 @@ nav table td:hover {
 
 #sidebar table tr td div li a:hover {
 	background: #ffffff;
-}
-
-#sidebar p {
-	color: #FFFFFF;
 }
 
 /* end SUB MENU */
