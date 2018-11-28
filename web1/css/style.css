@@ -451,13 +451,14 @@ nav table td:hover {
 	margin: 5px 5px;
 	width: 180px;
 	height: 325px;
-	border: thin solid #368bb9;
+	border: thin solid #d6d6d6;
 
 	transition-duration: 0.2s;
 }
 
 #main > #productDiv:hover {
 	background: #b7e5ff;
+	border: thin solid #368bb9;
 }
 
 #main > #productDiv img {

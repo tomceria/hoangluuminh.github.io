@@ -165,8 +165,13 @@ function getCartBtnNum () {
 	if (itemArray.length <= 0)
 		return;
 
+	var amount = 0;
+	for (var i=0; i<itemArray.length; i++) {
+		amount += parseInt(window.localStorage.getItem ("item"+itemArray[i]));
+	}
+
 	s += `<div id="cartBtnNum">
-			<p>` + itemArray.length + `</p>
+			<p>` + amount + `</p>
 		</div>`;
 
 	document.getElementById("cartBtn").innerHTML += s;

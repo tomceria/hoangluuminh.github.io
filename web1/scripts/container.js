@@ -347,7 +347,7 @@ function getProductDetail (id) {
 	var s = "";
 
 	s += `<div style="float: left">
-			<img src="` + item[id].image + `" width="200" height="200">
+			<img src="` + item[id].image + `" width="200" height="200" style="margin-top: 50px">
 		</div>
 		<div id="productDetail">
 			<h1>` + item[id].name + `</h1>
@@ -386,7 +386,9 @@ function getCartView () {
 	var s = "";
 	var itemArray = getCartList();
 
-	s += `<h1>Giỏ hàng</h1>`
+	s += `<h1>Giỏ hàng</h1>`;
+		if (itemArray.length < 1)
+			s += `<h3>Giỏ hàng trống</h3>`;
 		for (var i=0; i<itemArray.length; i++) {
 			var itemID = itemArray[i];
 			var itemAmount = window.localStorage.getItem ("item"+itemID);
@@ -467,7 +469,7 @@ function getOrderView () {
 					<p>` + time.toLocaleDateString() + ` ` + time.toLocaleTimeString() + `</p>
 					<br>`;
 			for (var i=0; i<amount; i++) {
-				s += `<p>` + item[itemArray[i]].name + ` [` + itemArrayAmount[i] + `]: ` + parseInt(item[itemArray[i]].price.replace(/\./g, ''))*itemArrayAmount[i] + `₫</p>`;
+				s += `<p>` + item[itemArray[i]].name + ` [` + itemArrayAmount[i] + `]: <b>` + parseInt(item[itemArray[i]].price.replace(/\./g, ''))*itemArrayAmount[i] + `₫</b></p>`;
 			}
 			s +=	`<br>
 					<p>Thành tiền: <span class="cartItemPrice">` + total + `₫</span></p>
