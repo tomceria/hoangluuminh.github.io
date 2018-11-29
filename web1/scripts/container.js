@@ -65,11 +65,7 @@ function getAdminPage () {
 		<div id="optionview" ></div>			
 	</nav>
 	<div class = "content">
-		<div style="background-color: skyblue; 
-					font-size: 20px; 
-					text-align: center;
-					color: azure">Danh sách sản phẩm</div>
-			<main id = "adminmain">
+			<main id = "adminmain" style="min-height: 700px">
 				<!--<h1>Hello world</h1><br>-->
 				<!-- JAVASCRIPT INSERT MAIN -->
 				
@@ -477,6 +473,12 @@ function getOrderView () {
 			s +=	`<br>
 					<p>Thành tiền: <span class="cartItemPrice">` + total + `₫</span></p>
 				</div>
+				<div class="cartOptions">`;
+				if (window.localStorage.getItem('order'+dem+'status')=='delivering')
+					s+=`<p style="color: green">Đã xử lý</p>`;
+				else
+					s+=`<p>Đang xử lý</p>`;
+			s +=`</div>
 			</div>
 			`;
 			document.getElementById("main").innerHTML = s + document.getElementById("main").innerHTML;			//Xuất ngược (addToHead)

@@ -648,7 +648,7 @@ main #pageBtnActive > p {
 }
 
 .cartOptions {
-	float: left;
+	float: right;
 	width: 100px;
 	min-height: 100px;
 	padding: 10px;

@@ -508,7 +508,6 @@ function getProductWindow () {
 					else if (priceTo < 0)
 						priceTo = 0;
 					var newPrice = parseInt(item[i].price.replace(/\./g, ''));
-					console.debug (newPrice + " " + priceFrom + " " + priceTo);
 					if (added==1 && (newPrice < priceFrom || newPrice > priceTo))
 						items.pop();
 					//
