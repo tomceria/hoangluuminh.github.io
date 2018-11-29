@@ -480,7 +480,7 @@ function getProductWindow () {
 					
 					if (kind=="all") {
 						items.push (item[i]);
-						continue;
+						added=1;
 					}
 					for (var j=0; j<itemKind.length; j++) {
 						if (kind==itemKind[j][0]) {

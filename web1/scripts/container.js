@@ -492,6 +492,7 @@ function getPageBtn (page, params) {
 	var s = "";
 	var pageAltered = page;
 	var kind = "pageBtn";
+	var remainder = window.location.href.split("&0&"+params[2])[1];		// cho advancedSearch
 
 	if (page == params[2])
 		kind = "pageBtnActive";
@@ -504,7 +505,7 @@ function getPageBtn (page, params) {
 
 	s += `<div id="` + kind + `">`;
 	if (kind == "pageBtn")
-		s += `<a href="index.html?` + params[0] + `&` + params[1] + `&` + pageAltered + `">` + page + `</a>`;
+		s += `<a href="index.html?` + params[0] + `&` + params[1] + `&` + pageAltered + remainder + `">` + page + `</a>`;
 	else
 		s += `<p>` + page + `</p>`;
 	s += `</div>`;
@@ -555,7 +556,13 @@ function getTopBar_IsMember () {
 				<p><a href="javascript:void(0);" onclick="signout()">Đăng xuất</a></p>
 				<br>
 			</div>
-		</div>
+		</div>`;
+		if (username == "admin") {
+		s += `<div class="topbarBtn">
+			<p><a href="index.html?admin">Quản trị</a></p>
+		</div>`;
+		}
+	s +=`
 	</div>
 	`;
 
