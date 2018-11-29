@@ -1,5 +1,144 @@
 // code adminPage
 //  ADMIN START
+function getOptionProduct(){
+	var s="";
+	s+=`<div>
+			<select id="viewproducts" size="auto" onChange="return adminSelectView(this)" >
+				<option value="0" hidden="true">[Chọn danh mục cần xem] </option>
+				<option value="1">Tất cả sản phẩm </option>
+				<option value="2">Áo </option>
+				<option value="3">Quần </option>
+				<option value="4">Nón </option>
+				<option value="5">Giày </option>
+				<option value="6">Dép </option>
+				<option value="7">Balo </option>
+			</select>
+		</div>`;
+	document.getElementById("optionview").innerHTML +=s;
+}
+function getListOrder(){
+	var s="";
+	s=setListOrder();
+	document.getElementById("adminmain").innerHTML=s;
+}
+function getOrderDate(){
+	var s="";
+	s+=`
+		<div style="clear:both; float:left"><input type="date" id="startdate" placeholder="Từ ngày"> ~</div>
+		<div style="float:left"><input type="date" id="enddate" placeholder="Đến ngày"> </div>
+		<div style="float:left"><input type="button" name="viewdateorder" value="Tìm kiếm"> </div>
+		`;
+	document.getElementById("optionview").innerHTML =s;
+}
+function getListOrder(){
+    var s="";
+    s=setListOrder();
+    document.getElementById("adminmain").innerHTML=s;
+}
+//void solveDate(String ngaysinh) {
+//		String s="";
+//		int[] a=new int [3];
+//		int d=0;
+//		for(int i=0;i<ngaysinh.length();++i) {
+//			if( ngaysinh.charAt(i)>='0'&&ngaysinh.charAt(i)<='9')
+//				s+=ngaysinh.charAt(i);
+//			else { a[d]=Integer.parseInt(s)   ; ++d;  s=""; }
+//		}
+//		a[d]= Integer.parseInt(s) ;
+//		this.ngay=a[0];
+//		this.thang=a[1];
+//		this.nam=a[2];
+//	}
+
+function setListOrder(){
+	var bang="";
+    var tam="";
+    tam+=`<table border="1" style="border-collapse: collapse">
+        <tr>
+            <td width="50px" align="center" bgcolor="a39c84"><p>STT</p></td>
+			<td width="150px" align="center" bgcolor="a39c84"><p>Khách hàng</p></td>
+            <td width="350px" align="center" bgcolor="a39c84"><p>Đơn hàng</p></td>
+			<td width="150px" align="center" bgcolor="a39c84"><p>Thành tiền</p></td>
+            <td width="150px" align="center" bgcolor="a39c84"><p>Thời gian</p></td>
+            <td width="100px" align="center" bgcolor="a39c84"><p>Trạng thái</p></td>
+            <td width="50px" align="center" bgcolor="a39c84"><button name="save" onclick="savedelivering()">Lưu</button></td>
+        </tr>`;
+    var dem=0;
+    while (true) {
+		var namecheck;
+		namecheck= "solve"+dem;
+		//alert(namecheck);
+        var s = "";
+        var amount;
+        var total;
+        var time;
+        var itemArray = new Array();
+        var itemArrayAmount = new Array();
+ 		
+        if (window.localStorage.getItem("order"+dem)==null)
+            break;
+// 		var startdate = document.getElementById("startdate").value;
+//		var enddate = document.getElementById("enddate").value;
+//		alert(startdate);alert(enddate);
+        var orderString = window.localStorage.getItem("order"+dem);
+		var status = window.localStorage.getItem("order"+dem+"status");
+		//alert(status);
+		//alert(orderString);
+        //console.debug (dem + ": " + orderString);
+		var memberID = orderString.split('/')[0].split(' ')[0].split('=')[1];
+		var name = window.localStorage.getItem ("user"+memberID);
+ 
+        amount = parseInt(orderString.split('/')[0].split(' ')[1].split('=')[1]);
+        total = parseInt(orderString.split('/')[0].split(' ')[2].split('=')[1]);
+        time = new Date( parseInt(orderString.split('/')[0].split(' ')[3].split('=')[1]) );
+        for (var i=0; i<amount; i++) {
+            itemArray.push (parseInt(orderString.split('/')[1].split(' ')[i].split('=')[0]));
+            itemArrayAmount.push (parseInt(orderString.split('/')[1].split(' ')[i].split('=')[1]));
+        }
+ 
+        s+=`<tr>
+        <td align="center" bgcolor="e5dfc9"><p>` + dem + `</p></td>
+		<td align="center" ><p>` + name + `</p></td>
+        <td>`;         
+        for (var i=0; i<amount; i++) {
+            s += `<p>` + item[itemArray[i]].name + ` [` + itemArrayAmount[i] + `]: <b>` + parseInt(item[itemArray[i]].price.replace(/\./g, ''))*itemArrayAmount[i] + `₫</b></p>`;
+        }
+		s+=`</td>`
+        s+=`<td align="center"><p><span class="cartItemPrice">` + total + `₫</span></p></td>`;
+        s+=`<td align="center"><p>` + time.toLocaleDateString() + `<br> ` + time.toLocaleTimeString() + `</p></td>`;
+		
+		if(status=="delivering") {
+			s+=`<td align="center"><p>Đã xử lý</p></td>
+        	<td align="center"><input type="checkbox" id="`+namecheck+`" value="delivering" checked==true></td>
+        	</tr>`;		
+		}
+		else {
+			s+=`<td align="center"><p>Chưa xử lý</p></td>
+        	<td align="center"><input type="checkbox" id="`+namecheck+`" value="delivering"></td>
+        	</tr>`;
+		}
+        //alert(document.getElementById(namecheck).value);
+        bang=s+bang;
+        //bang+=s;
+        dem++;
+    }
+    bang+=`</table>`;
+    tam+=bang;
+    return tam;
+}
+function savedelivering(){
+//  alert("helo");
+    var dem=0;
+    while(true){
+        if(window.localStorage.getItem("order"+dem) == null) break;
+        var check="solve"+dem;
+        if(document.getElementById(check).checked==true)
+            window.localStorage.setItem("order"+dem+"status", "delivering");
+		else window.localStorage.setItem("order"+dem+"status","");
+        dem++;
+    }
+    window.location.href="index.html?admin?order";
+}
 function getallproducts(){
 	var itemArray = new Array();
 	for(var i=1;i<item.length;++i){
@@ -94,7 +233,7 @@ function viewProductsAdmin(number){
 					sa += `</p> </td>`
 			sa +=`<td style="width: 150px"> 
 					<input type="button" name ="editproduct" value="sửa" onClick="">
-					<input type="button" name ="deleteproduct" value="xóa" onClick="removeproduct(`+item[itemID].id +`)">
+					<button name ="deleteproduct" onclick="removeproduct()">Xóa</button>
 				  </td>`
 			sa+= `</tr>`;					
 		}
@@ -116,7 +255,7 @@ function adminSelectView(){
 	}
 	document.getElementById("adminmain").innerHTML = a;
 }
-function removeproduct(id){
+function removeproduct(){
 	alert("hello");
 }
 // ADD NEW PRODUCT

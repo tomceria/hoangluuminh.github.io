@@ -52,33 +52,34 @@ function getLandingPage () {
 function getAdminPage () {
 	var s = "";
 	s += `
-	<div  style="height: 20px">
-		<div style="float:left;">
-			<select id="viewproducts" size="auto" onChange="return adminSelectView(this)" >
-				<option value="0" hidden="true">[Chọn danh mục cần xem] </option>
-				<option value="1">Tất cả sản phẩm </option>
-				<option value="2">Áo </option>
-				<option value="3">Quần </option>
-				<option value="4">Nón </option>
-				<option value="5">Giày </option>
-				<option value="6">Dép </option>
-				<option value="7">Balo </option>
-			</select>
-		</div>
-	</div>
+	<nav >
+		<table>
+			<tbody>
+				<tr>
+					<td><a href="index.html?admin?product" target="_self" title="Xem sản phẩm" >Xem sản phẩm</a>
+					</td>
+					<td><a href="index.html?admin?order" target="_self" title="Xem đơn hàng">Xem đơn hàng</a></td>
+				</tr>
+			</tbody>					
+		</table>
+		<div id="optionview" ></div>			
+	</nav>
 	<div class = "content">
 		<div style="background-color: skyblue; 
 					font-size: 20px; 
 					text-align: center;
 					color: azure">Danh sách sản phẩm</div>
 			<main id = "adminmain">
+				<!--<h1>Hello world</h1><br>-->
 				<!-- JAVASCRIPT INSERT MAIN -->
 				
 			</main>			
 		</div>
 	`;
-
 	document.getElementById("container").innerHTML = s;
+	var splitted = window.location.href.split("?");
+	if (splitted[2]==="product") getOptionProduct();
+	if (splitted[2]==="order") {getListOrder();getOrderDate();}
 }
 
 function getRegisterPage () {
