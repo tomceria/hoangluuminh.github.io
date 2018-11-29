@@ -154,49 +154,6 @@ item[110] = new SanPham ("DS-005", "221.000", "Sandal phong cách hàn quốc"
 
 /* ------------------------ */
 
-function getSearchBar () {
-	var s = "";
-
-	s += `<div id="searchDiv" style="width: 200px; min-height: 30px; float: left">
-			<input id="searchBar" type="text" name="search" placeholder="Tìm kiếm">
-			<input id="searchBtn" type="image" src="images/search-white.png" name="goSearch" value=" " onclick="goSearch(document.getElementById('searchBar').value)"/>
-			<input id="searchExpand" type="button" value="↓  Tìm kiếm nâng cao  ↓" style="margin-top: 1em" onclick="getAdvancedSearchBar()" />
-			<hr>
-		</div>`;
-
-	/* s += `</script>`;	*/
-	document.getElementById("searchDiv").innerHTML = s;
-}
-
-function getAdvancedSearchBar () {
-	var s = "";
-
-	s += `<div id="searchDiv" style="width: 200px; min-height: 30px; float: left">
-			<input id="searchBar" type="text" name="search" placeholder="Tìm kiếm nâng cao">
-			<input id="searchBtn" type="image" src="images/search-white.png" name="goSearch" value=" " onclick="goAdvancedSearch(document.getElementById('searchBar').value, document.getElementById('advSearchKind').value, document.getElementById('advSearchFrom').value, document.getElementById('advSearchTo').value)"/>
-			<div style="float: left; clear: both; padding-left: 5px">
-				<p style="margin: 0.25em 0">Phân loại</p>
-				<select id="advSearchKind" style="width: 100px">
-					<option value="all">Tất cả</option>`;
-			for (var i=0; i<menu.length; i++) {
-				s += `<option disabled>---</option>`;
-				for (var j=0; j<menu[i].length; j++) {
-					s += `<option value="` + i + `&` + j + `">` + menu[i][j] + `</option>`;
-				}
-			}
-	s += 		`</select>
-				<p style="margin: 0.25em 0">Giá</p>
-				<input id="advSearchFrom" type="text" style="width: 70px" placeholder="Từ"/> ~ <input id="advSearchTo" type="text" style="width: 70px" placeholder="Đến"/>
-
-			</div>
-			<input id="searchExpand" type="button" value="↑  Tìm kiếm thường  ↑" style="margin-top: 1em" onclick="getSearchBar()" />
-			<hr>
-		</div>`;
-
-	/* s += `</script>`;	*/
-	document.getElementById("searchDiv").innerHTML = s;
-}
-
 function getCartBtnNum () {
 	var s = "";
 	var itemArray = getCartList();
@@ -575,6 +532,8 @@ function getProductWindow () {
 	console.debug ("after: " + itemStart + " " + itemEnd);
 
 	//Show products
+	if (items.length < 2)		// Tính cả sản phẩm rỗng items[0]
+		s += "<h3>Không có sản phẩm nào</h3>";
 	for (var i=itemStart; i<=itemEnd; i++) {
 		console.debug (i + " " + items[i].name);
 		s += getProduct (i, items);

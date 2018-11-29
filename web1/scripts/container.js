@@ -86,7 +86,7 @@ function getRegisterPage () {
 	s += `
 	<form name="register">
 		<table border="0" width="700px" style="margin: auto">
-			<tr   align="center"  bgcolor="aqua"> <td colspan="2">ĐĂNG KÝ THÀNH VIÊN</td> </tr>
+			<tr   align="center"  bgcolor="#ff9700" style="color: white"> <td colspan="2">ĐĂNG KÝ THÀNH VIÊN</td> </tr>
 			<tr cosplan="2">
 			<td><span style="color: red;">(*) </span>: bắt buộc phải nhập</td>
 			</tr>
@@ -528,8 +528,8 @@ function getTopBar_NoMember () {
 					<input type="password" name="password" size="20"><br>
 					<div id="signinError">
 					</div>
-					<input type="submit" name="signin" value ="Đăng nhập" style="margin: 1em 0 1em 1em">
-					<input type="button" name="signup" value ="Đăng ký" style="margin: 1em 0" onClick="window.location.href='index.html?register'">
+					<input type="submit" name="signin" value ="Đăng nhập" style="margin: 1em 0 1em 1em; height: 20px">
+					<input type="button" name="signup" value ="Đăng ký" style="margin: 1em 0; height: 20px" onClick="window.location.href='index.html?register'">
 				</form>
 			</div>
 		</div>
@@ -560,6 +560,50 @@ function getTopBar_IsMember () {
 	`;
 
 	document.getElementById("topbar").innerHTML = s;
+}
+
+// SEARCH
+function getSearchBar () {
+	var s = "";
+
+	s += `<div id="searchDiv" style="width: 200px; min-height: 30px; float: left">
+			<input id="searchBar" type="text" name="search" placeholder="Tìm kiếm">
+			<input id="searchBtn" type="image" src="images/search-white.png" name="goSearch" value=" " onclick="goSearch(document.getElementById('searchBar').value)"/>
+			<input id="searchExpand" type="button" value="↓  Tìm kiếm nâng cao  ↓" style="margin-top: 0.5em" onclick="getAdvancedSearchBar()" />
+			<hr>
+		</div>`;
+
+	/* s += `</script>`;	*/
+	document.getElementById("searchDiv").innerHTML = s;
+}
+
+function getAdvancedSearchBar () {
+	var s = "";
+
+	s += `<div id="searchDiv" style="width: 200px; min-height: 30px; float: left">
+			<input id="searchBar" type="text" name="search" placeholder="Tìm kiếm nâng cao">
+			<input id="searchBtn" type="image" src="images/search-white.png" name="goSearch" value=" " onclick="goAdvancedSearch(document.getElementById('searchBar').value, document.getElementById('advSearchKind').value, document.getElementById('advSearchFrom').value, document.getElementById('advSearchTo').value)"/>
+			<div style="float: left; clear: both; padding-left: 5px">
+				<p style="margin: 0.25em 0">Phân loại</p>
+				<select id="advSearchKind" style="width: 100px">
+					<option value="all">Tất cả</option>`;
+			for (var i=0; i<menu.length; i++) {
+				s += `<option disabled>---</option>`;
+				for (var j=0; j<menu[i].length; j++) {
+					s += `<option value="` + i + `&` + j + `">` + menu[i][j] + `</option>`;
+				}
+			}
+	s += 		`</select>
+				<p style="margin: 0.25em 0">Giá</p>
+				<input id="advSearchFrom" type="text" style="width: 70px" placeholder="Từ"/> ~ <input id="advSearchTo" type="text" style="width: 70px" placeholder="Đến"/>
+
+			</div>
+			<input id="searchExpand" type="button" value="↑  Tìm kiếm thường  ↑" style="margin-top: 1em" onclick="getSearchBar()" />
+			<hr>
+		</div>`;
+
+	/* s += `</script>`;	*/
+	document.getElementById("searchDiv").innerHTML = s;
 }
 
 // CAROUSEL TR
