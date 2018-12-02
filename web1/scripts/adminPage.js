@@ -24,37 +24,12 @@ function getListOrder(){
 function getOrderDate(){
 	var s="";
 	s+=`
-		<div style="clear:both; float:left"><input type="date" id="startdate" placeholder="Từ ngày" onchange=""> ~</div>
-		<div style="float:left"><input type="date" id="enddate" placeholder="Đến ngày"> </div>
-		<div style="float:left"><input type="button" name="viewdateorder" value="Tìm kiếm"> </div>
+		<div style="clear:both; float:left"><input type="date" id="startdate"> ~</div>
+		<div style="float:left"><input type="date" id="enddate" > </div>
+		<div style="float:left"><input type="button" name="viewdateorder" value="Tìm kiếm" onclick="getListOrderDate()"> </div>
 		`;
 	document.getElementById("optionview").innerHTML =s;
 }
-//function dau(){
-//	//alert(document.getElementById("startdate").value);
-//	
-//	//alert
-//}
-function getListOrder(){
-    var s="";
-    s=setListOrder();
-    document.getElementById("adminmain").innerHTML=s;
-}
-//void solveDate(String ngaysinh) {
-//		String s="";
-//		int[] a=new int [3];
-//		int d=0;
-//		for(int i=0;i<ngaysinh.length();++i) {
-//			if( ngaysinh.charAt(i)>='0'&&ngaysinh.charAt(i)<='9')
-//				s+=ngaysinh.charAt(i);
-//			else { a[d]=Integer.parseInt(s)   ; ++d;  s=""; }
-//		}
-//		a[d]= Integer.parseInt(s) ;
-//		this.ngay=a[0];
-//		this.thang=a[1];
-//		this.nam=a[2];
-//	}
-
 function setListOrder(){
 	var bang="";
     var tam="";
@@ -81,24 +56,19 @@ function setListOrder(){
  		
         if (window.localStorage.getItem("order"+dem)==null)
             break;
-// 		var startdate = document.getElementById("startdate").value;
-//		var enddate = document.getElementById("enddate").value;
-//		alert(startdate);alert(enddate);
+		
         var orderString = window.localStorage.getItem("order"+dem);
 		var status = window.localStorage.getItem("order"+dem+"status");
 		var memberID = orderString.split('/')[0].split(' ')[0].split('=')[1];
 		var name = window.localStorage.getItem ("user"+memberID);
- 
+		
         amount = parseInt(orderString.split('/')[0].split(' ')[1].split('=')[1]);
         total = parseInt(orderString.split('/')[0].split(' ')[2].split('=')[1]);
         time = new Date( parseInt(orderString.split('/')[0].split(' ')[3].split('=')[1]) );
-//		alert(time);
-//		alert(time.getDate());
         for (var i=0; i<amount; i++) {
             itemArray.push (parseInt(orderString.split('/')[1].split(' ')[i].split('=')[0]));
             itemArrayAmount.push (parseInt(orderString.split('/')[1].split(' ')[i].split('=')[1]));
         }
- 
         s+=`<tr>
         <td align="center" bgcolor="e5dfc9"><p>` + dem + `</p></td>
 		<td align="center" ><p>` + name + `</p></td>
@@ -111,7 +81,7 @@ function setListOrder(){
         s+=`<td align="center"><p>` + time.toLocaleDateString() + `<br> ` + time.toLocaleTimeString() + `</p></td>`;
 		
 		if(status=="delivering") {
-			s+=`<td align="center"><p><span style="color:green;">Đã xử lý</span></p></td>
+			s+=`<td align="center"><p>Đã xử lý</p></td>
         	<td align="center"><input type="checkbox" id="`+namecheck+`" value="delivering" checked==true></td>
         	</tr>`;		
 		}
@@ -127,14 +97,88 @@ function setListOrder(){
     tam+=bang;
     return tam;
 }
+function getListOrderDate(){
+	var s="";
+	s=searchdate();
+	document.getElementById("adminmain").innerHTML=s;
+}
+function searchdate(){
+	var start;
+	var end;
+	if(document.getElementById("startdate").value!="")
+		start= document.getElementById("startdate").valueAsDate;
+	else start=new Date(1900,1,1,0,0,0);
+	if(document.getElementById("enddate").value!="")
+		end= document.getElementById("enddate").valueAsDate;
+	else end=new Date(3000,12,1,23,59,59);
+	end.setHours(23);end.setMinutes(59); end.setSeconds(59);
+	var bang="";
+    var tam="";
+    tam+=`<table border="1" style="border-collapse: collapse">
+        <tr>
+            <td width="50px" align="center" bgcolor="a39c84"><p>STT</p></td>
+			<td width="150px" align="center" bgcolor="a39c84"><p>Khách hàng</p></td>
+            <td width="350px" align="center" bgcolor="a39c84"><p>Đơn hàng</p></td>
+			<td width="150px" align="center" bgcolor="a39c84"><p>Thành tiền</p></td>
+            <td width="150px" align="center" bgcolor="a39c84"><p>Thời gian</p></td>
+            <td width="100px" align="center" bgcolor="a39c84"><p>Trạng thái</p></td>
+            <td width="50px" align="center" bgcolor="a39c84"><button name="save" onclick="savedelivering()">Lưu</button></td>
+        </tr>`;
+    var dem=0;
+    while (true) {
+		var namecheck;
+		namecheck= "solve"+dem;
+        var s = "";
+        var amount;
+        var total;
+        var time;
+        var itemArray = new Array();
+        var itemArrayAmount = new Array();
+ 		
+        if (window.localStorage.getItem("order"+dem)==null)
+            break;
+		var orderString = window.localStorage.getItem("order"+dem);
+        var time = new Date( parseInt(orderString.split('/')[0].split(' ')[3].split('=')[1]) );
+        if(time>=start && time<=end){
+			var status = window.localStorage.getItem("order"+dem+"status");
+			var memberID = orderString.split('/')[0].split(' ')[0].split('=')[1];
+			var name = window.localStorage.getItem ("user"+memberID);		
+        	amount = parseInt(orderString.split('/')[0].split(' ')[1].split('=')[1]);
+        	total = parseInt(orderString.split('/')[0].split(' ')[2].split('=')[1]);
+			for (var i=0; i<amount; i++) {
+				itemArray.push (parseInt(orderString.split('/')[1].split(' ')[i].split('=')[0]));
+				itemArrayAmount.push (parseInt(orderString.split('/')[1].split(' ')[i].split('=')[1]));
+			}
+			s+=`<tr>
+			<td align="center" bgcolor="e5dfc9"><p>` + dem + `</p></td>
+			<td align="center" ><p>` + name + `</p></td>
+			<td>`;         
+			for (var i=0; i<amount; i++) {
+				s += `<p>` + item[itemArray[i]].name + ` [` + itemArrayAmount[i] + `]: <b>` + parseInt(item[itemArray[i]].price.replace(/\./g, ''))*itemArrayAmount[i] + `₫</b></p>`;
+			}
+			s+=`</td>`
+			s+=`<td align="center"><p><span class="cartItemPrice">` + total + `₫</span></p></td>`;
+			s+=`<td align="center"><p>` + time.toLocaleDateString() + `<br> ` + time.toLocaleTimeString() + `</p></td>`;
 
-function getstartdate(){
-	//var startdate = document.getElementById("startdate").value;
-	//var enddate = document.getElementById("enddate").value;
-	//alert(startdate);//alert(enddate);
+			if(status=="delivering") {
+				s+=`<td align="center"><p>Đã xử lý</p></td>
+				<td align="center"><input type="checkbox" id="`+namecheck+`" value="delivering" checked==true></td>
+				</tr>`;		
+			}
+			else {
+				s+=`<td align="center"><p>Chưa xử lý</p></td>
+				<td align="center"><input type="checkbox" id="`+namecheck+`" value="delivering"></td>
+				</tr>`;
+			}
+			bang=s+bang;
+		}
+		dem++;
+    }
+    bang+=`</table>`;
+    tam+=bang;
+    return tam;
 }
 function savedelivering(){
-//  alert("helo");
     var dem=0;
     while(true){
         if(window.localStorage.getItem("order"+dem) == null) break;
@@ -146,6 +190,7 @@ function savedelivering(){
     }
     window.location.href="index.html?admin?order";
 }
+// product
 function getallproducts(){
 	var itemArray = new Array();
 	for(var i=1;i<item.length;++i){
@@ -227,7 +272,6 @@ function viewProductsAdmin(number){
 		  </tr>`
 		for (var i=0; i<itemArray.length; i++) {
 			var itemID = itemArray[i];
-			var code=item[itemID].id;
 			sa+=`<tr border="1" type="double" >`
 			+ `<td style="width:100px; margin-right:15px"><p>` + item[itemID].id + `</p></td>`
 			+`<td style="width: 200px"><p><span class="cartItemName">` + item[itemID].name + `</span></p></td>`
@@ -241,8 +285,8 @@ function viewProductsAdmin(number){
 					sa += `</p> </td>`
 			sa +=`<td style="width: 150px"> 
 					<input type="button" name ="editproduct" value="sửa" onClick="">
-					<button name ="deleteproduct" onclick="removeproduct('`+code+`')">Xóa</button>
-				  </td>`;
+					<button name ="deleteproduct" onclick="removeproduct()">Xóa</button>
+				  </td>`
 			sa+= `</tr>`;					
 		}
 	sa+=`</table>`
@@ -263,16 +307,8 @@ function adminSelectView(){
 	}
 	document.getElementById("adminmain").innerHTML = a;
 }
-function removeproduct( spID ){
-	var a=confirm("Bạn có chắc chắn xóa sản phẩm không "+spID);
-	if(a==true) {
-		alert("Sản phẩm đã được xóa");
-		window.location.href="index.html?admin?product";
-	}
-//	else {
-//		
-//	}
-	
+function removeproduct(){
+	alert("hello");
 }
 // ADD NEW PRODUCT
 function addnewproduct(){
@@ -348,8 +384,3 @@ function showimage(){
 	var image=document.formaddproduct.imgpro.value;
 	document.getElementById("image").innerHTML=`<div><img src="` + image+ `" width="100px" height="100px"/></div>`;
 }
-//window.onload = function(){
-//	var s="";
-//	s+=`<div style="height:500px"> </div>`
-//	document.getElementById("adminmain").innerHTML=s;
-//}
