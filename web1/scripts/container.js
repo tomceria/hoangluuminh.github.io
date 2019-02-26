@@ -194,35 +194,16 @@ function getContactPage () {
 	var s = "";
 
 	s += `
-	<b>Nhóm 1 - Phát triển ứng dụng Web 1 thầy Sang (Nhóm 6)</b><br>
+	<b>Phát triển ứng dụng Web 2 thầy Sang / cô Loan (Nhóm 5)</b><br>
 	Thành viên:<br>
-	<table border="1" cellpadding="10px" style="border-collapse: collapse">
-		<tr>
-			<th>Tên</th>
-			<th>Phân công</th>
-			<th>Email</th>
-		</tr>
-		<tr>
-			<td>Lưu Minh Hoàng</td>
-			<td>Cấu trúc, giao diện, javascript chính</td>
-			<td>hoangluuminh@icloud.com</td>
-		</tr>
-		<tr>
-			<td>Vũ Trường Giang</td>
-			<td>Trang Quản trị, trang Đăng ký, javascript</td>
-			<td>vuapha008@gmail.com</td>
-		</tr>
-		<tr>
-			<td>Đặng Đình Nhất Vinh</td>
-			<td>Branding, đồ họa, javascript</td>
-			<td>ddnv286@gmail.com</td>
-		</tr>
-		<tr>
-			<td>Nguyễn Văn Sỹ</td>
-			<td>Thông tin, hình ảnh sản phẩm</td>
-			<td>nguyenvansylhp@gmail.com</td>
-		</tr>
-	</table>
+	<ul>
+		<li>Hoàng</li>
+		<li>Hải</li>
+		<li>Kha</li>
+	</ul>
+	<br>
+	<hr>
+	Được phát triển dựa trên Đồ Án Web 1 của: Lưu Minh Hoàng, Vũ Trường Giang, Đặng Đình Nhất Vinh, Nguyễn Văn Sỹ
 	`;
 
 	document.getElementById("main").innerHTML = s;
@@ -304,42 +285,42 @@ function getFeaturedPage () {
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aDeals);
 		}
-	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?deals&0&1">Xem tất cả >></a></div>`;
+	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?deals&0&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Áo thun nam</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aAoNam);
 		}
-	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?ao&1&1">Xem tất cả >></a></div>`;
+	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?ao&1&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Áo thun nữ</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aAoNu);
 		}
-	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?ao&4&1">Xem tất cả >></a></div>`;
+	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?ao&4&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Quần</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aQuan);
 		}
-	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?quan&0&1">Xem tất cả >></a></div>`;
+	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?quan&0&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Nón</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aNon);
 		}
-	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?non&0&1">Xem tất cả >></a></div>`;
+	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?non&0&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Giày thể thao</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aGiay);
 		}
-	s += `	<div id="pageBtn" style="float: right; margin: 1em 0.5em"><a href="index.html?giay&1&1">Xem tất cả >></a></div>`;
+	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?giay&1&1">Xem tất cả >></a></div>`;
 
 	s += `<br><hr>`;
 
@@ -357,7 +338,7 @@ function getProductDetail (id) {
 			<table border="1" cellpadding="10px" style="border-collapse: collapse">
 				<tr>
 					<th>Mã SP</th>
-					<td width="300px">` + item[id].id +`</td>
+					<td>` + item[id].id +`</td>
 				</tr>
 				<tr>
 					<th>Thương hiệu</th>
@@ -415,10 +396,10 @@ function getCartView () {
 					</a>
 					<div class="cartOptions">
 						<p>Số lượng: </p>
-						<input type="button" name="amountDecrease" value="-" style="width: 10px; padding: 0" onclick="changeCartItemAmount(` + itemID + `, '-')"/>
+						<input type="button" name="amountDecrease" class="btn btn-light" value="-" style="width: 20px; padding: 0" onclick="changeCartItemAmount(` + itemID + `, '-')"/>
 						<input type="text" id="item1Amount" value="` + itemAmount +`" style="width: 30px" onchange="changeCartItemAmount(` + itemID + `, this.value)" />
-						<input type="button" name="amountIncrease" value="+" style="width: 10px; padding: 0" onclick="changeCartItemAmount(` + itemID + `, '+')"/>
-						<input type="button" name="deleteItem" value="Xóa" style="margin: 1.25em 0 0 2.5em" onclick="removeCartItem(` + itemID + `)"/>
+						<input type="button" name="amountIncrease" class="btn btn-light" value="+" style="width: 20px; padding: 0" onclick="changeCartItemAmount(` + itemID + `, '+')"/>
+						<input type="button" name="deleteItem" class="btn btn-light" value="Xóa" style="margin: 1.25em 0 0 1em" onclick="removeCartItem(` + itemID + `)"/>
 					</div>
 				</div>`;
 		}
@@ -429,8 +410,8 @@ function getCartView () {
 			</div>
 			<div style="float: left; clear: both; margin: 1em 0">`
 			if (totalCart(itemArray)>0)
-				s += `<input class="cartPay" type="button" name="checkout" value="Thanh toán" onclick="checkOut()"/>
-						<input class="cartClear" type="button" name="clear" value="Xóa hết" onclick="clearCart()"/>`;
+				s += `<input class="cartPay btn btn-success" type="button" name="checkout" value="Thanh toán" onclick="checkOut()"/>
+						<input class="cartClear btn btn-danger" type="button" name="clear" value="Xóa hết" onclick="clearCart()"/>`;
 	s +=	`</div>`;
 
 	document.getElementById("main").innerHTML += s;

@@ -100,6 +100,9 @@ img {
 	.topbarBtn > p > a {
 		line-height: 44px;
 	}
+	.topbarBtn:hover {
+		background: none;
+	}
 	#menuToggle, #textlogo {
 		display: block;
 	}
@@ -641,15 +644,18 @@ nav table td:hover {
 	margin: 0 auto 1em auto;
 }
 
-@media screen and (max-width:800px) {
+/* MAIN Scale and MOBILE */
+
+@media screen and (max-width:1199px) {
 	#main {
-		padding: 7em 0 1em 1.25em !important;
-		width: initial;
-		float: none;
+		padding: 1em 0 1em 1em !important;
+		width: 730px;
+		float: left;
 	}
 	#main > #productDiv {
 		width: 135px;
 		height: 290px;
+		margin: 3px;
 	}
 	#main > #productDiv img {
 		margin: 0 !important;
@@ -674,6 +680,39 @@ nav table td:hover {
 	}
 }
 
+@media screen and (max-width:991px) {
+	#main {
+		padding: 1em 1em 1em 2em !important;
+		width: 480px;
+		float: left;
+	}
+}
+
+@media screen and (max-width:800px) {
+	#main {
+		padding: 1em 3em 1em 3.95em !important;
+		width: initial;
+		float: none;
+	}
+}
+
+@media screen and (max-width:767px) {
+	#main {
+		padding: 1em 1em 1em 2.75em !important;
+	}
+}
+
+@media screen and (max-width:575px) {
+	#main {
+		padding: 7em 1.25em 1em 1.25em !important;
+	}
+	header {
+		height: 110px;
+	}
+}
+
+/* ebd MAIN Scale */
+
 /* end ITEM DISPLAY */
 
 /* ITEM DETAIL */
@@ -681,7 +720,10 @@ nav table td:hover {
 #main > #productDetail {
 	float: left;
 	margin-left: 2em;
-	width: 510px;
+	/*width: 510px;*/
+}
+#main h1 {
+	margin-bottom: 1em;
 }
 #main #detailPrice {
 	font-size: 25px;
@@ -749,7 +791,7 @@ main #pageBtnActive > p {
 .cartWindow {
 	float: left;
 	clear: both;
-	border: thin solid #368bb9;
+	border: 1px solid #d6d6d6;
 	width: 100%;
 	min-height: 100px;
 	margin: 0.25em 0;
@@ -758,12 +800,12 @@ main #pageBtnActive > p {
 }
 
 .cartWindow:hover {
-	background: #b7e5ff;
+	border: 1px solid #368bb9;
 }
 
 .cartItem {
 	float: left;
-	width: 550px;
+	/*width: 550px;*/
 	min-height: 100px;
 	padding: 10px;
 }
@@ -798,18 +840,22 @@ main #pageBtnActive > p {
 }
 
 .cartPay, .cartClear {
+	/*
 	font-size: 20px; 
 	padding: 0.5em; 
-	border: thin solid grey; 
+	border: thin solid grey;
+	*/
 }
 
 .cartPay:hover {
+	/*
 	background:green;
 	color: white;
+	*/
 }
 
 .cartClear:hover {
-	background:red;
+	/*background:red;*/
 }
 
 /* end CART DISPLAY */

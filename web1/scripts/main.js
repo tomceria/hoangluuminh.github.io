@@ -548,7 +548,7 @@ function getProductWindow () {
 	var noPages = Math.ceil((items.length-1)/12);
 	if (params[2]>0) {
 		s += "<br>";
-		s += "<div style=\"margin: 1em 10px; float: right; clear: both; width: initial; height: initial\">";
+		s += "<div style=\"clear: both; margin: 1em 10px; float: right; width: initial; height: initial\">";
 
 		if (params[2]>3 && noPages>5)
 			s += getPageBtn ("<<", params);
