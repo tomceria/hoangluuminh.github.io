@@ -81,7 +81,7 @@ function setListOrder(){
         s+=`<td align="center"><p>` + time.toLocaleDateString() + `<br> ` + time.toLocaleTimeString() + `</p></td>`;
 		
 		if(status=="delivering") {
-			s+=`<td align="center"><p>Đã xử lý</p></td>
+			s+=`<td align="center"><p style="color: green">Đã xử lý</p></td>
         	<td align="center"><input type="checkbox" id="`+namecheck+`" value="delivering" checked==true></td>
         	</tr>`;		
 		}
@@ -161,7 +161,7 @@ function searchdate(){
 			s+=`<td align="center"><p>` + time.toLocaleDateString() + `<br> ` + time.toLocaleTimeString() + `</p></td>`;
 
 			if(status=="delivering") {
-				s+=`<td align="center"><p>Đã xử lý</p></td>
+				s+=`<td align="center"><p style="color: green">Đã xử lý</p></td>
 				<td align="center"><input type="checkbox" id="`+namecheck+`" value="delivering" checked==true></td>
 				</tr>`;		
 			}
@@ -272,6 +272,7 @@ function viewProductsAdmin(number){
 		  </tr>`
 		for (var i=0; i<itemArray.length; i++) {
 			var itemID = itemArray[i];
+			var spID = item[itemID].id;
 			sa+=`<tr border="1" type="double" >`
 			+ `<td style="width:100px; margin-right:15px"><p>` + item[itemID].id + `</p></td>`
 			+`<td style="width: 200px"><p><span class="cartItemName">` + item[itemID].name + `</span></p></td>`
@@ -285,7 +286,7 @@ function viewProductsAdmin(number){
 					sa += `</p> </td>`
 			sa +=`<td style="width: 150px"> 
 					<input type="button" name ="editproduct" value="sửa" onClick="">
-					<button name ="deleteproduct" onclick="removeproduct()">Xóa</button>
+					<button name ="deleteproduct" onclick="removeproduct('`+ spID+`')">Xóa</button>
 				  </td>`
 			sa+= `</tr>`;					
 		}
@@ -307,12 +308,18 @@ function adminSelectView(){
 	}
 	document.getElementById("adminmain").innerHTML = a;
 }
-function removeproduct(){
-	alert("hello");
+function removeproduct(id){
+	//alert("hello");alert(id);
+	var check= confirm("Bạn có chắc chắn muốn xóa sản phẩm: "+id);
+	if(check==true) {alert("Sản phẩm đã xóa thành công"); window.location.href="index.html?admin"; }
 }
 // ADD NEW PRODUCT
 function addnewproduct(){
 	window.open('addproductPage.html','addproduct','width=400,height=300,top=200,left=200');
+} 
+function editproduct(){
+	var newWindow = window.open('addproductPage.html','addproduct','width=400,height=300,top=200,left=200');
+	newWindow.alert("hello");
 } 
 function checkaddproduct(){
 	var itemArray = new Array();

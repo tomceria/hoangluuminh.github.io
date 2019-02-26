@@ -1,3 +1,9 @@
+/* jQuery */
+
+
+
+/* END jQuery */
+
 class SanPham {
 	constructor (id, price, name, brand, color, image, sale) {
 		this.id = id;
@@ -601,12 +607,14 @@ function getProduct (i, item) {
 				<p><span class="brand\">` + item[i].brand + `</span></p>
 				<p>` + item[i].name + `</p>
 				<p>` + item[i].color + `</p>
+			</div>
+			<div>
 				<p><span class="price">` + item[i].price + `₫</span>`;
 	if (item[i].sale!=0) {
 		s +=	`<span class="sale">` + item[i].sale + `₫</span>`;
 	}
 	s += 		`</p>
-				<input type="button" name="addToCartBtn" value="Thêm vào giỏ" onclick="addToCart(` + prodID + `)"/>	
+				<input type="button" class="btn btn-primary" name="addToCartBtn" value="Thêm vào giỏ" onclick="addToCart(` + prodID + `)"/>	
 			</div>
 		</div>`;
 
@@ -807,11 +815,13 @@ function getKindName (itemID) {
 }
 
 window.onload = function() {
-	
+	if (window.location.href == "addproductPage.html");
+
+
 	if (window.localStorage.getItem ('signedinID')==null)
-		getTopBar_NoMember();
+		getTopBar(0);
 	else
-		getTopBar_IsMember();
+		getTopBar(1);
 
 	if (splitter[1]=="admin") {
 		getAdminPage();

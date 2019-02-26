@@ -3,6 +3,7 @@
 function getLandingPage () {
 	var s = "";
 	s += `
+<div class="container">
 	<nav>
 		<a href="index.html?cart">
 		<div id="cartBtn">
@@ -12,22 +13,24 @@ function getLandingPage () {
 			<!-- JAVASCRIPT INSERT CART ITEMS AMOUNT -->
 		</div>
 		</a>
-		<table cellspacing="0">
-			<tbody>
-				<tr id="carouselTR">
-					<!-- JAVASCRIPT INSERT CAROUSEL -->
-				</tr>
-				<tr>
-					<td><a href="index.html" target="_self" title="Nổi bật">Nổi bật</a>
-					</td>
-					<td><a href="index.html?new&0&1" target="_self" title="Hàng mới">Hàng mới</a></td>
-					<td><a href="index.html?deals&0&1" target="_self" title="Khuyến mãi">Khuyến mãi</a></td>
-					<td><a href="index.html?contact" target="_self" title="Liên hệ">Liên hệ</a></td>
-				</tr>
-			</tbody>
-					
-		</table>
 	</nav>
+	<div id="carouselTR">
+		<!-- JAVASCRIPT INSERT CAROUSEL -->
+	</div>
+	<div id="nav" class="row">
+		<div class="col-sm-3 navigation">
+			<a href="index.html" target="_self" title="Nổi bật">Nổi bật</a>
+		</div>
+		<div class="col-sm-3 navigation">
+			<a href="index.html?new&0&1" target="_self" title="Hàng mới">Hàng mới</a>
+		</div>
+		<div class="col-sm-3 navigation">
+			<a href="index.html?deals&0&1" target="_self" title="Khuyến mãi">Khuyến mãi</a>
+		</div>
+		<div class="col-sm-3 navigation">
+			<a href="index.html?contact" target="_self" title="Liên hệ">Liên hệ</a>
+		</div>
+	</div>
 	
 	<div class = "content">
 		
@@ -44,6 +47,7 @@ function getLandingPage () {
 		</main>
 		
 	</div>
+</div>
 	`;
 
 	document.getElementById("container").innerHTML = s;
@@ -517,12 +521,22 @@ function getPageBtn (page, params) {
 }
 
 // TOP BAR
-function getTopBar_NoMember () {
+function getTopBar (isSignedIn) {
+	var userID = window.localStorage.getItem ('signedinID');
+	var username = window.localStorage.getItem('user' + userID);
+
 	var s = "";
 	s += `
-	<div>
-		<div class="topbarBtn">
-			<p><a href="javascript:void(0);">Đăng nhập</a></p>
+	<div style="max-width: 1000px">
+		<div class="topbarBtn left" style="line-height: 44px">
+			<a id="menuToggle"><img src="images/search-white.png" style="height: 30px;padding: 2px 5px 4px;"></img></a>
+		</div>
+		<div class="topbarBtn left" style="line-height: 44px">
+			<a id="textlogo" href="index.html"><img src="images/prada-text.png" style="height: 20px; padding: 2px 10px 5px"></img></a>
+		</div>
+		<div class="topbarBtn">`;
+	if (isSignedIn==0)
+	s += 	`<p><a href="javascript:void(0);">Đăng nhập</a></p>
 			<div id="memberpop">
 				<br>
 				<form name="signin" method="post" action="index.html" onsubmit="return signinCheck()">
@@ -535,12 +549,36 @@ function getTopBar_NoMember () {
 					<input type="submit" name="signin" value ="Đăng nhập" style="margin: 1em 0 1em 1em; height: 20px">
 					<input type="button" name="signup" value ="Đăng ký" style="margin: 1em 0; height: 20px" onClick="window.location.href='index.html?register'">
 				</form>
+			</div>`;
+	else {
+	s += 	`<p><a href="javascript:void(0);">` + username + `</a></p>
+			<div id="memberpop">
+				<br>
+				<p style="font-weight: bold; font-size: 16px">Xin chào</p>
+				<p><a href="index.html?order">Xem đơn hàng</a></p>
+				<p><a href="javascript:void(0);" onclick="signout()">Đăng xuất</a></p>
+				<br>
 			</div>
-		</div>
+		</div>`;
+		if (username == "admin") {
+		s += `<div class="topbarBtn">
+			<p><a href="index.html?admin">Quản trị</a></p>
+		</div>`;
+		};
+	}
+	s +=`</div>
 	</div>
 	`;
 
 	document.getElementById("topbar").innerHTML = s;
+
+	$("#menuToggle").click(function(e) {
+	  e.preventDefault();
+	  console.log ("hell yeah");
+	  $("#sidebar").toggleClass("toggled");
+	  $("#topbar").toggleClass("toggled");
+	});
+	console.log (document.getElementById("menuToggle").innerHTML);
 }
 
 function getTopBar_IsMember () {
@@ -549,7 +587,7 @@ function getTopBar_IsMember () {
 
 	var s = "";
 	s += `
-	<div>
+	<div style="max-width: 1000px">
 		<div class="topbarBtn">
 			<p><a href="javascript:void(0);">` + username + `</a></p>
 			<div id="memberpop">
@@ -567,6 +605,7 @@ function getTopBar_IsMember () {
 		}
 	s +=`
 	</div>
+</div>
 	`;
 
 	document.getElementById("topbar").innerHTML = s;
@@ -624,16 +663,13 @@ function getCarousel () {
 	<td colspan="4" height="250px" style="background: white; border: none; vertical-align: top;">
 		<div class="carouselContainer">
 			<div class="carouselDiv carouselFade">
-				<img src="images/caro4.jpg" style="width: 100%"/>
+				<img src="images/carousel1.png"/>
 			</div>
 			<div class="carouselDiv carouselFade">
-				<img src="images/caro1.jpg" style="width: 100%"/>
+				<img src="images/carousel2.png"/>
 			</div>
 			<div class="carouselDiv carouselFade">
-				<img src="images/caro2.jpg" style="width: 100%"/>
-			</div>
-			<div class="carouselDiv carouselFade">
-				<img src="images/caro3.jpg" style="width: 100%"/>
+				<img src="images/carousel3.png"/>
 			</div>
 			<a class="carouselPrev" onclick="plusSlides(-1)">&#10094;</a>
  			<a class="carouselNext" onclick="plusSlides(1)">&#10095;</a>
@@ -643,7 +679,6 @@ function getCarousel () {
   		<span class="carouselDot" onclick="currentSlide(1)"></span> 
   		<span class="carouselDot" onclick="currentSlide(2)"></span> 
   		<span class="carouselDot" onclick="currentSlide(3)"></span> 
-  		<span class="carouselDot" onclick="currentSlide(4)"></span> 
 	</div>
 	</td>
 	
