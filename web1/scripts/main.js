@@ -548,7 +548,7 @@ function getProductWindow () {
 	var noPages = Math.ceil((items.length-1)/12);
 	if (params[2]>0) {
 		s += "<br>";
-		s += "<div style=\"clear: both; margin: 1em 10px; float: right; width: initial; height: initial\">";
+		s += "<div style=\"clear: both; margin: 1em 10px 1em auto; float: right; width: initial; height: initial\">";
 
 		if (params[2]>3 && noPages>5)
 			s += getPageBtn ("<<", params);
@@ -836,6 +836,7 @@ window.onload = function() {
 		getCarousel();
 		initCarousel();
 		getFeaturedPage();
+		$("#main").toggleClass("shop");
 	}
 	else if (splitter[1]=="register") {
 		getRegisterPage();
@@ -851,6 +852,7 @@ window.onload = function() {
 	}
 	else {
 		getProductWindow();
+		$("#main").toggleClass("shop");
 	}
 	
 	

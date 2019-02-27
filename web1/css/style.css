@@ -556,6 +556,12 @@ nav table td:hover {
 	min-height: 1101px;				/* Nhớ thay đổi khi đổi itemsOnPage */
 }
 
+#main.shop {
+	display: flex;
+  	justify-content: center;
+  	flex-wrap: wrap;
+}
+
 /* FEATURED DISPLAY */
 
 #main > h3 {
@@ -648,7 +654,7 @@ nav table td:hover {
 
 @media screen and (max-width:1199px) {
 	#main {
-		padding: 1em 0 1em 1em !important;
+		padding: 1em !important;
 		width: 730px;
 		float: left;
 	}
@@ -682,7 +688,7 @@ nav table td:hover {
 
 @media screen and (max-width:991px) {
 	#main {
-		padding: 1em 1em 1em 2em !important;
+		padding: 1em !important;
 		width: 480px;
 		float: left;
 	}
@@ -690,7 +696,6 @@ nav table td:hover {
 
 @media screen and (max-width:800px) {
 	#main {
-		padding: 1em 3em 1em 3.95em !important;
 		width: initial;
 		float: none;
 	}
@@ -698,13 +703,13 @@ nav table td:hover {
 
 @media screen and (max-width:767px) {
 	#main {
-		padding: 1em 1em 1em 2.75em !important;
+		
 	}
 }
 
 @media screen and (max-width:575px) {
 	#main {
-		padding: 7em 1.25em 1em 1.25em !important;
+		padding: 7em 1em 1em 1em !important;
 	}
 	header {
 		height: 110px;

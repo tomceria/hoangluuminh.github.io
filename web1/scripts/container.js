@@ -285,42 +285,48 @@ function getFeaturedPage () {
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aDeals);
 		}
-	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?deals&0&1">Xem tất cả >></a></div>`;
+	s += `	<hr style="border-color: white">
+			</div><div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="index.html?deals&0&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Áo thun nam</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aAoNam);
 		}
-	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?ao&1&1">Xem tất cả >></a></div>`;
+	s += `	<hr style="border-color: white">
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="index.html?ao&1&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Áo thun nữ</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aAoNu);
 		}
-	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?ao&4&1">Xem tất cả >></a></div>`;
+	s += `	<hr style="border-color: white">
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="index.html?ao&4&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Quần</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aQuan);
 		}
-	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?quan&0&1">Xem tất cả >></a></div>`;
+	s += `	<hr style="border-color: white">
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="index.html?quan&0&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Nón</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aNon);
 		}
-	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?non&0&1">Xem tất cả >></a></div>`;
+	s += `	<hr style="border-color: white">
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto"><a href="index.html?non&0&1">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Giày thể thao</h3>`;
 		for (var i=0; i<4; i++) {
 			s+=	getProduct (i, aGiay);
 		}
-	s += `	<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em"><a href="index.html?giay&1&1">Xem tất cả >></a></div>`;
+	s += `	<hr style="border-color: white">
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto"><a href="index.html?giay&1&1">Xem tất cả >></a></div>`;
 
 	s += `<br><hr>`;
 
