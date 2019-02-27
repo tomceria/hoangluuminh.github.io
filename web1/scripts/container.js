@@ -559,13 +559,23 @@ function getTopBar (isSignedIn) {
 
 	document.getElementById("topbar").innerHTML = s;
 
+	// MENU TOGGLE JQUERY
 	$("#menuToggle").click(function(e) {
 	  e.preventDefault();
 	  console.log ("hell yeah");
 	  $("#sidebar").toggleClass("toggled");
 	  $("#topbar").toggleClass("toggled");
 	});
-	console.log (document.getElementById("menuToggle").innerHTML);
+	//console.log (document.getElementById("menuToggle").innerHTML);
+
+	// TOP BAR TRANSPARENT JQUERY
+	$(window).scroll( function(e) {
+	  var scroll = $(window).scrollTop();
+	  console.debug(scroll);
+	  $("#topbar").removeClass("nottop");
+	  if (scroll > 25)
+	  	$("#topbar").addClass("nottop");
+	});
 }
 
 function getTopBar_IsMember () {

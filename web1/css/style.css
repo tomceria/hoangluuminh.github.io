@@ -87,15 +87,19 @@ img {
 	#topbar {
 		position: fixed;
 		top: 0px;
-		background: #84848480;
+		background: #fff0;
+		box-shadow: none;
 		height: 44px;
-		box-shadow: 0 0 10px gray;
 		z-index: 100;
-
 		transition-duration: 0.2s;
 	}
+	#topbar.nottop {
+		background: #4e4e4e80;
+		box-shadow: 0 0 10px #5d5d5d;
+	}
 	#topbar.toggled {
-		background: #848484;
+		background: #368bb9 !important;
+		box-shadow: 0 0 10px #368bb9 !important;
 	}
 	.topbarBtn > p > a {
 		line-height: 44px;
@@ -384,6 +388,7 @@ nav table td:hover {
 	padding: 0 10px;
 	height: 30px;
 	border: thin solid #D6D6D6;
+	font-size: 14px;
 }
 
 #searchBtn {
@@ -699,20 +704,20 @@ nav table td:hover {
 		width: initial;
 		float: none;
 	}
+	header {
+		height: 110px;
+	}
 }
 
 @media screen and (max-width:767px) {
 	#main {
-		
+
 	}
 }
 
 @media screen and (max-width:575px) {
 	#main {
 		padding: 7em 1em 1em 1em !important;
-	}
-	header {
-		height: 110px;
 	}
 }
 
