@@ -5,7 +5,7 @@ function getLandingPage () {
 	s += `
 <div class="container">
 	<nav>
-		<a href="./?cart=1">
+		<a href="shop.php?cart=1">
 		<div id="cartBtn">
 			<div id="cartBtnIcon">
 				<img src="images/cart.png" width="25px" height="25px">	
@@ -24,13 +24,13 @@ function getLandingPage () {
 			<a href="./" target="_self" title="Nổi bật">Nổi bật</a>
 		</div>
 		<div class="col-sm-3 navigation">
-			<a href="./?filter=new" target="_self" title="Hàng mới">Hàng mới</a>
+			<a href="shop.php?filter=new" target="_self" title="Hàng mới">Hàng mới</a>
 		</div>
 		<div class="col-sm-3 navigation">
-			<a href="./?filter=deals" target="_self" title="Khuyến mãi">Khuyến mãi</a>
+			<a href="shop.php?filter=deals" target="_self" title="Khuyến mãi">Khuyến mãi</a>
 		</div>
 		<div class="col-sm-3 navigation">
-			<a href="./?contact" target="_self" title="Liên hệ">Liên hệ</a>
+			<a href="shop.php?contact" target="_self" title="Liên hệ">Liên hệ</a>
 		</div>
 	</div>
 	
@@ -46,6 +46,7 @@ function getLandingPage () {
 		<main id = "main">
 			<!--<h1>Hello world</h1><br>-->
 			<!-- JAVASCRIPT INSERT MAIN -->
+			`+$("#container").html()+`
 		</main>
 		
 	</div>
@@ -53,12 +54,18 @@ function getLandingPage () {
 	<div id="modals">
 		<!-- JAVASCRIPT INSERT MODALS -->
 	</div>
+	<div id="toasts">
+		<!-- JAVASCRIPT INSERT TOASTS -->
+	</div>
+	
+
 </div>
 	`;
 
 	document.getElementById("container").innerHTML = s;
 }
 
+/*
 function getAdminPage () {
 	var s = "";
 	s += `
@@ -87,7 +94,8 @@ function getAdminPage () {
 	if (splitted[2]==="product") getOptionProduct();
 	if (splitted[2]==="order") {getListOrder();getOrderDate();}
 }
-
+*/
+/*
 function getRegisterPage () {
 	var s = "";
 	s += `
@@ -195,7 +203,7 @@ function getRegisterPage () {
 
 	document.getElementById("main").innerHTML = s;
 }
-
+*/
 function getContactPage () {
 	var s = "";
 
@@ -216,129 +224,71 @@ function getContactPage () {
 }
 
 // MAIN
-
+/*
 function getFeaturedPage () {
 	var s = "";
-	var aDeals = new Array ();
-	for (var i=1; i<item.length; i++) {
-		var dem=0;
-		if (item[i].sale != 0) {
-			aDeals.push (item[i]);
-			dem++;
-		}
-		if (dem==4)	break;
-	}
-	var aAoNam = new Array ();
-	for (var i=item.length-1; i>=0; i--) {
-		var dem=0;
-		var kind = item[i].id.split('-');
-		if (kind[0]=="AT") {
-			aAoNam.push (item[i]);
-			dem++;
-		}
-		if (dem==4)	break;
-	}
-	var aAoNu = new Array ();
-	for (var i=item.length-1; i>=0; i--) {
-		var dem=0;
-		var kind = item[i].id.split('-');
-		if (kind[0]=="AN") {
-			aAoNu.push (item[i]);
-			dem++;
-		}
-		if (dem==4)	break;
-	}
-	var aQuan = new Array ();
-	for (var i=item.length-1; i>=0; i--) {
-		var dem=0;
-		var kind = item[i].id.split('-');
-		if (kind[0]=="QT" || kind[0]=="QJ") {
-			aQuan.push (item[i]);
-			dem++;
-		}
-		if (dem==4) break;
-	}
-	var aNon = new Array ();
-	for (var i=item.length-1; i>=0; i--) {
-		var dem=0;
-		var kind = item[i].id.split('-');
-		if (kind[0]=="NK" || kind[0]=="NS") {
-			aNon.push (item[i]);
-			dem++;
-		}
-		if (dem==4)	break;
-	}
-	var aGiay = new Array ();
-	for (var i=item.length-1; i>=0; i--) {
-		var dem=0;
-		var kind = item[i].id.split('-');
-		if (kind[0]=="GI") {
-			aGiay.push (item[i]);
-			dem++;
-		}
-		if (dem==4)	break;
-	}
+	var j = 0;
 
 	s += `
 			<h3>Sản phẩm HOT</h3>`;
-	s += 		getProduct (5, item);
-	s += 		getProduct (13, item);
-	s += 		getProduct (104, item);
-	s += 		getProduct (41, item);
+	s += 		getProduct (j++, item);
+	s += 		getProduct (j++, item);
+	s += 		getProduct (j++, item);
+	s += 		getProduct (j++, item);
 
 	s += `	<br>
 			<hr><br><h3>Khuyến mãi</h3>`;
 		for (var i=0; i<4; i++) {
-			s+=	getProduct (i, aDeals);
+			s+=	getProduct (j++, item);
 		}
 	s += `	<hr style="border-color: white">
-			</div><div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="./?filter=deals">Xem tất cả >></a></div>`;
+			</div><div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="shop.php?filter=deals">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Áo thun nam</h3>`;
 		for (var i=0; i<4; i++) {
-			s+=	getProduct (i, aAoNam);
+			s+=	getProduct (j++, item);
 		}
 	s += `	<hr style="border-color: white">
-			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="./?loai=`+itemKind[0][1]+`">Xem tất cả >></a></div>`;
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="shop.php?loai2=`+itemKind[0][1]+`">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Áo thun nữ</h3>`;
 		for (var i=0; i<4; i++) {
-			s+=	getProduct (i, aAoNu);
+			s+=	getProduct (j++, item);
 		}
 	s += `	<hr style="border-color: white">
-			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="./?loai=`+itemKind[0][4]+`">Xem tất cả >></a></div>`;
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="shop.php?loai2=`+itemKind[0][4]+`">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Quần</h3>`;
 		for (var i=0; i<4; i++) {
-			s+=	getProduct (i, aQuan);
+			s+=	getProduct (j++, item);
 		}
 	s += `	<hr style="border-color: white">
-			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="./?loai=`+itemKind[1][0]+`">Xem tất cả >></a></div>`;
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto;"><a href="shop.php?loai1=`+itemKind[1][0]+`">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Nón</h3>`;
 		for (var i=0; i<4; i++) {
-			s+=	getProduct (i, aNon);
+			s+=	getProduct (j++, item);
 		}
 	s += `	<hr style="border-color: white">
-			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto"><a href="./?loai=`+itemKind[2][0]+`">Xem tất cả >></a></div>`;
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto"><a href="shop.php?loai1=`+itemKind[2][0]+`">Xem tất cả >></a></div>`;
 
 	s += `	<br>
 			<hr><br><h3>Giày thể thao</h3>`;
 		for (var i=0; i<4; i++) {
-			s+=	getProduct (i, aGiay);
+			s+=	getProduct (j++, item);
 		}
 	s += `	<hr style="border-color: white">
-			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto"><a href="./?loai=`+itemKind[3][1]+`">Xem tất cả >></a></div>`;
+			<div id="pageBtn" style="clear: both; float: right; margin: 1em 0.5em 1em auto"><a href="shop.php?loai2=`+itemKind[3][1]+`">Xem tất cả >></a></div>`;
 
 	s += `<br><hr>`;
 
 	document.getElementById("main").innerHTML += s;
 }
-
+*/
 function getProductDetail () {
 	var id = 0;					// only 1 item in item[]
 	var s = "";
@@ -378,26 +328,8 @@ function getProductDetail () {
 	document.getElementById("main").innerHTML += s;
 }
 
-function getCartView () {				// Can be run multiple times
-	// AJAX
-	$.ajax({
-        url : "php/getCart.php",
-        type : "post",
-        dataType:"text",
-        data : {
-             cartArray : window.localStorage.getItem("cart")
-        },
-        success : function (result){
-            $('#main').html(result);
-            getCartBtnNum();
-        }
-    });
-
-	//
-
-}
-
-function getOrderView () {
+/*
+function getOrderView () {											// TODO!
 	var memberID = window.localStorage.getItem("signedinID");
 	// memberid=0 amount=7 total=3867222 time=1543115459890/1=1 5=3 8=6 13=3 16=1 
 	
@@ -453,7 +385,7 @@ function getOrderView () {
 
 
 }
-
+*/
 /*
 function getPageBtn (page, params) {
 	//console.debug (page + " " + params[2] + params);
@@ -673,7 +605,7 @@ function getModal_Login () {
 				    <!-- Modal footer -->
 				    <div class="modal-footer" style="justify-content: flex-start">
 				    	<button type="submit" class="btn btn-success">Đăng nhập</button>
-				    	<button type="button" class="btn btn-light" onClick="window.location.href='./?register'">Đăng ký</button>
+				    	<button type="button" class="btn btn-light" onClick="window.location.href='./'">Đăng ký</button>
 				    </div>
 			    </form>
 			</div>
@@ -699,7 +631,7 @@ function getModal_UserPanel () {
 			    
 			    <!-- Modal body -->
 			    <div class="modal-body">
-						<button type="button" class="btn btn-primary" onClick="window.location.href='./?order'">Xem đơn hàng</button>
+						<button type="button" class="btn btn-primary" onClick="window.location.href='shop.php?order'">Xem đơn hàng</button>
 			    </div>
 			    
 			    <!-- Modal footer -->
@@ -712,4 +644,29 @@ function getModal_UserPanel () {
 	`;
 
 	$("#modals").append(s);
+}
+
+// TOASTS DIV -> ADDTOCART
+function getToast_addToCart () {
+	var s = "";
+	s += `
+	<div class="toast float" id="toast_addtocart">
+	    <div class="toast-body">
+	    	Đã thêm vào giỏ hàng!
+	    </div>
+	</div>
+	`;
+	$("#toasts").append(s);
+}
+
+function getToast_loading () {
+	var s = "";
+	s += `
+	<div class="toast float" id="toast_loading">
+	    <div class="toast-body">
+	    	<b>Đang tải...</b>
+	    </div>
+	</div>
+	`;
+	$("#toasts").append(s);
 }

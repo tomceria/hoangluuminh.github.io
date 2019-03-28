@@ -1,6 +1,6 @@
 <?php
-
-setcookie('userID', "", time()-3600, "/");
+session_start();
+$_SESSION["user"] = null;
 echo '
 Đăng xuất thành công!
 <br>

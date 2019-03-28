@@ -1,8 +1,14 @@
 <?php
 
 	// Get SanPham list
-$filterPhanLoai = isset($_GET["loai"])?$_GET["loai"]:"";
-$sql = "SELECT * FROM SanPham WHERE id LIKE '".$filterPhanLoai."%' ";
+$sql = "SELECT * FROM SanPham";
+$filterPhanLoai1 = isset($_GET["loai1"])?$_GET["loai1"]:"";
+if ($filterPhanLoai1!=null)
+	$sql = "SELECT * FROM SanPham WHERE kind = any (SELECT id FROM PhanLoai WHERE superPL = '".$filterPhanLoai1."')";
+$filterPhanLoai2 = isset($_GET["loai2"])?$_GET["loai2"]:"";
+if ($filterPhanLoai1==null && $filterPhanLoai2!=null)
+	$sql = "SELECT * FROM SanPham WHERE kind = any (SELECT id FROM PhanLoai WHERE id = '".$filterPhanLoai2."')";
+
 $filter = isset($_GET["filter"])?$_GET["filter"]:"";
 if ($filter!=null) {
 	switch ($filter) {
@@ -15,6 +21,7 @@ if ($filter!=null) {
 	}
 	
 }
+
 $searchKeyword = isset($_GET["search"])?htmlspecialchars($_GET["search"]):"";
 $searchKeyword = str_replace("+", " ", $searchKeyword);
 if ($searchKeyword!=null) {

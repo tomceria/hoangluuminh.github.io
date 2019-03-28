@@ -1,5 +1,8 @@
 <?php 
 
+$menu = [];			// GLOBAL
+$itemKind = [];		// GLOBAL
+
 	// Get Sidebar Phanloai list
 $sql = "SELECT * FROM `PhanLoai` WHERE `superPL` IS NULL ORDER BY `sortorder` ASC ";
 $result = $conn->query($sql);
@@ -10,7 +13,7 @@ if($result->num_rows > 0) {
 		var menuLabel = new Array ();
 		var menuUrl = new Array ();
 		var itemKind = new Array ();
-		
+
 		var item = new Array();
 	</script>
 	';
@@ -26,6 +29,10 @@ if($result->num_rows > 0) {
 			itemKind['.$count.'].push("'.$row["id"].'");
 		</script>
 		';
+		$menu[$count] = [];
+		$itemKind[$count] = [];
+		array_push($menu[$count], $row["name"]);
+		array_push($itemKind[$count], $row["id"]);
 		$count += 1;
 	}
 }
@@ -33,12 +40,15 @@ $sql = "SELECT id FROM `PhanLoai` WHERE `superPL` IS NULL ORDER BY `sortorder` A
 $phanloai = $conn->query($sql);
 $sql = "SELECT * FROM `PhanLoai` WHERE `superPL` IS NOT NULL ORDER BY `sortorder` ASC ";	// List of Sub-PhanLoai
 $subPhanloai = $conn->query($sql);
+
 if ($phanloai->num_rows > 0) {
 	$count = 0;
 	while ($rowI = $phanloai->fetch_assoc()) {
 		if ($subPhanloai->num_rows > 0) {
 			while ($rowJ = $subPhanloai->fetch_assoc()) {
 				if ($rowI["id"]==$rowJ["superPL"]) {
+					array_push($menu[$count], $rowJ["name"]);
+					array_push($itemKind[$count], $rowJ["id"]);
 					print '
 					<script>
 						menu['.$count.'].push("'.$rowJ["name"].'");

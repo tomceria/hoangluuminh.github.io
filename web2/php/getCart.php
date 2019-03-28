@@ -1,8 +1,15 @@
 <?php
+session_start();
 require_once ('accessDB.php');
 
 $s = "";
 $cartArray = isset($_POST["cartArray"])?$_POST["cartArray"]:"";
+
+$thanhtoan = "";
+if (!isset($_SESSION["user"]))
+	$thanhtoan = "alert('Vui lòng đăng nhập trước khi thanh toán!')";
+else
+	$thanhtoan = "window.location.href='php/cartCheckout.php'";
 //echo $cartArray;
 //echo '<br>';
 if ($cartArray==null)
@@ -33,7 +40,8 @@ if ($cartArray!=null && sizeof($cartArray)>0) {
 		}
 	}
 }
-
+//var_dump($currentCart);
+$_SESSION["currentCart"] = $currentCart;
 $cartTotal = 0;
 
 $s .= '<h1>Giỏ hàng</h1>';
@@ -45,7 +53,7 @@ $s .= '<h1>Giỏ hàng</h1>';
 		$cartTotal += (int)$currentCart[$i]->price * (int)$currentCart[$i]->quantity;
 
 		$s .= '<div class="cartWindow">
-				<a href="./?detail=' . $itemID . '">
+				<a href="shop.php?detail=' . $itemID . '">
 					<div style="float: left; width: 100px; height: 100px">
 					
 						<img src="' . $currentCart[$i]->image . '" width="100px" height="100px"/>
@@ -77,7 +85,7 @@ $s .= 	'<div style="float: left; clear: both; margin-top: 1em">
 		</div>
 		<div style="float: left; clear: both; margin: 1em 0">';
 		if ($cartTotal>0)
-			$s .= '<input class="cartPay btn btn-success" type="button" name="checkout" value="Thanh toán" onclick="checkOut()"/>
+			$s .= '<input class="cartPay btn btn-success" type="button" name="checkout" value="Thanh toán" onclick="'.$thanhtoan.'"/>
 					<input class="cartClear btn btn-danger" type="button" name="clear" value="Xóa hết" onclick="clearCart()"/>';
 $s .=	'</div>';
 

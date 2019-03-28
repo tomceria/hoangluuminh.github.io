@@ -20,6 +20,7 @@ img {
 #container {
 	margin: 0px auto;
 	max-width: 1030px;
+	/*
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -627,7 +628,11 @@ nav table td:hover {
 
 #main > #productDiv:hover {
 	/*background: #b7e5ff;*/
-	border: 2px solid #368bb9;
+	border: 1px solid #368bb9;
+}
+
+#main > #productDiv.empty {
+	border: 1px solid white !important;
 }
 
 #main > #productDiv p {
@@ -700,6 +705,9 @@ nav table td:hover {
 	#main > #productDiv p {
 		font-size: 13px;
 	}
+	#main .sale {
+		font-size: 5px !important;
+	}
 	#productDiv > div {
 		width: 112px;
 		height: 68px;
@@ -771,42 +779,53 @@ nav table td:hover {
 
 /* PAGE BUTTONS DISPLAY */
 
-main #pageBtn {
+#pageBtnDiv {
+	clear: both; 
+	float: right; 
+	margin: 1em auto; 
+	align-self: flex-end;
+
+	min-width: 50%;
+	display: flex;
+	justify-content: center;
+}
+
+#pageBtn {
 	float: left; 
 	width: initial;
 	height: initial;
 	margin: initial;
-	border: thin solid #368bb9;
+	border: 1px solid #d6d6d6;
 	transition-duration: 0.2s;
 }
 
 
-main #pageBtn:hover {
-	background: #b7e5ff;
+#pageBtn:hover {
+	border: 1px solid #368bb9;
 }
 
 
-main #pageBtn > a {
+#pageBtn > a {
 	display: block; 
 	color: #000000;
 	line-height: 30px;
 	padding: 0 0.5em;
 }
 
-main #pageBtnActive {
+#pageBtnActive {
 	float: left;
 	width: initial;
 	height: initial;
 	margin: initial;
 	border: thin solid #368bb9;
-	background: #368bb9;
+	background: #007bff;
 }
 
-main #pageBtnActive:hover {
-	background: #368bb9;
+#pageBtnActive:hover {
+	/*background: #368bb9;*/
 }
 
-main #pageBtnActive > p {
+#pageBtnActive > p {
 	display: block; 
 	color: #FFFFFF;
 	margin: 0;
@@ -889,6 +908,24 @@ main #pageBtnActive > p {
 }
 
 /* end CART DISPLAY */
+
+/* TOAST - FLOAT */
+
+.toast.float {
+	position: fixed;
+	top: 30px;
+	right: 30px;
+	font-size: 20px;
+}
+@media screen and (max-width:800px) {
+	.toast.float {
+		top: 64px;
+		right: 20px;
+		font-size: 14px;
+	}	
+}
+
+/* end TOAST _ FLOAT */
 
 #footer {
 	clear: both;
