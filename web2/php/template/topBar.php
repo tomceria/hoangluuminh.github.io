@@ -22,7 +22,7 @@ else {
 $topBar.= 	'
 		<p><a href="javascript:void(0);" data-toggle="modal" data-target="#modal_userpanel">'.$name.'</a></p>
 	</div>';
-	if ($_SESSION["user"]["role"] == "admin") {
+	if ($_SESSION["user"]["role"] <= 1) {
 $topBar.= '
 	<div class="topbarBtn">
 		<p><a href="./?admin">Quản trị</a></p>

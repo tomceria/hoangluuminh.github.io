@@ -4,7 +4,7 @@ function getPageBtn ($page) {
 	$s = "";
 	$pageAltered = $page;
 	$kind = "pageBtn";
-	global $currentPage;				// retrieved from DB_SanPham.php
+	global $currentPage;				// retrieved from getProductWindow.php
 	//$remainder = window.location.href.split("&page="+currentPage)[1];		// cho advancedSearch
 
 	if ($page == $currentPage)

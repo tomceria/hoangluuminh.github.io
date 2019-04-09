@@ -70,5 +70,7 @@ while ($row2 = $result2->fetch_assoc()) {
 		$finalS = $s . $finalS;			//Xuất ngược (addToHead)
 	}
 
-echo $finalS
+echo $finalS;
+
+mysqli_close($conn);
 ?>

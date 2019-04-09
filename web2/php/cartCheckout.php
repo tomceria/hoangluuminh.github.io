@@ -34,8 +34,9 @@ foreach ($newOrder as $orderItem) {
 }
 //CLEAR ITEM
 unset($_SESSION['currentCart']);
-echo '<script>window.localStorage.removeItem ("cart");</script>';
+//echo '<script>window.localStorage.removeItem ("cart");</script>';
 
+/* LEGACY
 echo '
 <p>Thanh toán thành công!</p>
 <a href="../">Trở về trang chủ</a>
@@ -48,4 +49,7 @@ echo '<script>
 				window.location.href="../";	
 			}, 500);
 		} </script>';
+*/
+
+mysqli_close($conn);
 ?>

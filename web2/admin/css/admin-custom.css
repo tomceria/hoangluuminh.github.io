@@ -1,0 +1,85 @@
+.table.table-bordered.sortable thead th {
+	cursor: pointer;
+}
+.table.table-bordered.sortable thead th:hover {
+	background: lightgrey;
+	transition-duration: 0.2s;
+}
+.table.table-bordered.sortable thead th span {
+	  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.THdisabled:hover {
+	background: white !important;
+	cursor: default !important;
+}
+.THselected {
+	background: grey;
+	color: white;
+}
+
+.table-responsive.overflowed {
+	height: calc(65vh);
+	overflow: auto;
+}
+
+/* PAGE BUTTONS DISPLAY */
+
+#pageBtnDiv {
+	/*clear: both; 
+	float: left; */
+	margin: 1em auto; 
+	align-self: flex-end;
+
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#pageBtn {
+	float: left; 
+	width: initial;
+	height: initial;
+	margin: 0.25em;
+	border: 1px solid #d6d6d6;
+	transition-duration: 0.2s;
+}
+
+
+#pageBtn:hover {
+	border: 1px solid #4e73df;
+}
+
+
+#pageBtn > a {
+	display: block; 
+	color: #000000;
+	line-height: 30px;
+	padding: 0 0.5em;
+}
+
+#pageBtnActive {
+	float: left;
+	width: initial;
+	height: initial;
+	margin: 0.25em;
+	border: thin solid #368bb9;
+	background: #4e73df;
+}
+
+#pageBtnActive:hover {
+	/*background: #368bb9;*/
+}
+
+#pageBtnActive > p {
+	display: block; 
+	color: #FFFFFF;
+	margin: 0;
+	line-height: 30px;
+	padding: 0 0.5em;
+}

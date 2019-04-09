@@ -7,9 +7,9 @@ $cartArray = isset($_POST["cartArray"])?$_POST["cartArray"]:"";
 
 $thanhtoan = "";
 if (!isset($_SESSION["user"]))
-	$thanhtoan = "alert('Vui lòng đăng nhập trước khi thanh toán!')";
+	$thanhtoan = "$('#modal_notloggedin').modal()";
 else
-	$thanhtoan = "window.location.href='php/cartCheckout.php'";
+	$thanhtoan = "cartCheckout()";
 //echo $cartArray;
 //echo '<br>';
 if ($cartArray==null)

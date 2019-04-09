@@ -211,9 +211,9 @@ function getContactPage () {
 	<b>Phát triển ứng dụng Web 2 thầy Sang / cô Loan (Nhóm 5)</b><br>
 	Thành viên:<br>
 	<ul>
-		<li>Hoàng</li>
-		<li>Hải</li>
-		<li>Kha</li>
+		<li>Lưu Minh Hoàng</li>
+		<li>Phùng Quốc Hải</li>
+		<li>Phan Hữu Kha</li>
 	</ul>
 	<br>
 	<hr>
@@ -289,6 +289,7 @@ function getFeaturedPage () {
 	document.getElementById("main").innerHTML += s;
 }
 */
+/*
 function getProductDetail () {
 	var id = 0;					// only 1 item in item[]
 	var s = "";
@@ -327,6 +328,7 @@ function getProductDetail () {
 
 	document.getElementById("main").innerHTML += s;
 }
+*/
 
 /*
 function getOrderView () {											// TODO!
@@ -585,7 +587,7 @@ function getModal_Login () {
 	<div class="modal fade" id="modal_login">
 		<div class="modal-dialog">
 		 	<div class="modal-content">
-			  	<form name="signin" method="post" action="php/signin.php" onsubmit="return signinCheck()">
+			  	<form name="signin">
 				    <!-- Modal Header -->
 				    <div class="modal-header">
 				      <h4 class="modal-title">Đăng nhập</h4>
@@ -595,16 +597,15 @@ function getModal_Login () {
 				    <!-- Modal body -->
 				    <div class="modal-body">
 							<p>Tài khoản:</p>
-							<input type="text" name="username" size="20" style="margin-bottom: 1em"><br>
+							<input type="text" id="signinUsername" size="20" style="margin-bottom: 1em" required><br>
 							<p>Mật khẩu:</p>
-							<input type="password" name="password" size="20" style="margin-bottom: 1em"><br>
-							<div id="signinError">
-							</div>
+							<input type="password" id="signinPassword" size="20" style="margin-bottom: 1em" required><br>
+							<p id="signinError" style="color: red">&nbsp;</p>
 				    </div>
 				    
 				    <!-- Modal footer -->
 				    <div class="modal-footer" style="justify-content: flex-start">
-				    	<button type="submit" class="btn btn-success">Đăng nhập</button>
+				    	<button type="button" class="btn btn-success" onClick="signinCheck()">Đăng nhập</button>
 				    	<button type="button" class="btn btn-light" onClick="window.location.href='./'">Đăng ký</button>
 				    </div>
 			    </form>
@@ -636,7 +637,64 @@ function getModal_UserPanel () {
 			    
 			    <!-- Modal footer -->
 			    <div class="modal-footer" style="justify-content: flex-start">
-			    	<button type="button" class="btn btn-danger" onClick="window.location.href='php/signout.php'">Đăng xuất</button>
+			    	<button type="button" class="btn btn-danger" onClick="signout()">Đăng xuất</button>
+			    </div>
+			</div>
+		</div>
+	</div>
+	`;
+
+	$("#modals").append(s);
+}
+
+function getModal_NotLoggedIn () {
+	var s = "";
+	s += `
+	<div class="modal fade" id="modal_notloggedin">
+		<div class="modal-dialog">
+		 	<div class="modal-content">
+			    <!-- Modal Header -->
+			    <div class="modal-header">
+			      <h4 class="modal-title">Cảnh báo</h4>
+			      <button type="button" class="close" data-dismiss="modal">&times;</button>
+			    </div>
+			    
+			    <!-- Modal body -->
+			    <div class="modal-body">
+						<p>Vui lòng đăng nhập trước khi thanh toán</p>
+			    </div>
+			    
+			    <!-- Modal footer -->
+			    <div class="modal-footer" style="justify-content: flex-start">
+			    	<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+			    </div>
+			</div>
+		</div>
+	</div>
+	`;
+
+	$("#modals").append(s);
+}
+
+function getModal_CheckoutCompleted () {
+	var s = "";
+	s += `
+	<div class="modal fade" id="modal_checkoutcompleted">
+		<div class="modal-dialog">
+		 	<div class="modal-content">
+			    <!-- Modal Header -->
+			    <div class="modal-header">
+			      <h4 class="modal-title">Thông báo</h4>
+			    </div>
+			    
+			    <!-- Modal body -->
+			    <div class="modal-body">
+						<p>Thanh toán thành công!</p>
+			    </div>
+			    
+			    <!-- Modal footer -->
+			    <div class="modal-footer" style="justify-content: flex-start">
+			    	<button type="button" class="btn btn-primary" onClick="window.location.href='./'">OK</button>
 			    </div>
 			</div>
 		</div>

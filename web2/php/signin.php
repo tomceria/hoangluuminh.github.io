@@ -9,7 +9,7 @@ $sql = " SELECT * FROM ThanhVien where username = '".$username."' AND password =
 //echo $sql;
 //echo '<br>';
 if ($username==null || $password==null) {
-	echo 'Đầu vào không hợp lệ!';
+	echo '0';
 	return;
 }
 $result = $conn->query($sql);
@@ -18,23 +18,12 @@ if ($result->num_rows > 0) {
 	while ($row = $result->fetch_assoc()) {
 		//setcookie('userID', $row["id"], time()+86400, "/");
 		$_SESSION["user"] = $row;
-		echo 'Xin chào, '.$username.'!';
-		
-		echo '<script> 
-		window.onload = function() {
-			setTimeout(function () {
-				window.location.href="../";	
-			}, 1000);
-		} </script>';
 	}			// while $result->fetch_assoc() != null
+	echo '1';
 }
 else {
-	echo 'Sai tài khoản hoặc mật khẩu';
+	echo '0';
 }
 
-echo '
-<br>
-<a href="../">Trở về trang chủ</a>
- 
-';
+mysqli_close($conn);
 ?>

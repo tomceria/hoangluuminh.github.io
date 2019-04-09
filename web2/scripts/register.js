@@ -163,26 +163,3 @@ function fixemail(){
 function fixtelphone(){	
 	document.register.telphone.style.backgroundColor="white";
 }
-
-
-
-// SIGN IN
-function signinCheck () {
-	username = document.signin.username.value;
-	if (username=="") {
-		alert ("Vui lòng điền tên đăng nhập");
-		return false;
-	}
-	password = document.signin.password.value;
-	if (password=="") {
-		alert ("Vui lòng điền mật khẩu");
-		return false;
-	}
-
-	return true;
-}
-
-function signout () {
-	window.localStorage.removeItem ('signedinID');
-	window.location.href = "index.php";
-}

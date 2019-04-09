@@ -98,6 +98,67 @@ function getMenu () {
 
 // AJAX FUNCTIONS
 
+function signinCheck () {
+	$.ajax({
+        url : "php/signin.php",
+        type : "post",
+        dataType:"text",
+        data : {
+             username : $('#signinUsername').val(),
+             password : $('#signinPassword').val()
+        },
+        success : function (result){
+            $('#signinError').html("&nbsp;");
+            if (result == '1') {
+            	$('#signinError').html("&nbsp;");
+            	window.location.href = window.location.href;
+            }
+            else {
+            	$('#signinError').html("Thông tin đăng nhập không đúng!");
+            	$('#signinUsername').val("");
+            	$('#signinPassword').val("");
+            }
+        }
+    });
+}
+
+function signout () {
+	$.ajax({
+        url : "php/signout.php",
+        type : "post",
+        //dataType:"text",
+        data : {
+             
+        },
+        success : function (result){
+            window.location.href = window.location.href;
+        }
+    });
+}
+
+function getProductDetail () {
+	// AJAX
+	$('#toast_loading').toast({animation: false});
+	$('#toast_loading').toast('show');
+
+	$.ajax({
+        url : "php/getProductDetail.php",
+        type : "get",
+        dataType:"text",
+        data : {
+             
+        },
+        success : function (result){
+            $('#main').html(result);
+
+            $('#toast_loading').toast('hide');
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        }
+    });
+
+	//
+}
+
 function getProductWindow (page) {
 	// AJAX
 	$('#toast_loading').toast({animation: false});
@@ -143,6 +204,21 @@ function getCartView () {				// Can be run multiple times
 
 	//
 
+}
+
+function cartCheckout () {
+	$.ajax({
+        url : "php/cartCheckout.php",
+        type : "post",
+        //dataType:"text",
+        data : {
+             
+        },
+        success : function (result){
+            window.localStorage.removeItem ("cart");
+            $('#modal_checkoutcompleted').modal({backdrop: "static"});
+        }
+    });
 }
 
 function getOrderView () {
@@ -400,6 +476,9 @@ function getPage () {			// AFTER RETRIEVING SANPHAM FROM DATABASE
 	getSearchBar();
 	getCartBtnNum();
 	getMenu();
+
+	getModal_NotLoggedIn();
+	getModal_CheckoutCompleted();
 
 	getToast_addToCart();
 	getToast_loading();
