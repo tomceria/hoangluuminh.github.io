@@ -1,5 +1,6 @@
 * {
-  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  /*font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";*/
+  font-family: "Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
 .content-wrapper {
@@ -32,11 +33,23 @@
 }
 .sidebar-wrapper li {
   display: flex;
+  font-size: 16px;
   align-items: center;
-  border: thin solid #CCCCCC;
+  color: #5f6368;
   height: 64px;
   width: 100%;
-  padding: 24px;
+  padding: 10px;
+}
+.sidebar-wrapper li:hover {
+  background-color: rgba(0,0,0,.04);
+  cursor: pointer;
+}
+.sidebar-wrapper i {
+  width: 24px;
+  margin: 0 5px;
+}
+.sidebar-wrapper span {
+  display: inline;
 }
 @media screen and (max-width:767px) {
   .sidebar-wrapper {
