@@ -4,8 +4,10 @@
 }
 
 .content-wrapper {
-  margin-top: 1.5rem;
+  padding-top: 1.5rem;
   width: 100%;
+  height: calc(100vh - 64px);
+  overflow: scroll;
 }
 
 .header-wrapper {
@@ -39,6 +41,7 @@
   height: 64px;
   width: 100%;
   padding: 10px;
+  transition: background-color 0.2s;
 }
 .sidebar-wrapper li:hover {
   background-color: rgba(0,0,0,.04);
@@ -56,4 +59,20 @@
     position: fixed;
     margin-left: -260px;
   }
+}
+
+table {
+  width: 100%;
+  box-shadow: 0 10px 10px rgba(237, 237, 237, 0.9);
+}
+table th,
+table td {
+  padding: .75rem;
+  border: 1px solid #ededed;
+}
+table td {
+  color: #5f6368;
+}
+table th {
+  border-bottom-width: 3px;
 }
