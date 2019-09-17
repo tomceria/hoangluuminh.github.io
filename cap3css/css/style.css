@@ -35,16 +35,24 @@
 }
 .sidebar-wrapper li {
   display: flex;
+  border: 5px solid rgba(255, 255, 255, 0);
   font-size: 16px;
   align-items: center;
   color: #5f6368;
   height: 64px;
   width: 100%;
   padding: 10px;
-  transition: background-color 0.2s;
+  transition: 0.2s ease-out;
+  transition-property: background-color, border, color;
 }
 .sidebar-wrapper li:hover {
-  background-color: rgba(0,0,0,.04);
+  /*background-color: rgba(0,0,0,.04);*/
+  color: #ffffff;
+  border: 5px solid #6ab7ff;
+  background-color: #1e88e5;
+  -webkit-box-shadow: 0 0 10px #6ab7ff;
+  -moz-box-shadow: 0 0 10px #6ab7ff;
+  box-shadow: 0 0 10px #6ab7ff;
   cursor: pointer;
 }
 .sidebar-wrapper i {
