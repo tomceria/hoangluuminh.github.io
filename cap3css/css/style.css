@@ -2,16 +2,25 @@
   font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
 }
 
+.content-wrapper {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
 .header-wrapper {
   background-color: #323639;
   color: #FFFFFF;
   height: 64px;
   padding: 10px;
+  position: relative;
+  z-index: 100;
+  -webkit-box-shadow: 0 0 10px #5d5d5d;
+  -moz-box-shadow: 0 0 10px #5d5d5d;
+  box-shadow: 0 0 10px #5d5d5d;
 }
 .sidebar-wrapper {
-  display: flex;
-  align-items: center;
   background-color: #F8F9FA;
+  padding-top: 24px;
   height: calc(100vh - 64px);
   width: 256px;
 }
@@ -27,5 +36,11 @@
   border: thin solid #CCCCCC;
   height: 64px;
   width: 100%;
-  margin: 10px 0;
+  padding: 24px;
+}
+@media screen and (max-width:767px) {
+  .sidebar-wrapper {
+    position: fixed;
+    margin-left: -260px;
+  }
 }
