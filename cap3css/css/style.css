@@ -45,6 +45,10 @@
   transition: 0.2s ease-out;
   transition-property: background-color, border, color;
 }
+.sidebar-wrapper li > div {
+  transition: 0.2s;
+  transition-property: transform;
+}
 .sidebar-wrapper li:hover {
   /*background-color: rgba(0,0,0,.04);*/
   color: #ffffff;
@@ -54,6 +58,9 @@
   -moz-box-shadow: 0 0 10px #6ab7ff;
   box-shadow: 0 0 10px #6ab7ff;
   cursor: pointer;
+}
+.sidebar-wrapper li:active div {
+  transform: scale(0.9, 0.9);
 }
 .sidebar-wrapper i {
   width: 24px;
